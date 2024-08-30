@@ -1,0 +1,37 @@
+{
+  "name": "elite-cars",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.1",
+    "@headlessui/react": "^2.1.1",
+    "@heroicons/react": "^2.1.4",
+    "hamburger-react": "^2.5.1",
+    "next": "14.2.5",
+    "photoswipe": "^5.4.4",
+    "react": "^18.2.0",
+    "react-countup": "^6.5.3",
+    "react-dom": "^18",
+    "react-fast-marquee": "^1.6.5",
+    "react-multi-carousel": "^2.8.5",
+    "react-responsive": "^10.0.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.23.1",
+    "react-social-icons": "^6.16.0",
+    "react-visibility-sensor": "^5.1.1",
+    "swiper": "^11.1.10"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "file-loader": "^6.2.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
