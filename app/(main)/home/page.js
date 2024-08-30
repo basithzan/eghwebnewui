@@ -33,7 +33,6 @@ import Img8 from "/public/assets/home/Homepage-allsectors-real-estate.jpg";
 import zenvo from "/public/assets/home/zenvo.jpg";
 import Img1 from "/public/assets/night-showroom.jpg";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 const CarouselImage1 = [
@@ -70,7 +69,7 @@ performance.`,
     description: `SOUEAST's entry into the UAE with Elite Group Holding as its exclusive authorised distributor, is set to introduce a new standard of premium mobility solutions with its "EASE YOUR LIFE" proposition. Since its establishment, SOUEAST has nearly 20 years of successful experience in global business.`,
     url: "https://www.soueast-motor.com",
   },
-{
+  {
     src: soueast1,
     name: "ART ELITE CAR RENTAL",
     description: `ART Elite Car Rental is a
@@ -102,7 +101,6 @@ const CarouselImage2 = [
     description:
       "We are at the forefront of the digital revolution, providing seamless online shopping experiences through our cutting-edge e-commerce platforms. Our goal is to make shopping convenient, efficient, and enjoyable, catering to the evolving needs of modern consumers. ",
     url: "/group-of-companies#ecommerce",
-
   },
   {
     src: Img8,
@@ -148,7 +146,7 @@ const CarouselImage3 = [
   {
     src: "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/sFSwAybOeSJAZgnTZjhiwnyy2wHhLVVPHRHKs65L.jpg",
     title: "Jetour Shines at 2023 Shanghai Auto Show with Its Latest...",
-description:
+    description:
       "The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM",
     created_at: "27 January 2024, Dubai, UAE",
     url: "/blog/jetour-shines-at-2023-shanghai-auto-show",
@@ -479,10 +477,10 @@ const EliteHome = () => {
 
       <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
         <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
-<div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
-  BUSINESS SYNOPSIS
-</div>
-          <div className="flex items-start flex-col md:flex-row md:col-span-3 hidden gap-3 md:gap-3 ">
+          <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
+            BUSINESS SYNOPSIS
+          </div>
+          <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
             <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
               Trust and integrity are our core currencies, it is a foundation on
               how we build trust with our stakeholders and our partners.
@@ -499,32 +497,55 @@ const EliteHome = () => {
             </p>
           </div>
         </div>
-<div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
-  <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-    <img src="/assets/p1.png" alt="Icon 1" className="w-[60px] h-[60px] mb-[3px]" />
-    <div>20+ FACILITIES<br />ACROSS UAE</div>
-  </div>
-  <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-    <img src="/assets/p2.png" alt="Icon 2" className="w-[60px] h-[60px] mb-[3px]" />
-    <div>
-      DECADES OF<span className="sm:block"> EXPERIENCE</span>
-    </div>
-  </div>
-  <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-    <img src="/assets/p3.png" alt="Icon 3" className="w-[60px] h-[60px] mb-[3px]" />
-    <div>OVER 5000 SATISFIED CUSTOMERS</div>
-  </div>
-  <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-    <img src="/assets/p4.png" alt="Icon 4" className="w-[60px] h-[60px] mb-[3px]" />
-    <div className="uppercase">⁠Multiple international brand partners</div>
-  </div>
-</div>
-
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
+          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+            <img
+              src="/assets/p1.png"
+              alt="Icon 1"
+              className="w-[60px] h-[60px] mb-[3px]"
+            />
+            <div>
+              20+ FACILITIES
+              <br />
+              ACROSS UAE
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+            <img
+              src="/assets/p2.png"
+              alt="Icon 2"
+              className="w-[60px] h-[60px] mb-[3px]"
+            />
+            <div>
+              DECADES OF<span className="sm:block"> EXPERIENCE</span>
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+            <img
+              src="/assets/p3.png"
+              alt="Icon 3"
+              className="w-[60px] h-[60px] mb-[3px]"
+            />
+            <div>OVER 5000 SATISFIED CUSTOMERS</div>
+          </div>
+          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+            <img
+              src="/assets/p4.png"
+              alt="Icon 4"
+              className="w-[60px] h-[60px] mb-[3px]"
+            />
+            <div className="uppercase">
+              ⁠Multiple international brand partners
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="section-5  max-md:mt-8">
-
-        <div className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4"style={{ color: '#fb511e', lineHeight: '2.5rem' }}>
+        <div
+          className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4"
+          style={{ color: "#fb511e", lineHeight: "2.5rem" }}
+        >
           EXPLORE OUR AUTOMOTIVE PARTNERS
         </div>
         <Partner images={CarouselImage1} />
