@@ -31,7 +31,8 @@ const TheEliteCars = () => {
     <>
       <Navbar />
       <div className="md:h-screen h-[40vh] w-screen relative section-1">
-        <Image unoptimized
+        <Image
+          unoptimized
           src={BackgroundImage}
           alt="fve"
           className="object-cover object-center h-full w-screen brightness-50"
@@ -46,7 +47,8 @@ const TheEliteCars = () => {
         <div className="md:py-5 py-2 flex items-center md:justify-end justify-center">
           <div className="text-[#282828] md:text-end text-center text-sm">
             <a href="/">Home</a> /{" "}
-            <a href="/group-of-companies">Group of Companies</a> / Zenvo Automotive
+            <a href="/group-of-companies">Group of Companies</a> / Zenvo
+            Automotive
           </div>
         </div>
 
@@ -56,7 +58,6 @@ const TheEliteCars = () => {
           </div>
           {[
             "Zenvo Automotive is a producer of limited-edition hypercars based in Præstø, Denmark. Founded in 2007, Zenvo was started with the aim of combining the latest technologies and innovation with an analogue feel, offering the driver a true connection and astonishing performance.  ",
- 
           ].map((description, index) => (
             <p
               key={index}

@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { gsap } from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 
 const CarouselSection = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
@@ -74,12 +75,13 @@ const CarouselSection = ({ images }) => {
           onChange={(index) => setCurrentImage(images[index])}
           className="relative w-full h-full reactCarousel max-sm:z-10"
           autoPlay
-          infinite
+          infiniteLoop={true}
           interval={5000}
           transitionTime={1000}
           stopOnHover={false}
           emulateTouch
-          swipeable
+          animationHandler={`fade`}
+          swipeable={false}
           dynamicHeight={false}
         >
           {images.map((image, index) => (
@@ -107,64 +109,62 @@ const CarouselSection = ({ images }) => {
       <div className="hidden md:grid-cols-6"></div>
       <div className="hidden md:grid-cols-5"></div>
 
-      
-        <div
-          className={`justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
-        >
-          {images.map((image, index) => (
-            <a
-              target="blank"
-              href={image.url}
-              key={index}
-              className={`relative border md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black md:border-[#808080] group duration-300 transition-all max-md:hover:bg-black`}
-              onMouseEnter={() => setCurrentImage(image)}
-              ref={(el) => (descriptionRefs.current[index] = el)}
-            >
-              <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
-                <div
-                  className={`select-none text-center group-hover:text-[#fb511e]   duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs xl:text-sm 2xl:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
-                >
-                  {image.name}
-                </div>
-                <div
-                  className={` h-[0px] group-hover:h-[220px] xl:group-hover:h-[220px] 2xl:group-hover:h-[220px] duration-300 description max-md:hidden text-start xl:text-base 2xl:text-lg text-xs md:px-5 text-black md:text-[#DFDCDC] overflow-hidden cursor-pointer`}
-                >
-                  {image.description}
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-        <div className=" md:hidden overflow-auto">
-          <div
-            className={`justify-evenly relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
+      <div
+        className={`justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
+      >
+        {images.map((image, index) => (
+          <a
+            target="blank"
+            href={image.url}
+            key={index}
+            className={`relative border md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black md:border-[#808080] group duration-300 transition-all max-md:hover:bg-black`}
+            onMouseEnter={() => setCurrentImage(image)}
+            ref={(el) => (descriptionRefs.current[index] = el)}
           >
-            {images.map((image, index) => (
-              <a
-                target="blank"
-                href={image.url}
-                key={index}
-                className={`relative border md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black md:border-[#808080] group transition-all max-md:hover:bg-black`}
-                onMouseEnter={() => setCurrentImage(image)}
-                ref={(el) => (descriptionRefs.current[index] = el)}
+            <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
+              <div
+                className={`select-none text-center group-hover:text-[#fb511e]   duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs xl:text-sm 2xl:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
               >
-                <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
-                  <div
-                    className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
-                  >
-                    {image.name}
-                  </div>
-                  <div
-                    className={`h-0 description max-md:hidden text-start md:text-base xl:text-lg text-xs md:px-5 text-black md:text-[#DFDCDC] overflow-hidden cursor-pointer`}
-                  >
-                    {image.description}
-                  </div>
-                </div>
-              </a>
-            ))}
+                {image.name}
+              </div>
+              <div
+                className={` h-[0px] group-hover:h-[220px] xl:group-hover:h-[220px] 2xl:group-hover:h-[220px] duration-300 description max-md:hidden text-start xl:text-sm 2xl:text-base text-xs md:px-5 text-black md:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+              >
+                {image.description}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+      <div className=" md:hidden  flex flex-col px-5">
+        {/* <div
+          className={`justify-evenly relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
+        > */}
+        {/* {images.map((image, index) => ( */}
+        <Link
+          target="blank"
+          href={currentImage.url}
+          // key={index}
+          className={`relative border mb-4 md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black w-full md:border-[#808080] group transition-all max-md:hover:bg-black`}
+          // onMouseEnter={() => setCurrentImage(image)}
+          // ref={(el) => (descriptionRefs.current[index] = el)}
+        >
+          <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
+            <div
+              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
+            >
+              {currentImage.name}
+            </div>
+            <div
+              className={`h-0 description max-md:hidden text-start md:text-base xl:text-lg text-xs md:px-5 text-black md:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+            >
+              {currentImage.description}
+            </div>
           </div>
-        </div>
-     
+        </Link>
+        {/* ))} */}
+        {/* </div> */}
+      </div>
     </div>
   );
 };
