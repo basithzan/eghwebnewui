@@ -250,24 +250,7 @@ const MediaCenter = () => {
                 </Link>
               </div>
             </div>
-                  <div className="lg:w-[65%]">
-                <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                May 20, 2024, Dubai, UAE
-                </div>
-                <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                The All-New Jetour T2 Debuts in the UAE
-                </div>
-                <div className=" mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                The historic event took place at Terra Solis, Dubai where guests were treated to a symphony of multi-sensory spectacle
-                </div>
-                <Link href="/blog/the-all-new-jetour-t2-debuts-in-the-uae">
-                  <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
-                    Read More
-                    <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
-                  </button>
-                </Link>
-              </div>
-            </div>
+                 
 
             <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
