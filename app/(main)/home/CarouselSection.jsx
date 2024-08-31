@@ -109,7 +109,7 @@ const CarouselSection = ({ images }) => {
       <div className="hidden md:grid-cols-6"></div>
       <div className="hidden md:grid-cols-5"></div>
 
-      <div
+      {/* <div
         className={`justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
       >
         {images.map((image, index) => (
@@ -131,6 +131,46 @@ const CarouselSection = ({ images }) => {
                 className={` h-[0px] group-hover:h-[220px] xl:group-hover:h-[220px] 2xl:group-hover:h-[220px] duration-300 description max-md:hidden text-start xl:text-sm 2xl:text-base text-xs md:px-5 text-black md:text-[#DFDCDC] overflow-hidden cursor-pointer`}
               >
                 {image.description}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div> */}
+
+      <div
+        className={`hidden md:flex justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
+      >
+        {images.map((image, index) => (
+          <a
+            href={image.url}
+            target="blank"
+            key={index}
+            className={`relative border lg:rounded-none max-sm:flex justify-center rounded-[10px] sm:rounded-full max-lg:w-[45%] px-5 lg:px-0 py-1 lg:py-0 flex-auto lg:border-r border-black lg:border-[#808080] group transition-all max-lg:hover:bg-black`}
+            onMouseEnter={() => setCurrentImage(image)}
+            ref={(el) => (descriptionRefs.current[index] = el)}
+          >
+            <div className="lg:absolute w-fit lg:w-[80%]  left-1/2 lg:-translate-x-1/2 lg:py-4  bottom-0 transition-all duration-300 ease-in-out lg:bg-[#0000007d]  transform lg:mb-6">
+              <div
+                className={`select-none text-center  group-hover:text-[#fb511e] duration-300 sm:text-start lg:px-5 text-[10px] sm:text-xs lg:text-lg   transition-all text-black lg:text-white max-lg:group-hover:text-white`}
+              >
+                {image.name}
+              </div>
+              <div
+                className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+              >
+                {image.description}
+                {/* <a
+                  target={index === 4 ? "none" : "blank"}
+                  href={image.url}
+                  className="block mt-4"
+                >
+                  <button className="hover:bg-[#fb511e] transition-all flex items-center flex-nowrap border gap-2 text-xs sm:text-sm 2xl:text-base border-1 border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-1 lg:py-1 button-1">
+                    <span className=" whitespace-nowrap">
+                      {index === 4 ? "EXPLORE" : "Visit Website"}
+                    </span>
+                    <ArrowLongRightIcon className="w-6 h-6" />
+                  </button>
+                </a> */}
               </div>
             </div>
           </a>
