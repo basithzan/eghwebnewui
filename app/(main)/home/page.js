@@ -383,7 +383,7 @@ const EliteHome = () => {
               </button>
             </a>
           </div>
-          <div className="absolute bottom-[10%] w-screen flex flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
+          {/* <div className="absolute bottom-[10%] w-screen flex flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
             {[
               {
                 title: "Our Company",
@@ -418,7 +418,7 @@ const EliteHome = () => {
                     {item.title}
                   </div>
                   <div className="flex items-center justify-between  w-full">
-                    {/* Progress Bar */}
+                    Progress Bar
                     <div className="w-full bg-[#ffffff33] h-[2px]">
                       {currentVideo == index && (
                         <div
@@ -431,7 +431,7 @@ const EliteHome = () => {
                 </Link>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 

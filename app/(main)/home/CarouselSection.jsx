@@ -185,13 +185,13 @@ const CarouselSection = ({ images }) => {
           target="blank"
           href={currentImage.url}
           // key={index}
-          className={`relative border mb-4 md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black w-full md:border-[#808080] group transition-all max-md:hover:bg-black`}
+          className={`relative border mb-4 md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px] sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black w-full md:border-[#808080] group transition-all max-md:hover:bg-black`}
           // onMouseEnter={() => setCurrentImage(image)}
           // ref={(el) => (descriptionRefs.current[index] = el)}
         >
           <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
             <div
-              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5  text-sm md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
+              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5  text-[1.2rem] md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
             >
               {currentImage.name}
             </div>
