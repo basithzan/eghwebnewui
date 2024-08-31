@@ -120,11 +120,11 @@ const CarouselImage2 = [
 
 const CarouselImage3 = [
   {
-    src: aurora,
-    title: " The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA",
+    src: soueast,
+    title: "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth in UAE's Booming Market Segment",
     description:
-      "The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through their exclusive partnership with Zenvo Automotive",
-    created_at: "February 22, 2024, Dubai, UAE",
+      "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
+    created_at: "Aug 31, 2024, Dubai, UAE",
     url: "/blog/the-elite-cars-presents-zenvo-aurora",
   },
   {
