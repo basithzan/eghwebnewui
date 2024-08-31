@@ -383,7 +383,7 @@ const EliteHome = () => {
               </button>
             </a>
           </div>
-          {/* <div className="absolute bottom-[10%] w-screen flex flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
+          <div className="absolute bottom-[10%] w-screen md:flex hidden flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
             {[
               {
                 title: "Our Company",
@@ -431,7 +431,7 @@ const EliteHome = () => {
                 </Link>
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
 
