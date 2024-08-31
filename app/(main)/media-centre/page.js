@@ -250,6 +250,7 @@ const MediaCenter = () => {
                 </Link>
               </div>
             </div>
+                 
 
             <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
