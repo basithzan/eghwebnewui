@@ -125,7 +125,7 @@ const CarouselImage3 = [
     description:
       "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
     created_at: "Aug 31, 2024, Dubai, UAE",
-    url: "/blog/the-elite-cars-presents-zenvo-aurora",
+    url: "#",
   },
   {
     src: aurora,
