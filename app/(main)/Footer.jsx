@@ -91,6 +91,12 @@ const Footer = () => {
                 >
                   Ecommerce
                 </a>
+                <a
+                  href="/automotive#art_elite_car_rental"
+                  className="hover:text-white"
+                >
+                  ART Elite Car Rental
+                </a>
               </div>
             </div>
           </div>
