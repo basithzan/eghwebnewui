@@ -44,7 +44,7 @@ const CarouselSection = ({ images }) => {
         type="button"
         onClick={onClickHandler}
         title={label}
-        className="md:hidden absolute bottom-[5%] left-[5%] transform py-0.5 border border-white text-white z-10"
+        className="hidden absolute bottom-[5%] left-[5%] transform py-0.5 border border-white text-white z-10"
       >
         <ArrowLongLeftIcon className="w-12 h-5" />
       </button>
@@ -56,7 +56,7 @@ const CarouselSection = ({ images }) => {
         type="button"
         onClick={onClickHandler}
         title={label}
-        className="md:hidden absolute bottom-[5%] right-[5%] transform py-0.5 border border-white text-white z-10"
+        className="hidden absolute bottom-[5%] right-[5%] transform py-0.5 border border-white text-white z-10"
       >
         <ArrowLongRightIcon className="w-12 h-5" />
       </button>
@@ -151,7 +151,7 @@ const CarouselSection = ({ images }) => {
         >
           <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
             <div
-              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
+              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5  text-sm md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
             >
               {currentImage.name}
             </div>
