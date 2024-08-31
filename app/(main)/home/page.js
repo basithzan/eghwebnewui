@@ -121,7 +121,7 @@ const CarouselImage2 = [
 const CarouselImage3 = [
   {
     src: soueast,
-    title: "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth in UAE's Booming Market Segment",
+    title: "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate..",
     description:
       "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
     created_at: "Aug 31, 2024, Dubai, UAE",
