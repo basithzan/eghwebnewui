@@ -125,7 +125,7 @@ const Partner = ({ images }) => {
 
       <div className="hidden lg:grid-cols-6"></div>
       <div className="hidden lg:grid-cols-5"></div>
-      <div
+      {/* <div
         className={`justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
       >
         {images.map((image, index) => (
@@ -151,10 +151,10 @@ const Partner = ({ images }) => {
             </div>
           </a>
         ))}
-      </div>
+      </div> */}
 
-      {/* <div
-        className={`flex justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
+      <div
+        className={`hidden md:flex justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
       >
         {images.map((image, index) => (
           <a
@@ -172,7 +172,7 @@ const Partner = ({ images }) => {
                 {image.name}
               </div>
               <div
-                className={`h-0 description max-lg:hidden text-start lg:text-xs 2xl:text-lg text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+                className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
               >
                 {image.description}
                 <a
@@ -180,33 +180,28 @@ const Partner = ({ images }) => {
                   href={image.url}
                   className="block mt-4"
                 >
-                  <button className="hover:bg-[#fb511e] transition-all flex items-center flex-nowrap border border-1 border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-1 lg:py-1 button-1">
+                  <button className="hover:bg-[#fb511e] transition-all flex items-center flex-nowrap border gap-2 text-xs sm:text-sm 2xl:text-base border-1 border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-1 lg:py-1 button-1">
                     <span className=" whitespace-nowrap">
-                      {" "}
                       {index === 4 ? "EXPLORE" : "Visit Website"}
                     </span>
-
-                    <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
+                    <ArrowLongRightIcon className="w-6 h-6" />
                   </button>
                 </a>
               </div>
             </div>
           </a>
         ))}
-      </div> */}
+      </div>
 
       <div className="md:hidden  flex flex-col px-5">
         <Link
           target="blank"
           href={currentImage.url}
-          // key={index}
           className={`relative border mb-4 md:rounded-none rounded-[10px] sm:rounded-full px-2 min-w-[80px]   sm:px-5 md:px-0 py-1 md:py-0 flex-auto md:border-r border-black w-full md:border-[#808080] group transition-all max-md:hover:bg-black`}
-          // onMouseEnter={() => setCurrentImage(image)}
-          // ref={(el) => (descriptionRefs.current[index] = el)}
         >
           <div className="md:absolute md:w-[80%] left-1/2 md:-translate-x-1/2 md:py-4  bottom-0 transition-all duration-300 ease-in-out md:bg-[#0000007d]  transform md:mb-6">
             <div
-              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5 text-[10px] sm:text-xs md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
+              className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300 sm:text-start md:px-5 text-sm md:text-lg  transition-all text-black md:text-white max-md:group-hover:text-white`}
             >
               {currentImage.name}
             </div>

@@ -121,7 +121,8 @@ const CarouselImage2 = [
 const CarouselImage3 = [
   {
     src: soueast,
-    title: "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate..",
+    title:
+      "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate..",
     description:
       "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
     created_at: "Aug 31, 2024, Dubai, UAE",
@@ -488,7 +489,22 @@ const EliteHome = () => {
           <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
             BUSINESS SYNOPSIS
           </div>
-         
+          {/* <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
+            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
+              Trust and integrity are our core currencies, it is a foundation on
+              how we build trust with our stakeholders and our partners.
+            </p>
+            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
+              We hold ourselves to the highest ethical standards, ensuring
+              transparency, honesty and accountability in everything we do.
+            </p>
+            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
+              We believe in creating lasting value for our stakeholders. Our
+              diversified portfolio, strategic vision, and operational
+              excellence drive our success and ensure we remain a trusted
+              partner in every sector we operate.
+            </p>
+          </div> */}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
