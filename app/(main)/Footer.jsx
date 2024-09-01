@@ -103,7 +103,7 @@ const Footer = () => {
 
           <div>
             <div className="md:text-base text-[1.25rem] lg:text-[1.5rem] lg:leading-[1.75rem] mb-4 text-white">
-              STAY CONNECTED
+              STAY CONNECTED..
             </div>
 
             <p className="mb-4">
