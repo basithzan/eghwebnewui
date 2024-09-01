@@ -10,10 +10,13 @@ import {
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { useWindowResize } from "@/lib/hooks/useWindowResize";
 
 const CarouselSection = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(images[0]);
   const descriptionRefs = useRef([]);
+
+  const { width } = useWindowResize();
 
   useEffect(() => {
     descriptionRefs.current.forEach((ref) => {
@@ -64,7 +67,7 @@ const CarouselSection = ({ images }) => {
 
   return (
     <div className="w-screen md:h-[80vh] relative flex flex-col-reverse md:block carouselSection overflow-hidden max-md:py-1">
-      <div className="md:absolute w-screen h-[55vh] md:h-[80vh]0">
+      <div className="md:absolute w-screen min-h-[55vh] md:min-h-[80vh]0">
         <Carousel
           showThumbs={false}
           showStatus={false}
@@ -80,25 +83,42 @@ const CarouselSection = ({ images }) => {
           transitionTime={1000}
           stopOnHover={false}
           emulateTouch
-          animationHandler={`fade`}
-          swipeable={false}
+          swipeable={width < 1024 ? true : false}
+          animationHandler={width > 1024 ? `fade` : `slide`}
           dynamicHeight={false}
         >
           {images.map((image, index) => (
-            <div key={index} className="w-full h-[50vh] md:h-[80vh]">
-              <Image
-                unoptimized
-                src={image.src}
-                alt={image.name}
-                className="object-cover brightness-[50%] w-full h-full"
-              />
+            <div key={index}>
+              <div className="px-5 lg:hidden flex flex-col w-full">
+                <Link
+                  target="blank"
+                  href={image.url}
+                  className={`relative border mb-4 rounded-[10px] sm:rounded-full w-full px-2 min-w-[80px]   sm:px-5  py-1  flex-auto  border-black  md:border-[#808080] group transition-all `}
+                >
+                  <div className="   bottom-0 transition-all duration-300 ease-in-out   transform ">
+                    <div
+                      className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300   text-[1.2rem]   transition-all text-black `}
+                    >
+                      {image.name}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div className="w-full h-[50vh] md:h-[80vh]">
+                <Image
+                  unoptimized
+                  src={image.src}
+                  alt={image.name}
+                  className="object-cover brightness-[50%] w-full h-full"
+                />
 
-              <div className="md:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
-                <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
-                  {image.name}
-                </div>
-                <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]">
-                  {image.description}
+                <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
+                  <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
+                    {image.name}
+                  </div>
+                  <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]">
+                    {image.description}
+                  </div>
                 </div>
               </div>
             </div>
@@ -138,12 +158,11 @@ const CarouselSection = ({ images }) => {
       </div> */}
 
       <div
-        className={`hidden md:flex justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
+        className={`hidden justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
       >
         {images.map((image, index) => (
           <a
             href={image.url}
-
             key={index}
             className={`relative border lg:rounded-none max-sm:flex justify-center rounded-[10px] sm:rounded-full max-lg:w-[45%] px-5 lg:px-0 py-1 lg:py-0 flex-auto lg:border-r border-black lg:border-[#808080] group transition-all max-lg:hover:bg-black`}
             onMouseEnter={() => setCurrentImage(image)}
@@ -176,12 +195,12 @@ const CarouselSection = ({ images }) => {
           </a>
         ))}
       </div>
-      <div className=" md:hidden  flex flex-col px-5">
-        {/* <div
+      {/* <div className=" md:hidden  flex flex-col px-5"> */}
+      {/* <div
           className={`justify-evenly relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}
         > */}
-        {/* {images.map((image, index) => ( */}
-        <Link
+      {/* {images.map((image, index) => ( */}
+      {/* <Link
           target="blank"
           href={currentImage.url}
           // key={index}
@@ -201,10 +220,10 @@ const CarouselSection = ({ images }) => {
               {currentImage.description}
             </div>
           </div>
-        </Link>
-        {/* ))} */}
-        {/* </div> */}
-      </div>
+        </Link> */}
+      {/* ))} */}
+      {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };
