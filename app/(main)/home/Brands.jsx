@@ -3,11 +3,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BrandImg1 from "/public/assets/brands/Jetour.png";
 import BrandImg4 from "/public/assets/brands/soueast-black.png";
+import BrandImg5 from "/public/assets/brands/art-logo.png";
 import BrandImg3 from "/public/assets/brands/TEC.png";
 import BrandImg2 from "/public/assets/brands/Zenvo.png";
 import BrandsBgImg from "/public/assets/DSC07990.jpg";
 import Marquee from "react-fast-marquee";
-import Image from "next/image"; 
+import Image from "next/image";
 import "react-multi-carousel/lib/styles.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,11 +37,6 @@ const Brands = () => {
           ".section-brand .description-1 ",
           { x: 50, opacity: 0 },
           { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-brand .brands ",
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
         );
 
       const handleResize = () => {
@@ -55,7 +51,7 @@ const Brands = () => {
     }
   }, []);
 
-  const images2 = [BrandImg2, BrandImg3, BrandImg1, BrandImg4];
+  const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
 
   return (
     <div
@@ -77,43 +73,35 @@ const Brands = () => {
           </p>
         </div>
 
-        <div className={`grid max-md:hidden ${isMobile ? 'grid-cols-2 gap-x-[15px] gap-y-[30px] justify-center' : 'grid-cols-4 gap-8 justify-start'} brands mt-0`}>
-      
-          {images2.map((img, index) => (
-            <Image
-              unoptimized
-              key={index}
-              src={img}
-              className={`${
-                isMobile
-                  ? "w-[150px] h-auto mx-auto"
-                  : "w-[220px] h-auto object-contain"
-              } transition-all duration-500 opacity-60 hover:opacity-100`}
-              alt="brands"
-            />
-          ))}
-         
-        </div>
- 
-        <Marquee
-              loop={0}
-              className=" w-full md:hidden  gap-10 brands  mb-5 md:mb-0"
-            >
-          {images2.map((img, index) => (
-            <Image
-              unoptimized
-              key={index}
-              src={img}
-              className={`${
-                isMobile
-                  ? "w-[150px] h-auto mx-5"
-                  : "w-[0px] h-auto object-contain"
-              } transition-all duration-500 opacity-60 hover:opacity-100`}
-              alt="brands"
-            />
-          ))}
-           </Marquee>
- 
+        {/* Conditional rendering for Desktop */}
+        {!isMobile && (
+          <div className="grid grid-cols-5 gap-8 brands">
+            {images.map((img, index) => (
+              <Image
+                unoptimized
+                key={index}
+                src={img}
+                className="w-[220px] h-auto object-contain transition-all duration-500 opacity-60 hover:opacity-100"
+                alt="brands"
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Conditional rendering for Mobile */}
+        {isMobile && (
+          <Marquee loop={0} className="w-full gap-[5px] brands mb-5 md:mb-0">
+            {images.map((img, index) => (
+              <Image
+                unoptimized
+                key={index}
+                src={img}
+                className="w-[150px] h-auto mx-5 transition-all duration-500 opacity-60 hover:opacity-100"
+                alt="brands"
+              />
+            ))}
+          </Marquee>
+        )}
       </div>
     </div>
   );
