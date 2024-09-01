@@ -143,7 +143,7 @@ const CarouselSection = ({ images }) => {
         {images.map((image, index) => (
           <a
             href={image.url}
-            target="blank"
+
             key={index}
             className={`relative border lg:rounded-none max-sm:flex justify-center rounded-[10px] sm:rounded-full max-lg:w-[45%] px-5 lg:px-0 py-1 lg:py-0 flex-auto lg:border-r border-black lg:border-[#808080] group transition-all max-lg:hover:bg-black`}
             onMouseEnter={() => setCurrentImage(image)}
