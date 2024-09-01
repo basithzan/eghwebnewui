@@ -418,7 +418,7 @@ const EliteHome = () => {
                     {item.title}
                   </div>
                   <div className="flex items-center justify-between  w-full">
-                    Progress Bar
+                    {/* Progress Bar */}
                     <div className="w-full bg-[#ffffff33] h-[2px]">
                       {currentVideo == index && (
                         <div
