@@ -114,15 +114,18 @@ const Partner = ({ images }) => {
                   <div className="lg:text-md text-[2rem] text-[#fb511e]  lg:text-[2.5rem] font-semibold  mb-3">
                     {image.name}
                   </div>
-                  <a target="blank" href={image.url} className="block mt-2">
-                    <button className="hover:bg-[#fb511e] transition-all flex items-center justify-center mx-auto  border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 lg:py-1 button-1">
-                      <span className=" whitespace-nowrap">
-                        {" "}
-                        {index === 4 ? "EXPLORE" : "Visit Website"}
-                      </span>
-                      <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
-                    </button>
-                  </a>
+                  <a 
+  target={index === 4 ? "_self" : "_blank"} 
+  href={image.url} 
+  className="block mt-2"
+>
+  <button className="hover:bg-[#fb511e] transition-all flex items-center justify-center mx-auto border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 lg:py-1 button-1">
+    <span className="whitespace-nowrap">
+      {index === 4 ? "Explore" : "Visit Website"}
+    </span>
+    <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
+  </button>
+</a>
                 </div>
               </div>
             </div>

@@ -83,7 +83,7 @@ automobiles, catering to
 clients who seek
 sophistication, performance,
 and unparalleled comfort.`,
-    url: "https://elite-cars-updated-mainv3.vercel.app/automotive#art_elite_car_rental",
+    url: "/automotive#art_elite_car_rental",
   },
 ];
 
