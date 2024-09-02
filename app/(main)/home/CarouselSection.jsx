@@ -91,7 +91,7 @@ const CarouselSection = ({ images }) => {
             <div key={index}>
               <div className="px-5 lg:hidden flex flex-col w-full">
                 <Link
-                  target="blank"
+                  // target="blank"
                   href={image.url}
                   className={`relative border mb-4 rounded-[10px] sm:rounded-full w-full px-2 min-w-[80px]   sm:px-5  py-1  flex-auto  border-black  md:border-[#808080] group transition-all `}
                 >
@@ -104,23 +104,28 @@ const CarouselSection = ({ images }) => {
                   </div>
                 </Link>
               </div>
-              <div className="w-full h-[50vh] md:h-[80vh]">
-                <Image
-                  unoptimized
-                  src={image.src}
-                  alt={image.name}
-                  className="object-cover brightness-[50%] w-full h-full"
-                />
+              <Link
+                // target="blank"
+                href={image.url}
+              >
+                <div className="w-full h-[50vh] md:h-[80vh]">
+                  <Image
+                    unoptimized
+                    src={image.src}
+                    alt={image.name}
+                    className="object-cover brightness-[50%] w-full h-full"
+                  />
 
-                <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
-                  <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
-                    {image.name}
-                  </div>
-                  <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]">
-                    {image.description}
+                  <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
+                    <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
+                      {image.name}
+                    </div>
+                    <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]">
+                      {image.description}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </Carousel>
