@@ -230,12 +230,10 @@ const AboutUs = () => {
                 It all started with a dream
               </p> */}
               <p className="mb-2 md:mb-4  common-description text-3">
-               Elite Group Holding has a carefully curated portfolio of projects across the UAE since its establishment in 2002.
+               Elite Group Holding has a carefully curated portfolio of projects across the UAE.
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-                Having decades of experience in the industry, we
-have grown to be one of the UAE’s well-respected
-real estate developer. We manage a substantial
+                We manage a substantial
 amount of commercial, residential and retail
 properties and projects.{" "}
               </p>
