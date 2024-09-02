@@ -100,21 +100,21 @@ const CarouselImage2 = [
     name: "E-COMMERCE",
     description:
       "We are at the forefront of the digital revolution, providing seamless online shopping experiences through our cutting-edge e-commerce platforms. Our goal is to make shopping convenient, efficient, and enjoyable, catering to the evolving needs of modern consumers. ",
-    url: "/group-of-companies#ecommerce",
+    url: "/group-of-companies/elite-e-commerce",
   },
   {
     src: Img8,
     name: "REAL ESTATE AND CONTRACTING",
     description:
       "Our real estate and contracting division is synonymous with luxury, quality, and innovation. We develop, manage, and invest in a diverse portfolio of residential, commercial, and mixed-use properties, setting new benchmarks in the real estate industry. ",
-    url: "/group-of-companies#real_estate",
+    url: "/group-of-companies/elite-real-estate",
   },
   {
     src: Img9,
     name: "INVESTMENTS",
     description:
       "Our investments arm is instrumental in the development and implementation of various projects and businesses that drive economic growth. We are involved in a wide range of projects ensuring long-term value creation and sustainability.",
-    url: "/group-of-companies#investments",
+    url: "/group-of-companies/elite-investment",
   },
 ];
 
@@ -395,15 +395,15 @@ const EliteHome = () => {
               },
               {
                 title: "Investments",
-                url: "/group-of-companies#investments",
+                url: "/group-of-companies/elite-investment",
               },
               {
                 title: "Real-Estate",
-                url: "/group-of-companies#real_estate",
+                url: "/group-of-companies/elite-real-estate",
               },
               {
                 title: "Ecommerce",
-                url: "/group-of-companies#ecommerce",
+                url: "/group-of-companies/elite-e-commerce",
               },
             ].map((item, index) => (
               <div

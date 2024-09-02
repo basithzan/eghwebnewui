@@ -77,13 +77,21 @@ const Brands = () => {
         {!isMobile && (
           <div className="grid grid-cols-5 gap-8 brands">
             {images.map((img, index) => (
-              <Image
-                unoptimized
+              <div
                 key={index}
-                src={img}
-                className="w-[220px] h-auto object-contain transition-all duration-500 opacity-60 hover:opacity-100"
-                alt="brands"
-              />
+                className={`flex items-center justify-center ${
+                  index === 3 ? 'pt-1.5' : ''
+                }`} // Apply top padding to the 4th logo
+              >
+                <Image
+                  unoptimized
+                  src={img}
+                  className={`${
+                    index === 4 ? 'w-[174px] h-[144px]' : 'w-[174px] h-[174px]'
+                  } object-contain transition-all duration-500 opacity-60 hover:opacity-100`}
+                  alt="brands"
+                />
+              </div>
             ))}
           </div>
         )}
@@ -92,13 +100,17 @@ const Brands = () => {
         {isMobile && (
           <Marquee loop={0} className="w-full gap-[5px] brands mb-5 md:mb-0">
             {images.map((img, index) => (
-              <Image
-                unoptimized
+              <div
                 key={index}
-                src={img}
-                className="w-[150px] h-auto mx-5 transition-all duration-500 opacity-60 hover:opacity-100"
-                alt="brands"
-              />
+                className="flex items-center justify-center"
+              >
+                <Image
+                  unoptimized
+                  src={img}
+                  className="w-[150px] h-auto mx-5 transition-all duration-500 opacity-60 hover:opacity-100"
+                  alt="brands"
+                />
+              </div>
             ))}
           </Marquee>
         )}

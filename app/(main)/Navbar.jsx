@@ -188,7 +188,7 @@ const Navbar = () => {
               </a>
 <a
                 onClick={() => setShowMenu(false)}
-                href="/automotive"
+                href="/automotive#soueast"
                 className="text-white font-semibold whitespace-nowrap navbar-underline-animation"
               >
                 ART ELITE CAR RENTAL
