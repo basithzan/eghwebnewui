@@ -371,11 +371,12 @@ const EliteHome = () => {
             <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
               WELCOME TO ELITE GROUP HOLDING
             </div>
-            <div className="text-4xl lg:text-6xl font-bold max-md:leading-[50px] md:mb-5 mb-10 text-2">
-              DRIVING <span className="text-[#fb511e]">EXCELLENCE</span>
-              <br />
-              BUILDING <span className="text-[#fb511e]">FUTURES</span>
-            </div>
+            <div className="text-4xl lg:text-6xl font-bold md:mb-5 mb-10 text-2">
+  <div className="leading-[calc(1em+6px)]">DRIVING</div>
+  <div className="leading-[calc(1em+6px)] text-[#fb511e]">EXCELLENCE,</div>
+  <div className="leading-[calc(1em+6px)]">BUILDING</div>
+  <div className="leading-[calc(1em+6px)] text-[#fb511e]">FUTURES</div>
+</div>
             <a href="/about-group">
               <button className="hover:bg-[#fb511e] transition-all border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 md:py-3 button-1">
                 Explore
