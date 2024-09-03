@@ -62,14 +62,20 @@ const Brands = () => {
       <div className="flex items-start gap-12 flex-col md:pt-0 pt-16">
         <div className="flex items-start md:gap-8 flex-col max-w-[900px]">
           <h4 className="md:text-md text-[2rem] lg:text-[2.5rem] font-semibold text-white relative z-10 head-1 max-md:mb-4">
-            OUR BRANDS
+            AFFILIATED PARTNERS
           </h4>
           <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]">
-            We believe that excellence is the cornerstone of our diverse
-            portfolio, which spans across various sectors. Our unwavering
-            commitment to quality is reflected in every part of our businesses,
-            driven by our team of highly experienced professionals who are
-            dedicated to delivering exceptional results.
+            We believe that excellence is the
+cornerstone of our diverse
+portfolio.
+          </p>
+<p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]">
+           Our unwavering commitment to
+quality is reflected in every part
+of our businesses, driven by our
+team of highly experienced
+professionals who are dedicated
+to delivering exceptional results.
           </p>
         </div>
 

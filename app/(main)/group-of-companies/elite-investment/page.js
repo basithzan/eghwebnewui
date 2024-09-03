@@ -230,15 +230,22 @@ const AboutUs = () => {
                 It all started with a dream
               </p> */}
               <p className="mb-2 md:mb-4  common-description text-3">
-                Elite Group Holding has a large and diversified
-portfolio of local and international investments.
+               Elite Group Holding has a large and diversified portfolio of local and international investments.
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-               With a relentless commitment to integrity,
-transparency, and prudent risk management,
-we navigate the dynamic landscape of global
-markets to unlock value and drive sustainable
-wealth creation.{" "}
+               With a relentless commitment to integrity, transparency, and prudent risk management, we
+navigate the dynamic landscape of global markets to unlock value and drive sustainable wealth
+creation.{" "}
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3">
+               Guided by an unwavering commitment to integrity, transparency, and prudent risk
+management, we navigate the ever-evolving landscape of global markets with precision and
+foresight. Our approach is centered on unlocking value, fostering innovation, and driving
+sustainable wealth creation for our stakeholders.{" "}
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3">
+               By staying attuned to market trends and maintaining a flexible investment strategy, Elite Group
+Holding continues to build a legacy of success, resilience, and long-term growth.{" "}
               </p>
               <p className="mb-2 md:mb-4 common-description text-3">
   For more information, contact us at

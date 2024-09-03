@@ -102,8 +102,12 @@ title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied he
 
             hasBtn={false}
             descriptions={[
-              "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry. Having decades of experience in the industry, we have grown to become UAE’s well-respected companies having a number of well-established net  ",
-              `Today, we are present not only in the UAE, but operates in the international markets as well, employing thousands of highly qualified and experienced professionals. We forged global partnerships with leading brands and officially represent various automotive brands in the UAE.`,
+              "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry. ",
+              `Having decades of experience in the industry, we have grown to become UAE’s well-
+respected companies having a number of well-established networks at strategic
+locations across the country.
+We forged global partnerships with leading brands and officially represent various
+automotive brands in the UAE such as Jetour, Lamborghini and Zenvo.`,
             ]}
             direction="left"
           />
