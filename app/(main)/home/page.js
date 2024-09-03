@@ -122,7 +122,7 @@ const CarouselImage3 = [
   {
     src: soueast,
     title:
-      "Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate..",
+      "Elite Group Holding and SOUEAST Motor Form Strategic \n Partnership to Accelerate..",
     description:
       "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
     created_at: "Aug 31, 2024, Dubai, UAE",
@@ -132,16 +132,16 @@ const CarouselImage3 = [
     src: aurora,
     title: " The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA",
     description:
-      "The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through their exclusive partnership with Zenvo Automotive",
-    created_at: "February 22, 2024, Dubai, UAE",
+      "The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through..",
+    created_at: "January 22, 2024, Dubai, UAE",
     url: "/blog/the-elite-cars-presents-zenvo-aurora",
   },
   {
     src: Carousel3Img1,
     title: "The All-New Jetour T2 Debuts in the UAE",
     description:
-      "The historic event took place at Terra Solis, Dubai where guests were treated to a symphony of multi-sensory spectacle",
-    created_at: "May 20, 2024, Dubai, UAE",
+      "The historic event took place at Terra Solis, Dubai where guests were treated to a symphony..",
+    created_at: "January 20, 2024, Dubai, UAE",
     url: "/blog/the-all-new-jetour-t2-debuts-in-the-uae",
   },
   {
@@ -149,15 +149,15 @@ const CarouselImage3 = [
     title: "The Elite Cars launches limited edition AED 8 Million...",
     description:
       "Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE",
-    created_at: "February 22, 2024, Dubai, UAE",
+    created_at: "January 17, 2024, Dubai, UAE",
     url: "/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east",
   },
   {
     src: "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/sFSwAybOeSJAZgnTZjhiwnyy2wHhLVVPHRHKs65L.jpg",
     title: "Jetour Shines at 2023 Shanghai Auto Show with Its Latest...",
     description:
-      "The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM",
-    created_at: "27 January 2024, Dubai, UAE",
+      "The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the..",
+    created_at: "January 10, 2024, Dubai, UAE",
     url: "/blog/jetour-shines-at-2023-shanghai-auto-show",
   },
   {
@@ -165,10 +165,11 @@ const CarouselImage3 = [
     title: "THE GROWTH OF REAL ESTATE IN THE UAE",
     description:
       "On April 27th, at the prestigious Beijing Auto China Show 2024",
-    created_at: "March 16, 2023, Dubai, UAE",
+    created_at: "January 08, 2023, Dubai, UAE",
     url: "/blog/real-estate",
   },
 ];
+
 
 const EliteHome = () => {
   const video1 =
@@ -371,18 +372,18 @@ const EliteHome = () => {
             <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
               WELCOME TO ELITE GROUP HOLDING
             </div>
-            <div className="text-4xl lg:text-6xl font-bold md:mb-5 mb-10 text-2">
+            <div className="text-[3rem] lg:text-6xl font-bold md:mb-5 mb-4 md:mb-10 text-2"> {/* Changed font size */}
   <div className="leading-[calc(1em+6px)] text-[#fb511e]">DRIVING</div>
   <div className="leading-[calc(1em+6px)] text-[#fb511e]">EXCELLENCE,</div>
   <div className="leading-[calc(1em+6px)]">BUILDING</div>
   <div className="leading-[calc(1em+6px)]">FUTURES</div>
 </div>
-            <a href="/about-group">
-              <button className="hover:bg-[#fb511e] transition-all border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 md:py-3 button-1">
-                Explore
-                <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
-              </button>
-            </a>
+<a href="/about-group">
+  <button className="hover:bg-[#fb511e] transition-all border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 md:py-3 button-1">
+    Explore
+    <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
+  </button>
+</a>
           </div>
           <div className="absolute bottom-[10%] w-screen md:flex hidden flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
             {[

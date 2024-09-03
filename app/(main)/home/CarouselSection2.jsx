@@ -47,40 +47,42 @@ const CarouselSection2 = ({ images }) => {
 
   return (
     <>
-      {!isMobile && (
-        <div className="mb-10 md:block hidden md:px-3 ">
-          <div className="overflow-hidden  mb-5">
-            <Image
-              unoptimized
-              src={images[0].src}
-              className="w-full transition-all duration-500 ease-out hover:scale-105"
-              alt="cards"
-            />
-          </div>
+     {!isMobile && (
+  <div className="mb-10 md:block hidden md:px-3">
+    <div className="overflow-hidden mb-5">
+      <Image
+        unoptimized
+        src={images[0].src}
+        className="w-full transition-all duration-500 ease-out hover:scale-105"
+        alt="cards"
+      />
+    </div>
 
-          <div className="flex justify-between items-center">
-            <div className="flex flex-col gap-1.5">
-              <div className="text-[#282828] font-semibold text-sm uppercase">
-                {images[0].created_at}
-              </div>
-              <div className="text-[#282828] text-3xl font-semibold uppercase">
-                {images[0].title}
-              </div>
-              <div className="text-[#282828] text-sm font-light">
-                {images[0].description}
-              </div>
-            </div>
-
-            <a
-              href={images[0].url}
-              className="block max-sm:text-xs hover:bg-[#fb511e] hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
-            >
-              READ MORE
-              <ArrowLongRightIcon className="ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
-            </a>
-          </div>
+    <div className="flex justify-between items-center">
+      {/* Wrap the title and description in a div with 75% width */}
+      <div className="flex flex-col gap-1.5 w-[75%]">
+        <div className="text-[#282828] font-semibold text-sm uppercase">
+          {images[0].created_at}
         </div>
-      )}
+        <div className="text-[#282828] text-3xl font-semibold uppercase">
+          {images[0].title}
+        </div>
+        <div className="text-[#282828] text-sm font-light">
+          {images[0].description}
+        </div>
+      </div>
+
+      {/* "READ MORE" button remains unaffected */}
+      <a
+        href={images[0].url}
+        className="block max-sm:text-xs hover:bg-[#fb511e] hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
+      >
+        READ MORE
+        <ArrowLongRightIcon className="ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
+      </a>
+    </div>
+  </div>
+)}
 
       <Carousel
         responsive={responsive}
