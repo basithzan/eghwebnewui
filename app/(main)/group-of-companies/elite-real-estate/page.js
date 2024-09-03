@@ -233,16 +233,19 @@ const AboutUs = () => {
                Elite Group Holding has a carefully curated portfolio of projects across the UAE.
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-                We manage a substantial
-amount of commercial, residential and retail
-properties and projects.{" "}
+                We manage a substantial amount of commercial, residential and retail properties and projects.
+Through innovative design, meticulous planning, and a commitment to excellence, we strive to exceed
+expectations, build enduring relationships, and leave a lasting legacy of unparalleled craftsmanship and
+integrity.{" "}
               </p>
 <p className="mb-2 md:mb-4  common-description text-3">
-                Through innovative design, meticulous planning,
-and a commitment to excellence, we strive to
-exceed expectations, build enduring relationships,
-and leave a lasting legacy of unparalleled
-craftsmanship and integrity.{" "}
+                At the heart of our operations is a commitment to building enduring relationships with our clients,
+partners, and communities. We believe that trust and integrity are the foundations of success, and we
+work tirelessly to uphold these values in every project we manage.{" "}
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3">
+                Through our steadfast dedication to these principles, Elite Group Holding continues to shape the future of
+real estate in the UAE, creating iconic properties that stand the test of time.{" "}
               </p>
               <p className="mb-2 md:mb-4 common-description text-3">
   For more information, contact us at

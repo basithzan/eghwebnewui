@@ -230,17 +230,21 @@ const AboutUs = () => {
                 It all started with a dream
               </p> */}
               <p className="mb-2 md:mb-4  common-description text-3">
-                As a dynamic and forward-thinking division
-within The Elite Group Holding, our e-commerce
-sector is committed to revolutionizing the online
-shopping experience for customers in the UAE
-and the world.
+                As a dynamic and forward-thinking division within Elite Group Holding, our e-commerce sector is
+committed to revolutionizing the online shopping experience for customers in the UAE and the world.
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-                With a relentless focus on delivering premium
-products, seamless transactions, and unparalleled
-customer service, we have positioned ourselves
-as a budding-leader in the digital marketplace.{" "}
+                With a relentless focus on delivering premium products, seamless transactions, and unparalleled customer
+service, we have positioned ourselves as a budding-leader in the digital marketplace.{" "}
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3">
+                Our dedication to unparalleled customer service sets us apart in the competitive digital marketplace.{" "}
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3">
+                We are not just selling products; we are building relationships, fostering trust, and ensuring that every
+interaction enhances the overall shopping experience. This approach has positioned us as an
+emerging leader in the e-commerce industry, as we continue to innovate and expand our reach,
+delivering value and excellence to our customers both locally and globally.{" "}
               </p>
               <p className="mb-2 md:mb-4 common-description text-3">
   For more information, contact us at
