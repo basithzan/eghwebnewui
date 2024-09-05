@@ -145,7 +145,7 @@ const GroupOfCompanies = () => {
       image={groupImg2}
       title={<span style={{ color: '#fb511e' }}>E-Commerce</span>} // Color applied here
       descriptions={[
-        "As a dynamic and forward-thinking division within The Elite Group Holding, our e-commerce sector is committed to revolutionizing the online shopping experience.",
+        "As a dynamic and forward-thinking division within Elite Group Holding, our e-commerce sector is committed to revolutionizing the online shopping experience.",
         // other descriptions
       ]}
       direction="left"

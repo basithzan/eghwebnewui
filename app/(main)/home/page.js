@@ -149,7 +149,7 @@ const CarouselImage3 = [
     title: "The Elite Cars launches limited edition AED 8 Million...",
     description:
       "Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE",
-    created_at: "January 17, 2024, Dubai, UAE",
+    created_at: "June 22, 2023, Dubai, UAE",
     url: "/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east",
   },
   {
