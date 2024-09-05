@@ -186,13 +186,13 @@ const Partner = ({ images }) => {
               >
                 {image.description}
                 <a
-                  target={index === 4 ? "none" : "blank"}
+                  
                   href={image.url}
                   className="block mt-4"
                 >
                   <button className="hover:bg-[#fb511e] transition-all flex items-center flex-nowrap border gap-2 text-xs sm:text-sm 2xl:text-base border-1 border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-1 lg:py-1 button-1">
                     <span className=" whitespace-nowrap">
-                      {index === 4 ? "EXPLORE" : "Visit Website"}
+                      {index === 4 ? "Explore" : "Visit Website"}
                     </span>
                     <ArrowLongRightIcon className="w-6 h-6" />
                   </button>
