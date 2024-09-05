@@ -49,14 +49,15 @@ const CarouselSection2 = ({ images }) => {
     <>
      {!isMobile && (
   <div className="mb-10 md:block hidden md:px-3">
-    <div className="overflow-hidden mb-5">
-      <Image
-        unoptimized
-        src={images[0].src}
-        className="w-full transition-all duration-500 ease-out hover:scale-105"
-        alt="cards"
-      />
-    </div>
+    <div className="overflow-hidden mb-5" style={{ height: 'calc(100vh - 250px)' }}>
+  <Image
+    unoptimized
+    src={images[0].src}
+    className="w-full h-full object-cover transition-all duration-500 ease-out hover:scale-105"
+    alt="cards"
+  />
+</div>
+
 
     <div className="flex justify-between items-center">
       {/* Wrap the title and description in a div with 75% width */}
