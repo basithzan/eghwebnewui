@@ -92,7 +92,7 @@ const GroupOfCompanies = () => {
 
       <div className="bg-[#ffffff] mb-4 sm:pb-3 lg:mb-10"></div>
 
-      <div className="overflow-hidden max-md:px-[5.5%] max-sm:space-y-10 mt-10">
+      <div className="overflow-hidden max-md:px-[5%] max-sm:space-y-10 mt-10">
  <div id="auto">
           <GroupSection
             url="#"
@@ -177,7 +177,7 @@ title={<span style={{ color: '#fb511e' }}>Soueast</span>} // Color applied here
             direction="left"
           />
         </div>
-<div id="soueast">
+<div id="art_elite_car_rental">
           <GroupSection
             url="/automotive/the-elite-cars"
             link="https://www.soueast-motor.com"
