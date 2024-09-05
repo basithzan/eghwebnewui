@@ -83,11 +83,13 @@ to delivering exceptional results.
 {!isMobile && (
   <div className="flex" style={{ gap: '50px', overflowX: 'auto' }}>
     {images.map((img, index) => {
-      // Define the width for the 3rd and 4th logos
+      // Define the width for the 3rd, 4th, and last logos
       const width = index === 3
-        ? `calc(200px * 1.15)` // Increase 4th logo width by 15%
+        ? `calc(200px * 1.1)` // Increase 4th logo width by 15%
         : index === 2
-        ? `calc(${defaultWidth} + 28px)` // Increase 3rd logo width by 20px
+        ? `calc(${defaultWidth} + 22px)` // Increase 3rd logo width by 20px
+        : index === images.length - 1
+        ? `calc(${defaultWidth} - 35px)` // Reduce last logo width by 50px
         : defaultWidth; // Default width for other logos
 
       return (
@@ -132,7 +134,7 @@ to delivering exceptional results.
     : index === 2
     ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
     : index === images.length - 1
-    ? `calc(${defaultWidth} - 30px)` // Decrease the width of the last logo by 10px
+    ? `calc(${defaultWidth} - 25px)` // Decrease the width of the last logo by 10px
     : defaultWidth; // Default width for other logos
 
   return (
