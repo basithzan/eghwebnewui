@@ -36,7 +36,7 @@ const Page = ({ title, descriptions = [] }) => {
         <div className="text-[#fff] absolute bottom-5 right-5 md:text-end text-center text-sm">
           <a href="/">Home</a> / <a href="/media-centre">Media center</a> /{" "}
           <span className="capitalize">
-            the new jetour-t2 makes a big impression in the uae
+            New Jetour T2 Makes A Big Impression In The UAE
           </span>
         </div>
       </div>

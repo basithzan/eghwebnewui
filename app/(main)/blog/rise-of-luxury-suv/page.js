@@ -41,7 +41,7 @@ const TheEliteCars = ({ title, descriptions = [] }) => {
                 </div> */}
         <div className="text-[#fff] absolute bottom-5 right-5 md:text-end text-center text-sm">
           <a href="/">Home</a> / <a href="/media-centre">Media Center</a> / The
-          Elite Cars / Rise Of Luxury Suvs
+          The Rise of Luxury SUVs in the UAE
         </div>
       </div>
 

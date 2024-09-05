@@ -19,7 +19,7 @@ const page = () => {
         <div className="text-[#fff] absolute bottom-5 right-5 md:text-end text-center text-sm">
           <a href="/">Home</a> / <a href="/media-centre">Media center</a> /{" "}
           <span className="capitalize">
-            the elite cars inspection process for luxury pre owned vehicles
+            The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
           </span>
         </div>
       </div>
