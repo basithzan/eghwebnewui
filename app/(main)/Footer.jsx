@@ -9,11 +9,11 @@ const Footer = () => {
     <div className="bg-[#141414] py-10">
       <div className="px-[5%] mx-auto">
         <Image
-          unoptimized
-          alt="img"
-          src={Logo}
-          className="w-28 md:w-40 mx-auto mb-5 md:mb-10"
-        />
+  unoptimized
+  alt="img"
+  src={Logo}
+  className="w-[calc(7rem+25px)] md:w-[calc(10rem+25px)] mx-auto mb-5 md:mb-10"
+/>
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-14 text-[#B3B3B3]">
           <div>
