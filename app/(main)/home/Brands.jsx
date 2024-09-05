@@ -95,7 +95,7 @@ to delivering exceptional results.
     priority={index === 0} // Optionally prioritize the first image
     className={`${
       index === 4 ? 'w-[174px] h-[144px]' : 'w-[174px] h-[174px]'
-    } object-contain transition-opacity duration-10 opacity-60 hover:opacity-80`} // transition-opacity
+    } w-[150px] h-auto object-contain transition-opacity duration-10 opacity-60 hover:opacity-80`} // transition-opacity
     alt="brands"
   />
 </div>
