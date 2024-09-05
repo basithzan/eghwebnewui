@@ -155,7 +155,7 @@ title={<span style={{ color: '#fb511e' }}>The Elite Cars</span>} // Color applie
 
             hasBtn={true}
             descriptions={[
-              "The Elite Cars, is a subsidiary of Elite Group Holding, automotive division, specializing in high-end to mid-luxury car brands.",
+              "The Elite Cars, a subsidiary of Elite Group Holding, is a multi-brand dealership specializing in high-end car brands, offering an unmatched automotive experience.",
               "With a commitment to quality, service, and customer satisfaction, The Elite Cars has been the undisputed leader in the UAE luxury automotive industry for decades.",
             ]}
             direction="right"

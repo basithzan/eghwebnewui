@@ -60,7 +60,7 @@ performance.`,
     src: Img5,
     name: "THE ELITE CARS",
     description:
-      "The Elite Cars, is a subsidiary of Elite Group Holding, automotive division, specializing in high-end to mid-luxury car brands.​With a commitment to quality, service, and customer satisfaction, The Elite Cars has been the undisputed leader in the UAE luxury automotive industry for decades.",
+      "The Elite Cars, a subsidiary of Elite Group Holding, is a multi-brand dealership specializing in high-end car brands, offering an unmatched automotive experience. With a commitment to quality, service, and customer satisfaction, The Elite Cars has been the undisputed leader in the UAE luxury automotive industry for decades.",
     url: "https://theelitecars.com/",
   },
   {
