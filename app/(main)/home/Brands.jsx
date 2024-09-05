@@ -80,55 +80,82 @@ to delivering exceptional results.
           </p>
         </div>
 {/* Conditional rendering for Desktop */}
-        {!isMobile && (
-          <div className="flex" style={{ gap: '50px', overflowX: 'auto' }}>
-            {images.map((img, index) => {
-              // Define the width for the 4th logo
-              const width = index === 3 
-                ? `calc(200px * 1.15)` // Increase width by 15%
-                : defaultWidth;
+{!isMobile && (
+  <div className="flex" style={{ gap: '50px', overflowX: 'auto' }}>
+    {images.map((img, index) => {
+      // Define the width for the 3rd and 4th logos
+      const width = index === 3
+        ? `calc(200px * 1.15)` // Increase 4th logo width by 15%
+        : index === 2
+        ? `calc(${defaultWidth} + 28px)` // Increase 3rd logo width by 20px
+        : defaultWidth; // Default width for other logos
 
-              return (
-                <div
-                  key={index}
-                  className="flex items-center"
-                  style={{
-                    flexShrink: 0,
-                    width: width, // Apply the calculated width
-                    height: defaultHeight
-                  }}
-                >
-                  <Image
-                    unoptimized
-                    src={img}
-                    className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
-                    alt="brands"
-                  />
-                </div>
-              );
-            })}
-          </div>
-        )}
+      return (
+        <div
+          key={index}
+          className="flex items-center"
+          style={{
+            flexShrink: 0,
+            width: width, // Apply the calculated width
+            height: defaultHeight
+          }}
+        >
+          <Image
+            unoptimized
+            src={img}
+            className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
+            alt="brands"
+          />
+        </div>
+      );
+    })}
+  </div>
+)}
 
 
 
 
         {/* Conditional rendering for Mobile */}
         {isMobile && (
-          <Marquee loop={0} className="w-full gap-[5px] brands mb-5 md:mb-0">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center"
-              >
-                <Image
-                  unoptimized
-                  src={img}
-                  className="w-[150px] h-auto mx-5 transition-all duration-500 opacity-60 hover:opacity-100"
-                  alt="brands"
-                />
-              </div>
-            ))}
+          <Marquee 
+  loop={0} 
+  speed={80}  // Adjust the speed for smoother scroll
+direction="left"
+  className="w-full gap-[40px] brands mb-5 md:mb-0"
+>
+            {images.map((img, index) => {
+  // Define the width for the 1st, 3rd, 4th, and last logos
+  const width = index === 0
+    ? `calc(${defaultWidth} + 10px)` // Increase the width of the 1st logo by 10px
+    : index === 3
+    ? `calc(200px * 1.15)` // Increase the 4th logo width by 15%
+    : index === 2
+    ? `calc(${defaultWidth} + 28px)` // Increase the 3rd logo width by 20px
+    : index === images.length - 1
+    ? `calc(${defaultWidth} - 15px)` // Decrease the width of the last logo by 10px
+    : defaultWidth; // Default width for other logos
+
+  return (
+    <div
+      key={index}
+      className="flex items-center"
+      style={{
+        flexShrink: 0,
+        width: width, // Apply the calculated width
+        height: defaultHeight,
+        marginRight: index !== images.length - 1 ? '40px' : '0px', // Add 40px gap except for the last logo
+      }}
+    >
+      <Image
+        unoptimized
+        src={img}
+        className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
+        alt="brands"
+      />
+    </div>
+  );
+})}
+
           </Marquee>
         )}
       </div>

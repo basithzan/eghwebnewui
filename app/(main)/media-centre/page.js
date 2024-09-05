@@ -231,7 +231,7 @@ const MediaCenter = () => {
                 height={200}
                 src={BackgroundImage} 
                 alt="The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA"
-                className="lg:w-[35%] w-full h-full object-cover"
+                className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
@@ -257,7 +257,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 height={200}
                 src={Carousel3Img1} 
                 alt="The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA"
-                className="lg:w-[35%] w-full h-full object-cover"
+                className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
@@ -286,7 +286,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 height={200}
                 src="https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/2zIGkZe7rd54QurzEGhtiXaGhY1i8Gb5TEKEuiqz.jpg"
                 alt="Img2"
-                className="lg:w-[35%] w-full h-full object-cover"
+                className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
@@ -314,7 +314,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 height={200}
                 src="https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/sFSwAybOeSJAZgnTZjhiwnyy2wHhLVVPHRHKs65L.jpg"
                 alt="Img1"
-                className="lg:w-[35%] w-full h-full object-cover"
+                className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4 md:mb-6">
@@ -339,7 +339,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               <img
                 src="/assets/growth.jpeg"
                 alt="Img2"
-                className="lg:w-[35%]  w-full h-full object-cover min-h-[144px] lg:h-[301px]"
+                className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">

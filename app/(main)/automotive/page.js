@@ -107,7 +107,7 @@ title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied he
 respected companies having a number of well-established networks at strategic
 locations across the country.
 We forged global partnerships with leading brands and officially represent various
-automotive brands in the UAE such as Jetour, Lamborghini and Zenvo.`,
+automotive brands in the UAE such as Jetour, and Zenvo.`,
             ]}
             direction="left"
           />
