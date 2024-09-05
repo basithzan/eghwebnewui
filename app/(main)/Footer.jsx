@@ -73,20 +73,20 @@ const Footer = () => {
                   Automotive
                 </a>
                 <a
-                  href="/group-of-companies#investments"
+                  href="/group-of-companies/elite-investment"
                   className="hover:text-white"
                 >
                   Investments
                 </a>
                 <a
-                  href="/group-of-companies#real_estate"
+                  href="/group-of-companies/elite-real-estate"
                   className="hover:text-white"
                 >
                   Real Estate
                 </a>
 
                 <a
-                  href="/group-of-companies#ecommerce"
+                  href="/group-of-companies/elite-e-commerce"
                   className="hover:text-white"
                 >
                   Ecommerce
