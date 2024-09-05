@@ -80,27 +80,31 @@ to delivering exceptional results.
         </div>
 
         {/* Conditional rendering for Desktop */}
-        {!isMobile && (
-          <div className="grid grid-cols-5 gap-8 brands">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                className={`flex items-center justify-center ${
-                  index === 3 ? 'pt-1.5' : ''
-                }`} // Apply top padding to the 4th logo
-              >
-                <Image
-    unoptimized
-    src={img}
-    className={`${
-      index === 4 ? 'w-[174px] h-[144px]' : 'w-[174px] h-[174px]'
-    } w-[150px] h-auto object-contain transition-opacity duration-10 opacity-60 hover:opacity-80`} // Changed transition-all to transition-opacity
-    alt="brands"
-  />
-</div>
-            ))}
-          </div>
-        )}
+{!isMobile && (
+  <div className="grid grid-cols-5 gap-2 brands">
+    {images.map((img, index) => (
+      <div
+        key={index}
+        className={`flex items-center justify-center ${
+          index === 3 ? 'pt-1.5' : ''
+        }`} // Apply top padding to the 4th logo
+      >
+        <Image
+          unoptimized
+          src={img}
+          className={`${
+            index === 4
+              ? 'w-[174px] h-[144px]'
+              : index === 3
+              ? 'w-[274px] h-[174px]' // Increase 4th logo by 10px width and 20px height
+              : 'w-[204px] h-[174px]'
+          } w-[150px] h-auto object-contain transition-opacity duration-300 opacity-60 hover:opacity-80`} // Changed transition-all to transition-opacity
+          alt="brands"
+        />
+      </div>
+    ))}
+  </div>
+)}
 
         {/* Conditional rendering for Mobile */}
         {isMobile && (
