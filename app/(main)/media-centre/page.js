@@ -150,20 +150,20 @@ const MediaCenter = () => {
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
-          src={BackgroundImage}
+          src={Carousel3Img01}
           alt="BackgroundImage"
           className="object-cover object-center h-screen w-screen brightness-50"
         />
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-          February 22, 2024, Dubai, UAE
+          Aug 31, 2024, Dubai, UAE
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2">
-          The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
+           Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth.. 
           </div>
           <a
-            href="/blog/the-elite-cars-presents-zenvo-aurora"
+            href="/blog/elite-group-holding-and-soueast-motor"
             className="text-white text-sm font-light underline text-3"
           >
             Read More
@@ -229,21 +229,20 @@ const MediaCenter = () => {
                 unoptimized
                 width={200}
                 height={200}
-                src={Carousel3Img01} 
+                src={BackgroundImage} 
                 alt="The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA"
                 className="lg:w-[35%] w-full h-full object-cover"
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                Aug 31, 2024, Dubai, UAE
+                February 22, 2024, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth..
+                The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
                 </div>
                 <div className=" mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration by signing a strategic partnership agreement. 
-                </div>
-                <Link href="/blog/elite-group-holding-and-soueast-motor">
+The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through their exclusive partnership...                </div>
+                <Link href="/blog/the-elite-cars-presents-zenvo-aurora">
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
                     Read More
                     <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
