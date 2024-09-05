@@ -84,20 +84,22 @@ to delivering exceptional results.
           <div className="grid grid-cols-5 gap-8 brands">
             {images.map((img, index) => (
               <div
-                key={index}
-                className={`flex items-center justify-center ${
-                  index === 3 ? 'pt-1.5' : ''
-                }`} // Apply top padding to the 4th logo
-              >
-                <Image
-                  unoptimized
-                  src={img}
-                  className={`${
-                    index === 4 ? 'w-[174px] h-[144px]' : 'w-[174px] h-[174px]'
-                  } object-contain transition-all duration-500 opacity-60 hover:opacity-100`}
-                  alt="brands"
-                />
-              </div>
+  key={index}
+  className={`flex items-center justify-center ${
+    index === 3 ? 'pt-1.5' : ''
+  }`} // Apply top padding to the 4th logo
+>
+  <Image
+    src={img}
+    sizes="(max-width: 768px) 100vw, 174px" // Image size optimization
+    priority={index === 0} // Optionally prioritize the first image
+    className={`${
+      index === 4 ? 'w-[174px] h-[144px]' : 'w-[174px] h-[174px]'
+    } object-contain transition-opacity duration-10 opacity-60 hover:opacity-80`} // transition-opacity
+    alt="brands"
+  />
+</div>
+
             ))}
           </div>
         )}
