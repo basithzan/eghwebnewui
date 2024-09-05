@@ -92,7 +92,7 @@ const GroupOfCompanies = () => {
 
       <div className="bg-[#ffffff] mb-4 sm:pb-3 lg:mb-10"></div>
 
-      <div className="overflow-hidden max-md:px-[5%] max-sm:space-y-10 mt-10">
+      <div className="overflow-hidden max-md:px-[5.5%] max-sm:space-y-10 mt-10">
  <div id="auto">
           <GroupSection
             url="#"

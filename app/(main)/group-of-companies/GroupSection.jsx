@@ -81,11 +81,11 @@ const GroupSection = ({
   return (
     <article className="overflow-hidden" ref={sectionRef}>
       <div
-        className={`flex max-md:flex-col-reverse gap-6 xl:gap-3 sm:items-center max-md:mb-5 ${
+        className={`flex max-md:flex-col-reverse gap-7 xl:gap-3 sm:items-center max-md:mb-5 ${
           direction === "right" ? "md:flex-row" : "md:flex-row-reverse"
         }`}
       >
-        <div className="relative overflow-hidden z-10 md:w-[55%]">
+        <div className="relative overflow-hidden z-10 md:w-[55.20%]">
           <Image
             unoptimized
             src={image}

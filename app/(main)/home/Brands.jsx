@@ -120,7 +120,7 @@ to delivering exceptional results.
           <Marquee 
   loop={0} 
   speed={80}  // Adjust the speed for smoother scroll
-direction="left"
+  direction="left"
   className="w-full gap-[40px] brands mb-5 md:mb-0"
 >
             {images.map((img, index) => {
@@ -128,11 +128,11 @@ direction="left"
   const width = index === 0
     ? `calc(${defaultWidth} + 10px)` // Increase the width of the 1st logo by 10px
     : index === 3
-    ? `calc(200px * 1.15)` // Increase the 4th logo width by 15%
+    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
     : index === 2
-    ? `calc(${defaultWidth} + 28px)` // Increase the 3rd logo width by 20px
+    ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
     : index === images.length - 1
-    ? `calc(${defaultWidth} - 15px)` // Decrease the width of the last logo by 10px
+    ? `calc(${defaultWidth} - 30px)` // Decrease the width of the last logo by 10px
     : defaultWidth; // Default width for other logos
 
   return (
