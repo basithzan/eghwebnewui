@@ -101,7 +101,7 @@ to delivering exceptional results.
                   <Image
                     unoptimized
                     src={img}
-                    className="w-full h-full object-contain transition-opacity duration-10 opacity-60 hover:opacity-80"
+                    className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
                     alt="brands"
                   />
                 </div>
