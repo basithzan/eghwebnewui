@@ -90,7 +90,7 @@ const GroupOfCompanies = () => {
         </div>
       </div>
 
-      <div className="bg-[#F7F7F7] mb-4 sm:pb-3 lg:mb-10"></div>
+      <div className="bg-[#ffffff] mb-4 sm:pb-3 lg:mb-10"></div>
 
       <div className="overflow-hidden max-md:px-[5%] max-sm:space-y-10 mt-10">
  <div id="auto">

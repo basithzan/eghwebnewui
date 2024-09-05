@@ -223,7 +223,11 @@ const AboutUs = () => {
               />
             </div>
             <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
-               <div className="common-heading mb-5 md:mb-10 text-1 mt-8 sm:mt-0" style={{ color: '#fb511e' }}>
+              {/* Updated Heading with Padding */}
+              <div
+                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                style={{ color: "#fb511e" }}
+              >
                 ABOUT THE GROUP
               </div>
               {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
@@ -240,7 +244,7 @@ const AboutUs = () => {
                 portfolio encompasses automotive, e-commerce, healthcare, real
                 estate and contracting, and investments.{" "}
               </p>
-              <p className="mb-2 md:mb-4  common-description text-3">
+              <p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
                 We pride ourselves on our unwavering dedication to excellence,
                 integrity, and teamwork.
               </p>
@@ -251,16 +255,20 @@ const AboutUs = () => {
         <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
           <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
             <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
-              <div className="common-heading mb-5 md:mb-10 text-1" style={{ color: '#fb511e' }}>
+              {/* Updated Heading with Padding */}
+              <div
+                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                style={{ color: "#fb511e" }}
+              >
                 VISION AND MISSION
               </div>
-              <p className="mb-2 md:mb-4  common-description text-2">
+              <p className="mb-2 md:mb-4  common-description text-2 ">
                 Our Vision is to be a global leader in each of our business
                 sectors, delivering unparalleled value and setting new standards
                 of excellence.
               </p>
 
-              <p className="mb-2 md:mb-4  common-description text-2">
+              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
                 Our Mission is to innovate, diversify, and expand our business
                 horizons while contributing to the economic and social
                 development of the communities we serve.
@@ -282,122 +290,64 @@ const AboutUs = () => {
       </div>
 
       <div className="max-sm:px-[5%]">
-  <GroupSection
-    url="/automotive/the-elite-cars"
-    link="https://theelitecars.com/"
-    image={ImageRakanTurki}
-title={<span style={{ color: '#fb511e' }}>THE LEADERSHIP TEAM</span>} // Color applied here
+        <GroupSection
+          url="/automotive/the-elite-cars"
+          link="https://theelitecars.com/"
+          image={ImageRakanTurki}
+          title={
+            // Wrapped the span in a div with padding
+            <div className="pt-[30px] pb-[15px]">
+              <span style={{ color: "#fb511e" }}>THE LEADERSHIP TEAM</span>
+            </div>
+          }
+          hasBtn={false}
+          descriptions={[
+            "At Elite Group Holding, our leadership team is the driving force behind our commitment to excellence, innovation, and integrity. Comprised of seasoned professionals with diverse backgrounds and extensive industry experience, they guide our strategic vision and operational execution, ensuring we consistently deliver exceptional value to our clients and stakeholders.",
+          ]}
+          direction="left"
+        />
 
-    hasBtn={false}
-    descriptions={[
-      `At Elite Group Holding, our leadership team is the driving force behind our commitment to excellence, innovation, and integrity. Comprised of seasoned professionals with diverse backgrounds and extensive industry experience, they guide our strategic vision and operational execution, ensuring we consistently deliver exceptional value to our clients and stakeholders.`,
-    ]}
-    direction="left"
+        <GroupSection
+          url="/automotive/the-elite-cars"
+          link="https://theelitecars.com/"
+          image={csr2}
+          title={
+            // Wrapped the span in a div with padding
+            <div className="pt-[10px] pb-[15px]">
+              <span style={{ color: "#fb511e" }}>
+                CORPORATE SOCIAL RESPONSIBILITY
+              </span>
+            </div>
+          }
+          hasBtn={false}
+          descriptions={[
+            "At Elite Group Holding, our commitment to excellence extends beyond business performance. We firmly believe that corporate success is intertwined with social responsibility, and we are dedicated to making a positive impact on the communities we serve and the environment we live in. Our Corporate Social Responsibility (CSR) initiatives are rooted in the core values of sustainability, ethical conduct, and community engagement.",
+            "We understand that our responsibilities extend beyond financial success. We are dedicated to creating a positive impact on society and the environment, ensuring that our business practices contribute to a better future for all. By integrating CSR into our core operations, we strive to build a sustainable and prosperous world for generations to come.",
+          ]}
+          direction="right"
+        />
 
-  />
-
-  <GroupSection
-    url="/automotive/the-elite-cars"
-    link="https://theelitecars.com/"
-    image={csr2}
-title={<span style={{ color: '#fb511e' }}>CORPORATE SOCIAL RESPONSIBILITY</span>} // Color applied here
-
-    hasBtn={false}
-    descriptions={[
-      `At Elite Group Holding, our commitment to excellence extends beyond business performance. We firmly believe that corporate success is intertwined with social responsibility, and we are dedicated to making a positive impact on the communities we serve and the environment we live in. Our Corporate Social Responsibility (CSR) initiatives are rooted in the core values of sustainability, ethical conduct, and community engagement.`,
-      `We understand that our responsibilities extend beyond financial success. We are dedicated to creating a positive impact on society and the environment, ensuring that our business practices contribute to a better future for all. By integrating CSR into our core operations, we strive to build a sustainable and prosperous world for generations to come.`,
-    ]}
-    direction="right"
-
-  />
-
-  <GroupSection
-    url="/automotive/the-elite-cars"
-    link="https://theelitecars.com/"
-    image={reward}
-title={<span style={{ color: '#fb511e' }}>Awards & RECOGNITION</span>} // Color applied here
-
-    hasBtn={false}
-    descriptions={[
-      "At Elite Group Holding, our dedication to excellence, innovation, and integrity has earned us numerous accolades and industry recognitions. These recognitions are a testament to our unwavering commitment to delivering exceptional value to our clients and partners, and making a positive impact in the communities we serve. Each honor reflects the hard work and dedication of our talented team, and we are proud to showcase these achievements as milestones in our journey towards continued success and excellence.",
-    ]}
-    direction="left"
-
-  />
-</div>
-
-
-      {/* <div className="container mx-auto md:py-24 py-16 px-[5%] section-5 overflow-hidden">
-                <div className="common-heading mb-5 sm:mb-10 head-1">ORGANIZATION STRUCTURE</div>
-
-                <div className="grid md:grid-cols-3 md:gap-10 carousel-1">
-                    <div className="relative aspect-square">
-                        <Image unoptimized width={200} height={300} src={ImageRakanTurki} alt="ImageRakanTurki" className="h-full w-full object-cover brightness-75 hover:grayscale hover:brightness-50 transition-all duration-300 ease-in-out cursor-pointer" />
-                        <div className="absolute bottom-3 w-full px-5">
-                            <div className="flex items-center justify-between">
-                                <div className="text-white">
-                                    <div>Rakan Turki</div>
-                                    <div>Chairman & Chief Executive Officer</div>
-                                </div>
-                                <SocialIcon network='linkedin' bgColor='white' fgColor='black' />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative aspect-square hidden md:block">
-                        <Image unoptimized width={200} height={300} src={ImageRakanTurki} alt="ImageRakanTurki" className="h-full w-full object-cover brightness-75 hover:grayscale hover:brightness-50 transition-all duration-300 ease-in-out cursor-pointer" />
-                        <div className="absolute bottom-3 w-full px-5">
-                            <div className="flex items-center justify-between">
-                                <div className="text-white">
-                                    <div>Rakan Turki</div>
-                                    <div>Chairman & Chief Executive Officer</div>
-                                </div>
-                                <SocialIcon network='linkedin' bgColor='white' fgColor='black' />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative aspect-square hidden md:block">
-                        <Image unoptimized width={200} height={300} src={ImageRakanTurki} alt="ImageRakanTurki" className="h-full w-full object-cover brightness-75 hover:grayscale hover:brightness-50 transition-all duration-300 ease-in-out cursor-pointer" />
-                        <div className="absolute bottom-3 w-full px-5">
-                            <div className="flex items-center justify-between">
-                                <div className="text-white">
-                                    <div>Rakan Turki</div>
-                                    <div>Chairman & Chief Executive Officer</div>
-                                </div>
-                                <SocialIcon network='linkedin' bgColor='white' fgColor='black' />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
-      {/* <div className="relative w-screen md:h-screen section-6 grid overflow-hidden ">
-                <Image unoptimized width={200} height={300} src={BackgroundImage2} alt="ImageRakanTurki" className="absolute object-cover object-right sm:object-center max-md:hidden w-full h-full brightness-50" />
-                <Image unoptimized width={200} height={300} src={BackgroundImage2mobile} alt="ImageRakanTurki" className="absolute object-cover md:hidden w-full h-full brightness-50" />
-                <div className="px-[5%] z-10 text-white place-content-center container mx-auto md:py-24 py-16">
-                    <Image unoptimized width={200} height={300} alt="img" src={Logo} className="w-36 md:w-56 mb-5 logo-1" />
-                    <div className="common-heading !text-white mb-7 uppercase text-1">CORPORATE SOCIAL RESPONSIBILITY</div>
-                    <div className="common-description lg:w-1/2 !text-[#fff] text-2 mb-3">At Elite Group Holding, our commitment to excellence extends beyond business performance. We firmly believe that corporate success is intertwined with social responsibility, and we are dedicated to making a positive impact on the communities we serve and the environment we live in. Our Corporate Social Responsibility (CSR) initiatives are rooted in the core values of sustainability, ethical conduct, and community engagement.</div>
-                    <div className="common-description lg:w-1/2 !text-[#fff] text-2">We understand that our responsibilities extend beyond financial success. We are dedicated to creating a positive impact on society and the environment, ensuring that our business practices contribute to a better future for all. By integrating CSR into our core operations, we strive to build a sustainable and prosperous world for generations to come.</div>
-                </div>
-            </div> */}
-
-      {/* <div className="py-24 container mx-auto px-[5%] section-7 overflow-hidden">
-                <div className="common-heading mb-7 text-1">Awards & Publications</div>
-                <p className=" common-description  text-2">At Elite Group Holding, our dedication to excellence, innovation, and integrity has earned us numerous accolades and industry recognitions. These awards are a testament to our unwavering commitment to delivering exceptional value to our clients and partners, and making a positive impact in the communities we serve. Each honor reflects the hard work and dedication of our talented team, and we are proud to showcase these achievements as milestones in our journey towards continued success and excellence. </p>
-
-               
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-5 sm:mt-10">
-        {awards.map((award, index) => (
-          <div key={index} className="text-center">
-            <Image unoptimized width={200} height={300} src={award.image} alt={award.name} className=" border h-80 w-full object-contain mx-auto" />
-            <p className="mt-2 text-gray-600">{award.year}</p>
-            <p className="text-lg font-semibold">{award.name}</p>
-          </div>
-        ))}
+        <GroupSection
+          url="/automotive/the-elite-cars"
+          link="https://theelitecars.com/"
+          image={reward}
+          title={
+            // Wrapped the span in a div with padding
+            <div className="pt-[10px] pb-[15px]">
+              <span style={{ color: "#fb511e" }}>
+                Awards & RECOGNITION
+              </span>
+            </div>
+          }
+          hasBtn={false}
+          descriptions={[
+            "At Elite Group Holding, our dedication to excellence, innovation, and integrity has earned us numerous accolades and industry recognitions. These recognitions are a testament to our unwavering commitment to delivering exceptional value to our clients and partners, and making a positive impact in the communities we serve. Each honor reflects the hard work and dedication of our talented team, and we are proud to showcase these achievements as milestones in our journey towards continued success and excellence.",
+          ]}
+          direction="left"
+        />
       </div>
 
-
-            </div> */}
+      {/* ... Rest of your component ... */}
 
       <Footer />
     </>
