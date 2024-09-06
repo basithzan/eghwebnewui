@@ -60,7 +60,7 @@ const Page = ({ title, descriptions = [] }) => {
           />
           <div className="text-[#fff] absolute bottom-5 right-5 md:text-end text-center text-sm">
             <a href="/">Home</a> / <a href="/media-centre">Media center</a> /{" "}
-            <span className="capitalize">Real Estate</span>
+            <span className="capitalize">The Growth of Real Estate in the UAE..</span>
           </div>
         </section>
 
