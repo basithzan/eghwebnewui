@@ -52,8 +52,8 @@ const Brands = () => {
     }
   }, []);
 
-  const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
-
+  const images2 = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
+const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
   return (
     <div
       style={{ backgroundImage: `url(${BrandsBgImg.src})` }}
@@ -125,15 +125,19 @@ to delivering exceptional results.
   direction="left"
   className="w-full gap-[40px] brands mb-5 md:mb-0"
 >
-            {images.map((img, index) => {
+            {images2.map((img, index) => {
   // Define the width for the 1st, 3rd, 4th, and last logos
   const width = index === 0
     ? `calc(${defaultWidth} + 10px)` // Increase the width of the 1st logo by 10px
     : index === 3
     ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
+: index === 8
+    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
+: index === 12
+    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
     : index === 2
     ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
-    : index === images.length - 1
+    : index === images2.length - 1
     ? `calc(${defaultWidth} - 25px)` // Decrease the width of the last logo by 10px
     : defaultWidth; // Default width for other logos
 
@@ -145,7 +149,7 @@ to delivering exceptional results.
         flexShrink: 0,
         width: width, // Apply the calculated width
         height: defaultHeight,
-        marginRight: index !== images.length - 1 ? '40px' : '0px', // Add 40px gap except for the last logo
+        marginRight: index !== images2.length - 1 ? '40px' : '0px', // Add 40px gap except for the last logo
       }}
     >
       <Image
