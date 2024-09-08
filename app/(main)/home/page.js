@@ -171,44 +171,26 @@ const CarouselImage3 = [
   },
 ];
 
-// Define the custom hook or import it from another file
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return isMobile;
-};
 
 const EliteHome = () => {
-  const video1 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/B2vvHPYGrFKF0gYb8ItD5DBb0x2z2kNoFxRTP2xD.mp4";
-  const video2 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
-  const video3 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
-  const mobileVideo = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/mwmMfaHgc0jJJRAXuPwrp9EOpt8420fU5dGEuPPt.mp4";
-
+  const video1 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/B2vvHPYGrFKF0gYb8ItD5DBb0x2z2kNoFxRTP2xD.mp4";
+  const video2 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
+  const video3 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
   const [currentVideo, setCurrentVideo] = useState(0);
   const videoRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  const isMobile = useIsMobile(); // Use custom hook to check if mobile
-
-  // Use different video URLs based on the device
-  const videoUrls = isMobile
-    ? [mobileVideo] // For mobile devices
-    : [video2, video3, video2, video3, video2, video3, video2]; // For non-mobile devices
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.src = videoUrls[currentVideo];
-    }
-  }, [currentVideo, videoUrls]);
-
+  const videoUrls = [
+    video2,
+    video3,
+    video2,
+    video3,
+    video2,
+    video3,
+    video2, // Add more video URLs here...
+  ];
   const isMdOrLarger = useMediaQuery({ minWidth: 768 });
 
   useEffect(() => {
