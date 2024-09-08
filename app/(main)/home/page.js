@@ -169,7 +169,21 @@ const CarouselImage3 = [
     url: "/blog/real-estate",
   },
 ];
+// Function to determine if the screen size is mobile
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return isMobile;
+};
 
 const EliteHome = () => {
   const video1 =
@@ -178,6 +192,8 @@ const EliteHome = () => {
     "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
   const video3 =
     "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
+  const mobileVideo = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/mwmMfaHgc0jJJRAXuPwrp9EOpt8420fU5dGEuPPt.mp4";
+
   const [currentVideo, setCurrentVideo] = useState(0);
   const videoRef = useRef(null);
   const [progress, setProgress] = useState(0);
