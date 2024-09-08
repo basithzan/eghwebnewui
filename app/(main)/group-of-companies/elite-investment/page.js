@@ -16,7 +16,7 @@ import reward from "/public/assets/about-us/awards2.jpg";
 import BackgroundImageecom from "/public/assets/about-us/BackgroundImageinvest.jpg";
 import BackgroundImageecommob from "/public/assets/about-us/BackgroundImageinvestmob.jpg";
 import csr2 from "/public/assets/about-us/csr3.jpg";
-import vision from "/public/assets/m&v.jpg";
+import vision from "/public/assets/investment2.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -223,40 +223,69 @@ const AboutUs = () => {
               />
             </div>
             <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
-              <div className="common-heading mb-5 md:mb-10 text-1 mt-8 sm:mt-0" style={{ color: '#fb511e' }}>
+              {/* Updated Heading with Padding */}
+              <div
+                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                style={{ color: "#fb511e" }}
+              >
                 INVESTMENTS
               </div>
               {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
                 It all started with a dream
               </p> */}
               <p className="mb-2 md:mb-4  common-description text-3">
-               Elite Group Holding has a large and diversified portfolio of local and international investments.
+                Elite Group Holding has a large and diversified portfolio of local and international investments.
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-               With a relentless commitment to integrity, transparency, and prudent risk management, we
-navigate the dynamic landscape of global markets to unlock value and drive sustainable wealth
-creation.{" "}
+                Headquartered in the United Arab Emirates, our expansive
+                portfolio encompasses automotive, e-commerce, healthcare, real
+                estate and contracting, and investments.{" "}
               </p>
-<p className="mb-2 md:mb-4  common-description text-3">
-               Guided by an unwavering commitment to integrity, transparency, and prudent risk
-management, we navigate the ever-evolving landscape of global markets with precision and
-foresight. Our approach is centered on unlocking value, fostering innovation, and driving
-sustainable wealth creation for our stakeholders.{" "}
+              <p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
+                With a relentless commitment to integrity, transparency, and prudent risk management, we navigate the dynamic landscape of global markets to unlock value and drive sustainable wealth creation.
               </p>
-<p className="mb-2 md:mb-4  common-description text-3">
-               By staying attuned to market trends and maintaining a flexible investment strategy, Elite Group
-Holding continues to build a legacy of success, resilience, and long-term growth.{" "}
-              </p>
-              <p className="mb-2 md:mb-4 common-description text-3">
-  For more information, contact us at
-  <br />
-  <strong>investment@elitegroupholding.com</strong>
-</p>
             </div>
           </div>
         </div>
 
+        <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
+          <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
+            <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
+              {/* Updated Heading with Padding */}
+              
+              <p className="mb-2 md:mb-4  common-description text-2 ">
+                Guided by an unwavering commitment to integrity, transparency,
+and prudent risk management, we navigate the ever-evolving
+landscape of global markets with precision and foresight. Our
+approach is centered on unlocking value, fostering innovation,
+and driving sustainable wealth creation for our stakeholders.
+              </p>
 
+              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
+                By staying attuned to market trends and maintaining a flexible
+investment strategy, Elite Group Holding continues to build a
+legacy of success, resilience, and long-term growth.
+              </p>
+<p className="mb-2 md:mb-4 common-description text-3">
+  For more information, contact us at
+  <br /><a href="mailto:ecommerce@elitegroupholding.com">
+    <strong>investment@elitegroupholding.com</strong>
+  </a>
+</p>
+            </div>
+            <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
+              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
+              <Image
+                unoptimized
+                width={200}
+                height={300}
+                src={vision}
+                alt="img2"
+                className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
 
