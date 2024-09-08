@@ -171,38 +171,25 @@ const CarouselImage3 = [
 ];
 
 
-
-// Function to determine if the screen size is mobile
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return isMobile;
-};
-
 const EliteHome = () => {
-  const video1 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/B2vvHPYGrFKF0gYb8ItD5DBb0x2z2kNoFxRTP2xD.mp4";
-  const video2 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
-  const video3 = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
-  const mobileVideo = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/mwmMfaHgc0jJJRAXuPwrp9EOpt8420fU5dGEuPPt.mp4";
-
+  const video1 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/B2vvHPYGrFKF0gYb8ItD5DBb0x2z2kNoFxRTP2xD.mp4";
+  const video2 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
+  const video3 =
+    "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
   const [currentVideo, setCurrentVideo] = useState(0);
   const videoRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  const isMobile = useIsMobile(); // Use custom hook to check if mobile
-
-  const videoUrls = isMobile
-    ? [mobileVideo] // Replace with mobile video URLs if needed
-    : [video2, video3, video2, video3, video2, video3, video2]; // Add more video URLs here...
-
+  const videoUrls = [
+    video2,
+    video3,
+    video2,
+    video3,
+    video2,
+    video3,
+    video2, // Add more video URLs here...
+  ];
   const isMdOrLarger = useMediaQuery({ minWidth: 768 });
 
   useEffect(() => {
