@@ -133,7 +133,7 @@ to delivering exceptional results.
     ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
 : index === 8
     ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
-: index === 12
+: index === 13
     ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
     : index === 2
     ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
