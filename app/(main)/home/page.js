@@ -126,7 +126,7 @@ const CarouselImage3 = [
       "Elite Group Holding and SOUEAST Motor Form Strategic \n Partnership to Accelerate..",
     description:
       "Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration...",
-    created_at: "Aug 31, 2024, Dubai, UAE",
+    created_at: "Aug 12, 2024, Dubai, UAE",
     url: "/blog/elite-group-holding-and-soueast-motor",
   },
   {
@@ -134,7 +134,7 @@ const CarouselImage3 = [
     title: " The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA",
     description:
       "The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through..",
-    created_at: "January 22, 2024, Dubai, UAE",
+    created_at: "February 2, 2024, Dubai, UAE",
     url: "/blog/the-elite-cars-presents-zenvo-aurora",
   },
   {
@@ -142,7 +142,7 @@ const CarouselImage3 = [
     title: "The All-New Jetour T2 Debuts in the UAE",
     description:
       "The historic event took place at Terra Solis, Dubai where guests were treated to a symphony..",
-    created_at: "January 20, 2024, Dubai, UAE",
+    created_at: "January 21, 2024, Dubai, UAE",
     url: "/blog/the-all-new-jetour-t2-debuts-in-the-uae",
   },
   {
@@ -150,7 +150,7 @@ const CarouselImage3 = [
     title: "The Elite Cars launches limited edition AED 8 Million...",
     description:
       "Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE",
-    created_at: "June 22, 2023, Dubai, UAE",
+    created_at: "June 06, 2023, Dubai, UAE",
     url: "/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east",
   },
   {

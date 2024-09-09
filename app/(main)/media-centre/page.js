@@ -157,7 +157,7 @@ const MediaCenter = () => {
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-          Aug 31, 2024, Dubai, UAE
+          Aug 12, 2024, Dubai, UAE
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2">
            Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth.. 
@@ -235,7 +235,7 @@ const MediaCenter = () => {
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                February 22, 2024, Dubai, UAE
+                February 21, 2024, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
                 The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
@@ -261,7 +261,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                May 20, 2024, Dubai, UAE
+                Jan 21, 2024, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
                 The All-New Jetour T2 Debuts in the UAE
@@ -290,7 +290,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
-                February 22, 2024, Dubai, UAE
+                June 06, 2023, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
                 The Elite Cars launches limited edition AED 8 Million...
