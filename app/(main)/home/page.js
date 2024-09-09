@@ -134,7 +134,7 @@ const CarouselImage3 = [
     title: " The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA",
     description:
       "The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through..",
-    created_at: "February 2, 2024, Dubai, UAE",
+    created_at: "February 21, 2024, Dubai, UAE",
     url: "/blog/the-elite-cars-presents-zenvo-aurora",
   },
   {

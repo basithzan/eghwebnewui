@@ -324,7 +324,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 Jetour Shines at 2023 Shanghai Auto Show with Its Latest...
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                  On April 27th, at the prestigious Beijing Auto China Show 2024
+                  The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM, T2 (Named Traveler in the Chinese market), T3
                 </div>
                 <Link href="/blog/jetour-shines-at-2023-shanghai-auto-show">
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
@@ -349,7 +349,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 THE GROWTH OF REAL ESTATE IN THE UAE
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                On April 27th, at the prestigious Beijing Auto China Show 2024
+                The United Arab Emirates (UAE) has witnessed a remarkable transformation over the past few decades, evolving from a desert landscape into a bustling hub of
                 </div>
                 <Link href="/blog/real-estate">
                   <button className="block max-sm:text-xs  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">

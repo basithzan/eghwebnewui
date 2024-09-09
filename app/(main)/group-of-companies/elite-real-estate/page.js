@@ -225,11 +225,11 @@ const AboutUs = () => {
             <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
               {/* Updated Heading with Padding */}
               <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e" }}
-              >
-                REAL ESTATE AND CONTRACTING
-              </div>
+  className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+  style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
+>
+  REAL ESTATE AND CONTRACTING
+</div>
               {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
                 It all started with a dream
               </p> */}
