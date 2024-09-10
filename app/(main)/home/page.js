@@ -61,7 +61,7 @@ performance.`,
     src: Img5,
     name: "THE ELITE CARS",
     description:
-      "The Elite Cars, a subsidiary of Elite Group Holding, is a multi-brand dealership specializing in high-end car brands, offering an unmatched automotive experience. With a commitment to quality, service, and customer satisfaction, The Elite Cars has been the undisputed leader in the UAE luxury automotive industry for decades.",
+      "The Elite Cars, a subsidiary of Elite Group Holding, is a premier multi-brand dealership specializing in luxury automotive marques, offering an exceptional and seamless automotive experience. With headquarters in Dubai, UAE, The Elite Cars’ presence extends strategically across the region, ensuring accessibility and convenience for their valued clients.",
     url: "https://theelitecars.com/",
   },
   {
@@ -73,17 +73,7 @@ performance.`,
   {
     src: soueast1,
     name: "ART ELITE CAR RENTAL",
-    description: `ART Elite Car Rental is a
-subsidiary of Elite Group
-Holding's automotive division.
-They specialize in the leasing
-and rental of high-end luxury
-vehicles offering an exclusive
-selection of top-tier
-automobiles, catering to
-clients who seek
-sophistication, performance,
-and unparalleled comfort.`,
+    description: `ART Elite Car Rental is a subsidiary of Elite Group Holding, automotive division. They specialize in the leasing and rental of high-end luxury vehicles offering an exclusive selection of top-tier automobiles, catering to clients who seek sophistication, performance, and unparalleled comfort. ​`,
     url: "/automotive#art_elite_car_rental",
   },
 ];
