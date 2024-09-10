@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       // Send notification email to company
       await transporter.sendMail({
         from: '"Elite Group Holding" <tecformsdxb@gmail.com>',
-        to: 'inquiry@elitegroupholding.com, suraj.nair@theelitecars.com',
+        to: 'inquiry@elitegroupholding.com, suraj.nair@theelitecars.com, basithzan@gmail.com',
         subject: 'New Contact Form Submission',
         text: `New contact form submission:\n\nName: ${fullName}\nPhone: ${phoneNumber}\nEmail: ${email}\nSector: ${sector}\nMessage: ${message}`
       });
