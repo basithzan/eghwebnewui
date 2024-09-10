@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     try {
       // Send thank you email to user
       await transporter.sendMail({
-        from: '"Elite Cars" <tecformsdxb@gmail.com>',
+        from: '"Elite Group Holding" <tecformsdxb@gmail.com>',
         to: email,
         subject: 'Thank You for Contacting Elite Cars.',
         text: `Dear ${fullName},\n\nThank you for contacting Elite Group Holding. We have received your message and will get back to you soon.\n\nBest regards,\nElite Group Holding Team`
