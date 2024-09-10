@@ -1,37 +1,33 @@
 import nodemailer from 'nodemailer';
-import 'dotenv/config';
+
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { fullName, phoneNumber, email, sector, message } = req.body;
 
-    // Create a transporter using the provided SMTP credentials
     const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false, // Use TLS
+      host: 'smtp.gmail.com',
+      port: 587,
       auth: {
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD,
-      },
+        user: 'tecformsdxb@gmail.com',
+        pass: 'qvuvawjzppfbsjyo'
+      }
     });
 
     try {
-      // Send email to the user
+      // Send thank you email to user
       await transporter.sendMail({
-        from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
+        from: '"Elite Cars" <tecformsdxb@gmail.com>',
         to: email,
         subject: 'Thank You for Contacting Elite Cars',
-        text: `Dear ${fullName},\n\nThank you for contacting Elite Cars. We have received your message and will get back to you soon.\n\nBest regards,\nThe Elite Cars Team`,
-        html: `<p>Dear ${fullName},</p><p>Thank you for contacting Elite Cars. We have received your message and will get back to you soon.</p><p>Best regards,<br>The Elite Cars Team</p>`,
+        text: `Dear ${fullName},\n\nThank you for contacting Elite Cars. We have received your message and will get back to you soon.\n\nBest regards,\nElite Cars Team`
       });
 
-      // Send email to the company
+      // Send notification email to company
       await transporter.sendMail({
-        from: `"${process.env.MAIL_FROM_NAME}" <${process.env.MAIL_FROM_ADDRESS}>`,
-        to: process.env.MAIL_FROM_ADDRESS,
+        from: '"Elite Cars" <tecformsdxb@gmail.com>',
+        to: 'inquiry@elitegroupholding.com, suraj.nair@theelitecars.com',
         subject: 'New Contact Form Submission',
-        text: `New contact form submission:\n\nName: ${fullName}\nPhone: ${phoneNumber}\nEmail: ${email}\nSector: ${sector}\nMessage: ${message}`,
-        html: `<h2>New contact form submission:</h2><p><strong>Name:</strong> ${fullName}</p><p><strong>Phone:</strong> ${phoneNumber}</p><p><strong>Email:</strong> ${email}</p><p><strong>Sector:</strong> ${sector}</p><p><strong>Message:</strong> ${message}</p>`,
+        text: `New contact form submission:\n\nName: ${fullName}\nPhone: ${phoneNumber}\nEmail: ${email}\nSector: ${sector}\nMessage: ${message}`
       });
 
       res.status(200).json({ success: true });
