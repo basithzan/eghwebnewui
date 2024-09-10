@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-
+import 'dotenv/config';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { fullName, phoneNumber, email, sector, message } = req.body;
