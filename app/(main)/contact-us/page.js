@@ -27,6 +27,55 @@ const ContactUs = () => {
 
   useEffect(() => {
     // ... (keep existing GSAP animations)
+    gsap
+      .timeline({ duration: 0.5, ease: "power3.out" })
+      .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
+      .fromTo(
+        ".section-1 .text-2",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1 }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".section-2",
+          start: "top bottom",
+        },
+      })
+      .fromTo(
+        ".section-2 .text-1",
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      )
+      .fromTo(
+        ".section-2 .text-2",
+        { x: 150, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      )
+      .fromTo(
+        ".section-2 .section-2-1",
+        { y: 100, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      );
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: ".section-3",
+          start: "top bottom",
+        },
+      })
+      .fromTo(
+        ".section-3 .section-3-1",
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      )
+      .fromTo(
+        ".section-3 .section-3-2",
+        { x: 150, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+      );
   }, []);
 
   const handleInputChange = (e) => {
@@ -64,10 +113,63 @@ const ContactUs = () => {
     <>
       <Navbar />
       {/* ... (keep existing JSX) */}
-      <form onSubmit={handleSubmit}>
-        {/* ... (keep existing form fields) */}
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      <div className="section-1">
+        <h1 className="text-1">Contact Us</h1>
+        <p className="text-2">Please fill in the form below and we will try our best to get back to you as soon as we can.</p>
+      </div>
+      <div className="section-2">
+        <div className="text-1">
+          <p>723 Sheikh Zayed Road, P. O. Box 393316</p>
+          <p>Dubai, U.A.E.</p>
+        </div>
+        <div className="text-2">
+          <p>inquiry@elitegroupholding.com</p>
+          <p>+971 2 806 0000</p>
+          <p>800-535483</p>
+        </div>
+        <form onSubmit={handleSubmit} className="section-2-1">
+          {/* ... (keep existing form fields) */}
+          <input
+            type="text"
+            name="fullName"
+            value={formData.fullName}
+            onChange={handleInputChange}
+            placeholder="Full Name"
+            required
+          />
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            placeholder="Phone Number"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+            required
+          />
+          <input
+            type="text"
+            name="sector"
+            value={formData.sector}
+            onChange={handleInputChange}
+            placeholder="Sector"
+          />
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleInputChange}
+            placeholder="Message"
+            required
+          ></textarea>
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </form>
+      </div>
       {showThankYou && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg">
