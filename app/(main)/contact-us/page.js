@@ -253,7 +253,7 @@ const ContactUs = () => {
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md">
             <h2 className="text-xl font-semibold mb-2">Thank You!</h2>
-            <p>Your message has been sent successfully. We'll get back to you soon.</p>
+            <p>Your message has been sent successfully. We will get back to you soon.</p>
           </div>
         </div>
       )}
