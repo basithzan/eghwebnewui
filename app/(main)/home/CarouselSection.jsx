@@ -86,6 +86,7 @@ const CarouselSection = ({ images }) => {
           swipeable={width < 1024 ? true : false}
           animationHandler={width > 1024 ? `fade` : `slide`}
           dynamicHeight={false}
+style={{ backgroundColor: 'black' }}  // Add this line
         >
           {images.map((image, index) => (
             <div key={index}>
