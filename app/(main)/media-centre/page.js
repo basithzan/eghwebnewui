@@ -277,36 +277,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 </Link>
               </div>
             </div>
-                 
-
-            <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
-              <Image
-                unoptimized
-                width={200}
-                height={200}
-                src="https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/2zIGkZe7rd54QurzEGhtiXaGhY1i8Gb5TEKEuiqz.jpg"
-                alt="Img2"
-                className="w-[550px] h-[300px] object-cover"
-              />
-              <div className="lg:w-1/2">
-                <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
-                June 06, 2023, Dubai, UAE
-                </div>
-                <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                The Elite Cars launches limited edition AED 8 Million...
-                </div>
-                <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE
-                </div>
-                <Link href="/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east">
-                  <button className="block max-sm:text-xs  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
-                    Read More
-                    <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
-                  </button>
-                </Link>
-              </div>
-            </div>
-
+                
             <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
                 unoptimized
@@ -330,6 +301,34 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
                     Read More
                     <ArrowLongRightIcon className="ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
+                  </button>
+                </Link>
+              </div>
+            </div>
+
+<div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
+              <Image
+                unoptimized
+                width={200}
+                height={200}
+                src="https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/2zIGkZe7rd54QurzEGhtiXaGhY1i8Gb5TEKEuiqz.jpg"
+                alt="Img2"
+                className="w-[550px] h-[300px] object-cover"
+              />
+              <div className="lg:w-1/2">
+                <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
+                June 06, 2023, Dubai, UAE
+                </div>
+                <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
+                The Elite Cars launches limited edition AED 8 Million...
+                </div>
+                <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
+                Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE
+                </div>
+                <Link href="/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east">
+                  <button className="block max-sm:text-xs  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
+                    Read More
+                    <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
                   </button>
                 </Link>
               </div>
