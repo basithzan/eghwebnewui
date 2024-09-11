@@ -239,7 +239,7 @@ const AboutUs = () => {
               <p className="mb-2 md:mb-4  common-description text-3">
                 Our journey is rooted in a deep commitment to enhancing the quality of life within the communities we serve. We continuously seek avenues for fostering growth and strive to make a positive impact on both our community and the world. Our extensive experience and expertise empower us to deliver innovative solutions and services customized to meet the unique needs of our partners and clients. {" "}
               </p>
-              <p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
+              <p className="mb-2 md:mb-4  common-description text-3 pb-[10px]">
                 We believe that excellence is the foundation of our success. Our unwavering commitment to sustainability drives us to implement  responsible practices across all our operations, reinforcing our dedication to both innovation and the well-being of our community.
               </p>
             </div>
