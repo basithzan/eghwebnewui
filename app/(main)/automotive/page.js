@@ -102,12 +102,8 @@ title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied he
 
             hasBtn={false}
             descriptions={[
-              "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry. ",
-              `Having decades of experience in the industry, we have grown to become UAE’s well-
-respected companies having a number of well-established networks at strategic
-locations across the country.
-We forged global partnerships with leading brands and officially represent various
-automotive brands in the UAE such as Jetour, and Zenvo.`,
+              "Our automotive sector stands as a testament to its enduring legacy of excellence and innovation. With a deep-seated expertise across various domains of the automotive industry, we excel in delivering cutting-edge solutions that cater to the evolving needs of the market. ",
+              `Having decades of experience in the industry, we have grown to become UAE’s well- respected companies having a number of well-established networks at strategic locations across the country. We forged global partnerships with leading brands and officially represent various automotive brands in the UAE.`,
             ]}
             direction="left"
           />
@@ -121,12 +117,8 @@ title={<span style={{ color: '#fb511e' }}>Jetour</span>} // Color applied here
 
             hasBtn={true}
             descriptions={[
-              "Jetour has exclusively partnered with The Elite Cars International to bring the Jetour brand to the UAE.  ",
-              `This exclusive partnership brings decades of combined formidable
-                experience in the automotive industry, committed to deliver
-                exceptional vehicles at very competitive prices, and
-                professional aftersales service, ensuring complete peace of mind
-                to our customers in the UAE`,
+              "Jetour has formed an exclusive partnership with Elite Group Holding to introduce the Jetour brand to the UAE.   ",
+              `This collaboration combines decades of expertise in the automotive industry, delivering exceptional vehicles at competitive prices. With a strong commitment to professional aftersales service, this partnership ensures our customers in the UAE enjoy complete peace of mind.`,
             ]}
             direction="right"
           />
@@ -141,7 +133,7 @@ title={<span style={{ color: '#fb511e' }}>Jetour</span>} // Color applied here
 title={<span style={{ color: '#fb511e' }}>Zenvo Automotive</span>} // Color applied here
 
             descriptions={[
-              "Zenvo Automotive is a producer of limited-edition hypercars based in Præstø, Denmark. Founded in 2007, Zenvo was started with the aim of combining the latest technologies and innovation with an analogue feel, offering the driver a true connection and astonishing performance. ",
+              "Zenvo Automotive is a Danish high-performance car manufacturer known for creating exclusive, hand-built hypercars that combine cutting-edge technology with artisanal craftsmanship. Renowned for their exceptional power, precision engineering, and striking design, Zenvo's limited-edition vehicles deliver a unique driving experience for discerning enthusiasts worldwide. ",
             ]}
 direction="left"
           />

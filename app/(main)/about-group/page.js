@@ -234,19 +234,18 @@ const AboutUs = () => {
                 It all started with a dream
               </p> */}
               <p className="mb-2 md:mb-4  common-description text-3">
-                At Elite Group Holding, we are committed to enhance the quality
-                of life within the communities we serve, continuously seek
-                avenues for fostering growth and make a positive impact on the
-                world and our community.
+                Elite Group Holding is a UAE-based  conglomerate with a diverse portfolio spanning multiple industries. 
               </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-                Headquartered in the United Arab Emirates, our expansive
-                portfolio encompasses automotive, e-commerce, healthcare, real
-                estate and contracting, and investments.{" "}
+                Our journey is rooted in a deep commitment to enhancing the quality of life within the communities we serve. We continuously seek avenues for fostering growth and strive to make a positive impact on both our community and the world. {" "}
               </p>
               <p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
-                We pride ourselves on our unwavering dedication to excellence,
-                integrity, and teamwork.
+                Our extensive experience and expertise empower us to deliver innovative solutions and services customized to meet the unique needs of our partners and clients.
+
+              </p>
+<p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
+                We believe that excellence is the foundation of our success. Our unwavering commitment to sustainability drives us to implement  responsible practices across all our operations, reinforcing our dedication to both innovation and the well-being of our community.
+
               </p>
             </div>
           </div>

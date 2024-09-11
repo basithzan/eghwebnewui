@@ -132,7 +132,7 @@ const GroupOfCompanies = () => {
     image={groupImg1}
     title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied here
     descriptions={[
-      "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry.",
+      "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry. Our automotive sector stands as a testament to its enduring legacy of excellence and innovation. With a deep-seated expertise across various domains of the automotive industry, the sector excels in delivering cutting-edge solutions that cater to the evolving needs of the market.",
       // other descriptions
     ]}
     hasExplore={true}
@@ -145,7 +145,7 @@ const GroupOfCompanies = () => {
       image={groupImg2}
       title={<span style={{ color: '#fb511e' }}>E-Commerce</span>} // Color applied here
       descriptions={[
-        "As a dynamic and forward-thinking division within Elite Group Holding, our e-commerce sector is committed to revolutionizing the online shopping experience.",
+        "As a dynamic and forward-thinking division within Elite Group Holding, our e-commerce sector is committed to revolutionizing the online shopping experience. Leveraging cutting-edge technology and a user-centric approach, the sector offers a diverse range of premium products through a seamless and intuitive online platform.",
         // other descriptions
       ]}
       direction="left"
@@ -160,7 +160,7 @@ const GroupOfCompanies = () => {
       image={groupImg3}
       title={<span style={{ color: '#fb511e' }}>Real Estate and contracting</span>} // Color applied here
       descriptions={[
-        "Elite Group Holding has a carefully curated portfolio of projects across the UAE since its establishment in 2002.​",
+        "Our real estate and contracting sector embodies a commitment to excellence and innovation in property development. By integrating modern technology and maintaining high standards of craftsmanship, we ensure that every development not only enhances urban landscapes but also provides enduring value and functionality. ​",
         // other descriptions
       ]}
       hasExplore={true}
@@ -174,7 +174,7 @@ const GroupOfCompanies = () => {
       image={groupImg6}
       title={<span style={{ color: '#fb511e' }}>Investments</span>} // Color applied here
       descriptions={[
-        "Elite Group Holding has a large and diversified portfolio of local and international investments.​",
+        "Elite Group Holding has a large and diversified portfolio of local and international investments. Our investments sector represents a strategic pillar of our diversified portfolio, focused on driving growth and value creation across multiple industries. ​",
         // other descriptions
       ]}
       direction="left"
