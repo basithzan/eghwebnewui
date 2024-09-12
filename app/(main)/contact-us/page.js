@@ -3,13 +3,9 @@
 import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import axios from 'axios';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import BackgroundImage from "/public/assets/contact/banner-desktop.jpg";
-import BackgroundImagemobile from "/public/assets/contact/banner-mobile.jpg";
-import Image from "next/image";
-import axios from 'axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,6 +19,7 @@ const ContactUs = () => {
   });
   const [showThankYou, setShowThankYou] = useState(false);
   const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     gsap
@@ -86,6 +83,7 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const response = await axios.post('/api/send-email', formData);
       if (response.data.success) {
@@ -104,6 +102,8 @@ const ContactUs = () => {
     } catch (error) {
       console.error('Error sending email:', error);
       setError('An error occurred. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -209,8 +209,12 @@ const ContactUs = () => {
               ></textarea>
 
               <div className="md:col-span-2 flex justify-center">
-                <button type="submit" className="max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
-                  Submit
+                <button 
+                  type="submit" 
+                  className={`max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                   </svg>
