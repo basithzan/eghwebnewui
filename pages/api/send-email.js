@@ -18,14 +18,14 @@ export default async function handler(req, res) {
       await transporter.sendMail({
         from: '"Elite Group Holding" <no-reply@elitegroupholding.com>',
         to: email,
-        subject: 'Thank You for Contacting Elite Cars.',
+        subject: 'Thank You for Contacting Elite Group Holding.',
         text: `Dear ${fullName},\n\nThank you for contacting Elite Group Holding. We have received your message and will get back to you soon.\n\nBest regards,\nElite Group Holding Team`
       });
 
       // Send notification email to company
       await transporter.sendMail({
         from: '"Elite Group Holding" <no-reply@elitegroupholding.com>',
-        to: 'inquiry@elitegroupholding.com, suraj.nair@theelitecars.com',
+        to: 'inquiry@elitegroupholding.com',
         subject: 'New EGH Contact Form Submission',
         text: `New contact form submission:\n\nName: ${fullName}\nPhone: ${phoneNumber}\nEmail: ${email}\nSector: ${sector}\nMessage: ${message}`
       });
