@@ -31,7 +31,7 @@ const Page = ({ params }) => {
     };
 
     fetchData();
-  }, [])
+  }, [slug])
 
 
   return (
@@ -73,4 +73,4 @@ const Page = ({ params }) => {
   );
 };
 
-export default page;
+export default Page;
