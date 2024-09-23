@@ -31,7 +31,7 @@ const Page = ({ params }) => {
     };
 
     fetchData();
-  }, [slug])
+  }, [])
 
 
   return (
