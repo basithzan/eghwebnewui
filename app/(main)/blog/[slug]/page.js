@@ -8,7 +8,7 @@ import { notFound } from 'next/navigation';
 import { apiUrl, blogImgUrl } from "@/lib/constants";
 import { useState,useEffect } from "react";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   const { slug } = params;
   const updatedSlug = slug.replace(/-/g, ' ');
 
@@ -31,7 +31,7 @@ const page = ({ params }) => {
     };
 
     fetchData();
-  }, [])
+  }, [slug])
 
 
   return (
