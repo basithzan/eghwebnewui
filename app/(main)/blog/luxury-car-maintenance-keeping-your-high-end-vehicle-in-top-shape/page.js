@@ -73,7 +73,7 @@ const Page = ({ title, descriptions = [] }) => {
               className="md:pb-10 md:pt-5 py-2 flex items-center md:justify-end justify-center"
             ></nav>
 
-            {/* Content extracted from the image */}
+            {/* Content extracted from the imag */}
             <article>
               <h1 className="common-heading mb-8 uppercase !leading-[120%]">
                 luxury car maintenance keeping your high end vehicle in top
