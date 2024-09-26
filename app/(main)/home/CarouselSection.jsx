@@ -11,9 +11,10 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { useWindowResize } from "@/lib/hooks/useWindowResize";
+import { imgUrl } from "@/lib/constants";
 
 const CarouselSection = ({ images }) => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [currentImage, setCurrentImage] = useState(images && images?.length > 0 && images[0]);
   const descriptionRefs = useRef([]);
 
   const { width } = useWindowResize();
@@ -74,7 +75,7 @@ const CarouselSection = ({ images }) => {
           showArrows={true}
           renderArrowPrev={customRenderArrowPrev}
           renderArrowNext={customRenderArrowNext}
-          selectedItem={images.indexOf(currentImage)}
+          selectedItem={images?.indexOf(currentImage)}
           onChange={(index) => setCurrentImage(images[index])}
           className="relative w-full h-full reactCarousel max-sm:z-10"
           autoPlay
@@ -88,7 +89,7 @@ const CarouselSection = ({ images }) => {
           dynamicHeight={false}
 style={{ backgroundColor: 'black' }}  // Add this line
         >
-          {images.map((image, index) => (
+          {images && images?.length > 0 && images?.map((image, index) => (
             <div key={index}>
               <div className="px-5 lg:hidden flex flex-col w-full">
                 <Link
@@ -100,7 +101,7 @@ style={{ backgroundColor: 'black' }}  // Add this line
                     <div
                       className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300   text-[1.2rem]   transition-all text-black `}
                     >
-                      {image.name}
+                      {image.title}
                     </div>
                   </div>
                 </Link>
@@ -112,17 +113,19 @@ style={{ backgroundColor: 'black' }}  // Add this line
                 <div className="w-full h-[50vh] md:h-[80vh]">
                   <Image
                     unoptimized
-                    src={image.src}
+                    width={100}
+                    height={100}
+                    src={imgUrl + image.image}
                     alt={image.name}
                     className="object-cover brightness-[50%] w-full h-full"
                   />
 
                   <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
                     <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
-                      {image.name}
+                      {image.title}
                     </div>
-                    <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]">
-                      {image.description}
+                    <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]"  dangerouslySetInnerHTML={{ __html: image?.content }}>
+                      
                     </div>
                   </div>
                 </div>
@@ -166,7 +169,7 @@ style={{ backgroundColor: 'black' }}  // Add this line
       <div
         className={`hidden justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
       >
-        {images.map((image, index) => (
+        {images && images?.length > 0 && images.map((image, index) => (
           <a
             href={image.url}
             key={index}
@@ -178,12 +181,13 @@ style={{ backgroundColor: 'black' }}  // Add this line
               <div
                 className={`select-none text-center  group-hover:text-[#fb511e] duration-300 sm:text-start lg:px-5 text-[10px] sm:text-xs lg:text-lg   transition-all text-black lg:text-white max-lg:group-hover:text-white`}
               >
-                {image.name}
+                {image.title}
               </div>
               <div
                 className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+                dangerouslySetInnerHTML={{ __html: image?.content }}
               >
-                {image.description}
+               
                 {/* <a
                   target={index === 4 ? "none" : "blank"}
                   href={image.url}

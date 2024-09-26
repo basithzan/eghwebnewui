@@ -11,9 +11,10 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { useWindowResize } from "@/lib/hooks/useWindowResize";
+import { imgUrl } from "@/lib/constants";
 
 const Partner = ({ images }) => {
-  const [currentImage, setCurrentImage] = useState(images[0]);
+  const [currentImage, setCurrentImage] = useState(images && images?.length > 0 && images[0]);
   const descriptionRefs = useRef([]);
   const { width } = useWindowResize();
   useEffect(() => {
@@ -72,7 +73,7 @@ const Partner = ({ images }) => {
           showArrows={false}
           // renderArrowPrev={customRenderArrowPrev}
           // renderArrowNext={customRenderArrowNext}
-          selectedItem={images.indexOf(currentImage)}
+          selectedItem={images?.indexOf(currentImage)}
           onChange={(index) => setCurrentImage(images[index])}
           className="relative w-full h-full reactCarousel"
           autoPlay
@@ -85,7 +86,7 @@ const Partner = ({ images }) => {
           animationHandler={width > 1024 ? `fade` : `slide`}
           dynamicHeight={false}
         >
-          {images?.map((image, index) => (
+          {images && images?.length > 0 && images?.map((image, index) => (
             <div key={index}>
               <div className="px-5 lg:hidden flex flex-col w-full">
                 <Link
@@ -97,7 +98,7 @@ const Partner = ({ images }) => {
                     <div
                       className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300   text-[1.2rem]   transition-all text-black `}
                     >
-                      {image.name}
+                      {image.title}
                     </div>
                   </div>
                 </Link>
@@ -105,14 +106,16 @@ const Partner = ({ images }) => {
               <div className="w-full h-[50vh] lg:h-[570px] xl:h-[80vh]">
                 <Image
                   unoptimized
-                  src={image.src}
-                  alt={image.name}
+                  width={100}
+                  height={100}
+                  src={imgUrl + image.image}
+                  alt={image.title}
                   className="object-cover brightness-[50%] w-full h-full"
                 />
 
                 <div className="lg:hidden absolute left-0 w-full px-[5%] pb-7 pt-3 bg-[#00000078] bottom-0 text-center  text-white">
                   <div className="lg:text-md text-[2rem] text-[#fb511e]  lg:text-[2.5rem] font-semibold  mb-3">
-                    {image.name}
+                    {image.title}
                   </div>
                   <a 
   target={index === 4 ? "_self" : "_blank"} 
@@ -166,7 +169,7 @@ const Partner = ({ images }) => {
       <div
         className={`hidden  justify-evenly gap-3 px-5 max-lg:w-fit lg:px-0 mb-5 lg:mb-5 lg:gap-0 flex-wrap lg:grid lg:grid-cols-${images.length} lg:h-full`}
       >
-        {images.map((image, index) => (
+        {images && images?.length > 0 && images.map((image, index) => (
           <a
             href={image.url}
             target="blank"
@@ -179,7 +182,7 @@ const Partner = ({ images }) => {
               <div
                 className={`select-none text-center  group-hover:text-[#fb511e] duration-300 lg:px-5 text-[10px] sm:text-xs lg:text-lg   transition-all text-black lg:text-white max-lg:group-hover:text-white`}
               >
-                {image.name}
+                {image.title}
               </div>
               <div
                 className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}

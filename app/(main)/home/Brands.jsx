@@ -10,11 +10,12 @@ import BrandsBgImg from "/public/assets/DSC07990.jpg";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 import "react-multi-carousel/lib/styles.css";
+import { imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 const defaultWidth = '150px'; // Default width for logos
 const defaultHeight = '100px'; // Height for logos
-const Brands = () => {
+const Brands = ({content}) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -56,27 +57,21 @@ const Brands = () => {
 const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
   return (
     <div
-      style={{ backgroundImage: `url(${BrandsBgImg.src})` }}
+      style={{ backgroundImage: `url(${imgUrl + content[0]?.image})` }}
       className="xl:h-screen w-screen bg-no-repeat bg-center bg-cover px-[5%] flex flex-col md:justify-center text-white overflow-hidden section-brand relative py-4"
     >
       <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
       <div className="flex items-start gap-12 flex-col md:pt-0 pt-16">
         <div className="flex items-start md:gap-8 flex-col max-w-[900px]">
           <h4 className="md:text-md text-[2rem] lg:text-[2.5rem] font-semibold text-white relative z-10 head-1 max-md:mb-4">
-            AFFILIATED PARTNERS
+            {content[0]?.title}
           </h4>
-          <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]">
-            We believe that excellence is the
-cornerstone of our diverse
-portfolio.
-          </p>
-<p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]">
-           Our unwavering commitment to
-quality is reflected in every part
-of our businesses, driven by our
-team of highly experienced
-professionals who are dedicated
-to delivering exceptional results.
+          {/* <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]" dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
+           
+           </p> */}
+         
+<p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]"  dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
+         
           </p>
         </div>
 {/* Conditional rendering for Desktop */}
