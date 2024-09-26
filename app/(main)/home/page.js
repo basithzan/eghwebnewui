@@ -33,6 +33,7 @@ import Img9 from "/public/assets/home/Homepage-allsectors-investments.jpg";
 import Img8 from "/public/assets/home/Homepage-allsectors-real-estate.jpg";
 import zenvo from "/public/assets/home/zenvo.jpg";
 import Img1 from "/public/assets/night-showroom.jpg";
+import { apiUrl,imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,7 +47,7 @@ const CarouselImage1 = [
   },
   {
     src: zenvo,
-    name: " ZENVO AUTOMOTIVE",
+    name: "ZENVO AUTOMOTIVE",
     description: `Elite Group Holding is the authorized distributor of
 Danish car manufacturer, Zenvo Automotive across the
 UAE. Zenvo Automotive is a producer of limited-edition
@@ -170,6 +171,7 @@ const EliteHome = () => {
   const video3 =
     "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/9FmRU5ZUf72IE2chKRzLuCdfPBQjDhgfYUK9PFlh.mp4";
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [homePageData, setHomePageData] = useState([]);
   const videoRef = useRef(null);
   const [progress, setProgress] = useState(0);
   const videoUrls = [
@@ -327,7 +329,7 @@ const EliteHome = () => {
   }, [currentVideo]);
 
   const handleVideoClick = (index) => {
-    setCurrentVideo(index);
+    // setCurrentVideo(index);
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.play();
@@ -335,12 +337,33 @@ const EliteHome = () => {
   };
 
   const handleVideoEnd = () => {
-    setCurrentVideo((prev) => (prev + 1) % videoUrls.length);
+    // setCurrentVideo((prev) => (prev + 1) % videoUrls.length);
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.play();
     }
   };
+  // https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/NsiDea5Z5haiAFkepjOCMGxvlW7mgQmrXM1k1T4h.mp4
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch( apiUrl +`get-homepage-data`);  // Your API endpoint
+        const data = await response.json();
+   
+        setHomePageData(data);
+        setCurrentVideo(data?.homePageVideo?.video)
+        console.log('====================================');
+        console.log(data);
+        console.log('====================================');
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   return (
     <>
@@ -364,17 +387,17 @@ const EliteHome = () => {
               WELCOME TO ELITE GROUP HOLDING
             </div>
             <div className="text-[3rem] lg:text-6xl font-bold md:mb-5 mb-4 md:mb-10 text-2"> {/* Changed font size */}
-  <div className="leading-[calc(1em+6px)] text-[#fb511e]">DRIVING</div>
-  <div className="leading-[calc(1em+6px)] text-[#fb511e]">EXCELLENCE,</div>
-  <div className="leading-[calc(1em+6px)]">BUILDING</div>
-  <div className="leading-[calc(1em+6px)]">FUTURES</div>
-</div>
-<a href="/about-group">
-  <button className="hover:bg-[#fb511e] transition-all border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 md:py-3 button-1">
-    Explore
-    <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
-  </button>
-</a>
+              <div className="leading-[calc(1em+6px)] text-[#fb511e]">DRIVING</div>
+              <div className="leading-[calc(1em+6px)] text-[#fb511e]">EXCELLENCE,</div>
+              <div className="leading-[calc(1em+6px)]">BUILDING</div>
+              <div className="leading-[calc(1em+6px)]">FUTURES</div>
+            </div>
+            <a href="/about-group">
+              <button className="hover:bg-[#fb511e] transition-all border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 md:py-3 button-1">
+                Explore
+                <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
+              </button>
+            </a>
           </div>
           <div className="absolute bottom-[10%] w-screen md:flex hidden flex-wrap gap-[3%] px-[5%] overflow-x-auto whitespace-nowrap">
             {[
@@ -402,9 +425,8 @@ const EliteHome = () => {
               <div
                 key={index}
                 onClick={() => handleVideoClick(index)}
-                className={`cursor-pointer lg:flex-1 ${
-                  currentVideo == index ? "max-md:block" : "max-md:hidden"
-                }`}
+                className={`cursor-pointer lg:flex-1 ${currentVideo == index ? "max-md:block" : "max-md:hidden"
+                  }`}
               >
                 <Link href={item.url} className="pb-1">
                   <div className="text-xl mb-2 text-[#d7dcd7]">
@@ -431,30 +453,19 @@ const EliteHome = () => {
       <div className="section-2 max-md:py-4 mt-8">
         <div className="max-md:my-10 md:flex md:flex-row-reverse items-center">
           <div className=" md:shrink-1 md:w-1/2 px-[5%] md:py-10">
-            <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 ">
-              ABOUT US
+            <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 uppercase">
+             {homePageData?.homePageAboutUs?.title}
             </div>
-            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2 pt-4">
-              At Elite Group Holding, we are committed to enhance the quality of
-              life within the communities we serve, continuously seek avenues
-              for fostering growth and make a positive impact on the world and
-              our community.
+            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2 pt-4"  dangerouslySetInnerHTML={{ __html: homePageData?.homePageAboutUs?.content }}>
+         
             </p>
-            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]		 text-2">
-              Headquartered in the United Arab Emirates, our expansive portfolio
-              encompasses automotive, e-commerce, real estate and contracting,
-              and investments.
-            </p>
-            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	  text-2">
-              We pride ourselves on our unwavering dedication to excellence,
-              integrity, and teamwork.
-            </p>
+           
             <Link href="/about-group">
               <button
                 href="/about-group"
                 className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5 max-md:mb-16 bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
               >
-                know More
+                {homePageData?.homePageAboutUs?.link_text}
                 <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
               </button>
             </Link>
@@ -463,7 +474,9 @@ const EliteHome = () => {
             <div className="overflow-hidden clip-path-md">
               <Image
                 unoptimized
-                src={AboutImage}
+                width={100}
+                height={100}
+                src={imgUrl + homePageData?.homePageAboutUs?.image}
                 alt="AboutImage"
                 className={`w-full h-full max-md:h-full max-md:aspect-square max-[1680px]:h-[650px] max-[2000px]:h-[550px] object-cover  transition-all duration-500 ease-out hover:scale-105`}
               />
@@ -473,14 +486,17 @@ const EliteHome = () => {
       </div>
 
       <div className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
-        EXPLORE OUR SECTORS
+        {homePageData?.homePageSectorsHeading?.main_heading}
       </div>
-      <CarouselSection images={CarouselImage2} />
+      {homePageData?.homePageSectors && homePageData?.homePageSectors?.length > 0 && 
+      
+      <CarouselSection images={homePageData?.homePageSectors} />
+      }
 
       <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
         <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
           <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
-            BUSINESS SYNOPSIS
+          {homePageData?.homePageHighLightHeading?.main_heading}
           </div>
           {/* <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
             <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
@@ -499,6 +515,8 @@ const EliteHome = () => {
             </p>
           </div> */}
         </div>
+        {homePageData?.homePageHighLights && homePageData?.homePageHighLights?.length > 0 && 
+        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
             <img
@@ -507,9 +525,7 @@ const EliteHome = () => {
               className="w-[60px] h-[60px] mb-[3px]"
             />
             <div>
-              20+ FACILITIES
-              <br />
-              ACROSS UAE
+              {homePageData?.homePageHighLights[0]?.title}
             </div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
@@ -519,7 +535,7 @@ const EliteHome = () => {
               className="w-[60px] h-[60px] mb-[3px]"
             />
             <div>
-              DECADES OF<span className="sm:block"> EXPERIENCE</span>
+              <span className="sm:block">  {homePageData?.homePageHighLights[1]?.title}</span>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
@@ -528,7 +544,7 @@ const EliteHome = () => {
               alt="Icon 3"
               className="w-[60px] h-[60px] mb-[3px]"
             />
-            <div>OVER 5000 SATISFIED CUSTOMERS</div>
+            <div>{homePageData?.homePageHighLights[2]?.title}</div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
             <img
@@ -537,10 +553,11 @@ const EliteHome = () => {
               className="w-[60px] h-[60px] mb-[3px]"
             />
             <div className="uppercase">
-              ⁠Multiple international brand partners
+            {homePageData?.homePageHighLights[3]?.title}
             </div>
           </div>
         </div>
+        }
       </div>
 
       <div className="section-5  max-md:mt-8">
@@ -548,9 +565,12 @@ const EliteHome = () => {
           className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4"
           style={{ color: "#fb511e", lineHeight: "2.5rem" }}
         >
-          EXPLORE OUR AUTOMOTIVE PARTNERS
+          {homePageData?.homePagePartnersHeading?.main_heading}
         </div>
-        <Partner images={CarouselImage1} />
+      {homePageData?.homePageAutomotivePartners && homePageData?.homePageAutomotivePartners?.length > 0 && 
+
+        <Partner images={homePageData?.homePageAutomotivePartners} />
+      }
       </div>
 
       <div className="px-[5%] mx-auto md:mt-24 section-6">
@@ -569,8 +589,10 @@ const EliteHome = () => {
         </div>
         <CarouselSection2 images={CarouselImage3} />
       </div>
-
-      <Brands />
+      {homePageData?.homePageBrands && homePageData?.homePageBrands?.length > 0 && 
+      
+      <Brands content={homePageData?.homePageBrands}/>
+      }
 
       <Footer />
     </>
