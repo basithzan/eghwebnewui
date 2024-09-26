@@ -519,7 +519,9 @@ const EliteHome = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <img
+            <Image
+             width={100}
+             height={100}
               src="/assets/p1.png"
               alt="Icon 1"
               className="w-[60px] h-[60px] mb-[3px]"
@@ -529,7 +531,9 @@ const EliteHome = () => {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <img
+            <Image
+            width={100}
+            height={100}
               src="/assets/p2.png"
               alt="Icon 2"
               className="w-[60px] h-[60px] mb-[3px]"
@@ -539,7 +543,9 @@ const EliteHome = () => {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <img
+            <Image
+             width={100}
+             height={100}
               src="/assets/p3.png"
               alt="Icon 3"
               className="w-[60px] h-[60px] mb-[3px]"
@@ -547,7 +553,9 @@ const EliteHome = () => {
             <div>{homePageData?.homePageHighLights[2]?.title}</div>
           </div>
           <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <img
+          <Image
+             width={100}
+             height={100}
               src="/assets/p4.png"
               alt="Icon 4"
               className="w-[60px] h-[60px] mb-[3px]"
