@@ -152,6 +152,8 @@ const GroupOfCompanies = () => {
               title={<span style={{ color: '#fb511e' }}>{pageData[1]?.title}</span>} // Color applied here
               descriptions={[
                 <p
+                key="description-1"
+
                   dangerouslySetInnerHTML={{ __html: pageData[1]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
@@ -169,6 +171,8 @@ const GroupOfCompanies = () => {
               title={<span style={{ color: '#fb511e' }}>{pageData[2]?.title}</span>} // Color applied here
               descriptions={[
                 <p
+                key="description-2"
+
                   dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
@@ -188,6 +192,8 @@ const GroupOfCompanies = () => {
               title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
               descriptions={[
                 <p
+                key="description-3"
+
                   dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
@@ -206,6 +212,8 @@ const GroupOfCompanies = () => {
               title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
               descriptions={[
                 <p
+                key="description-4"
+
                   dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
