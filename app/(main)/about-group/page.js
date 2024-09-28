@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import gsap from "gsap";
 
@@ -17,10 +17,15 @@ import BackgroundImage from "/public/assets/about-us/banner-desktop.jpg";
 import BackgroundImagemobile from "/public/assets/about-us/banner-mobile.jpg";
 import csr2 from "/public/assets/about-us/csr3.jpg";
 import vision from "/public/assets/m&v.jpg";
+import { apiUrl } from "@/lib/constants";
+import { imgUrl } from '../../../lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
+
+  const [pageData, setPageData] = useState([]);
+
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -170,6 +175,21 @@ const AboutUs = () => {
       );
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-about-data`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.about);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
   return (
     <>
       <Navbar />
@@ -207,139 +227,147 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+      {pageData && pageData.length !== 0 &&
 
-      <div className="bg-[#F7F7F7] max-sm:mb-1">
-        <div className="px-[5%] section-2 overflow-hidden">
-          <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
-            <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={mission}
-                alt="img1"
-                className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
-              />
-            </div>
-            <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
-              {/* Updated Heading with Padding */}
-              <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e" }}
-              >
-                ABOUT THE GROUP
+        <div>
+
+          <div className="bg-[#F7F7F7] max-sm:mb-1">
+            <div className="px-[5%] section-2 overflow-hidden">
+              <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
+                <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[0]?.image}
+                    alt="img1"
+                    className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
+                  />
+                </div>
+                <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
+                  {/* Updated Heading with Padding */}
+                  <div
+                    className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                    style={{ color: "#fb511e" }}
+                  >
+                    {pageData[0]?.title}
+                  </div>
+
+                  <p className="mb-2 md:mb-4  common-description text-3" dangerouslySetInnerHTML={{ __html: pageData[0]?.content }}>
+
+                  </p>
+
+                </div>
               </div>
-              {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
-                It all started with a dream
-              </p> */}
-              <p className="mb-2 md:mb-4  common-description text-3">
-                Elite Group Holding is a UAE-based  conglomerate with a diverse portfolio spanning multiple industries. 
-              </p>
-              <p className="mb-2 md:mb-4  common-description text-3">
-                Our journey is rooted in a deep commitment to enhancing the quality of life within the communities we serve. We continuously seek avenues for fostering growth and strive to make a positive impact on both our community and the world. Our extensive experience and expertise empower us to deliver innovative solutions and services customized to meet the unique needs of our partners and clients. {" "}
-              </p>
-              <p className="mb-2 md:mb-4  common-description text-3 pb-[10px]">
-                We believe that excellence is the foundation of our success. Our unwavering commitment to sustainability drives us to implement  responsible practices across all our operations, reinforcing our dedication to both innovation and the well-being of our community.
-              </p>
+            </div>
+
+            <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
+              <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
+                <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
+                  {/* Updated Heading with Padding */}
+                  <div
+                    className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                    style={{ color: "#fb511e" }}
+                  >
+                    {pageData[1]?.title}
+                  </div>
+                  <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[1]?.content }}>
+
+                  </p>
+
+
+                </div>
+                <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[1]?.image}
+
+                    alt="img2"
+                    className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
-          <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
-            <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
-              {/* Updated Heading with Padding */}
-              <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e" }}
-              >
-                VISION AND MISSION
-              </div>
-              <p className="mb-2 md:mb-4  common-description text-2 ">
-                Our Vision is to be a global leader in each of our business
-                sectors, delivering unparalleled value and setting new standards
-                of excellence.
-              </p>
+          <div className="max-sm:px-[5%]">
+            <GroupSection
+              url="/automotive/the-elite-cars"
+              link="https://theelitecars.com/"
+              image={imgUrl + pageData[2]?.image}
 
-              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
-                Our Mission is to innovate, diversify, and expand our business
-                horizons while contributing to the economic and social
-                development of the communities we serve.
-              </p>
-            </div>
-            <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={vision}
-                alt="img2"
-                className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
-              />
-            </div>
+              title={
+                // Wrapped the span in a div with padding
+                <div className="pt-[30px] pb-[15px]">
+                  <span style={{ color: "#fb511e" }}> {pageData[2]?.title}</span>
+                </div>
+              }
+              hasBtn={false}
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+              direction="left"
+            />
+
+            <GroupSection
+              url="/automotive/the-elite-cars"
+              link="https://theelitecars.com/"
+              image={imgUrl + pageData[3]?.image}
+              title={
+                // Wrapped the span in a div with padding
+                <div className="pt-[10px] pb-[15px]">
+                  <span style={{ color: "#fb511e" }}>
+                    {pageData[3]?.title}
+                  </span>
+                </div>
+              }
+              hasBtn={false}
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+              direction="right"
+            />
+
+            <GroupSection
+              url="/automotive/the-elite-cars"
+              link="https://theelitecars.com/"
+              image={imgUrl + pageData[4]?.image}
+              title={
+                // Wrapped the span in a div with padding
+                <div className="pt-[10px] pb-[15px]">
+                  <span style={{ color: "#fb511e" }}>
+                    {pageData[4]?.title}
+                  </span>
+                </div>
+              }
+              hasBtn={false}
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+              direction="left"
+            />
           </div>
         </div>
-      </div>
-
-      <div className="max-sm:px-[5%]">
-        <GroupSection
-          url="/automotive/the-elite-cars"
-          link="https://theelitecars.com/"
-          image={ImageRakanTurki}
-          title={
-            // Wrapped the span in a div with padding
-            <div className="pt-[30px] pb-[15px]">
-              <span style={{ color: "#fb511e" }}>THE LEADERSHIP TEAM</span>
-            </div>
-          }
-          hasBtn={false}
-          descriptions={[
-            "At Elite Group Holding, our leadership team is the driving force behind our commitment to excellence, innovation, and integrity. Comprised of seasoned professionals with diverse backgrounds and extensive industry experience, they guide our strategic vision and operational execution, ensuring we consistently deliver exceptional value to our clients and stakeholders.",
-          ]}
-          direction="left"
-        />
-
-        <GroupSection
-          url="/automotive/the-elite-cars"
-          link="https://theelitecars.com/"
-          image={csr2}
-          title={
-            // Wrapped the span in a div with padding
-            <div className="pt-[10px] pb-[15px]">
-              <span style={{ color: "#fb511e" }}>
-                CORPORATE SOCIAL RESPONSIBILITY
-              </span>
-            </div>
-          }
-          hasBtn={false}
-          descriptions={[
-            "At Elite Group Holding, our commitment to excellence extends beyond business performance. We firmly believe that corporate success is intertwined with social responsibility, and we are dedicated to making a positive impact on the communities we serve and the environment we live in. Our Corporate Social Responsibility (CSR) initiatives are rooted in the core values of sustainability, ethical conduct, and community engagement.",
-            "We understand that our responsibilities extend beyond financial success. We are dedicated to creating a positive impact on society and the environment, ensuring that our business practices contribute to a better future for all. By integrating CSR into our core operations, we strive to build a sustainable and prosperous world for generations to come.",
-          ]}
-          direction="right"
-        />
-
-        <GroupSection
-          url="/automotive/the-elite-cars"
-          link="https://theelitecars.com/"
-          image={reward}
-          title={
-            // Wrapped the span in a div with padding
-            <div className="pt-[10px] pb-[15px]">
-              <span style={{ color: "#fb511e" }}>
-                Awards & RECOGNITION
-              </span>
-            </div>
-          }
-          hasBtn={false}
-          descriptions={[
-            "At Elite Group Holding, our dedication to excellence, innovation, and integrity has earned us numerous accolades and industry recognitions. These recognitions are a testament to our unwavering commitment to delivering exceptional value to our clients and partners, and making a positive impact in the communities we serve. Each honor reflects the hard work and dedication of our talented team, and we are proud to showcase these achievements as milestones in our journey towards continued success and excellence.",
-          ]}
-          direction="left"
-        />
-      </div>
+      }
 
       {/* ... Rest of your component ... */}
 

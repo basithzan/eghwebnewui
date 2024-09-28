@@ -89,6 +89,8 @@ const GroupSection = ({
           <Image
             unoptimized
             src={image}
+            width={100}
+            height={100}
             ref={imageRef}
             alt={title}
             className={`w-full sm:h-[20rem] max-md:aspect-square md:h-[40rem] object-cover  ${

@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../Footer";
@@ -17,10 +17,13 @@ import GroupSection from "./GroupSection";
 import BackgroundImage from "/public/assets/group/banner-desktop.jpg";
 import BackgroundImagemobile from "/public/assets/group/banner-mobile.jpg";
 import Image1 from "/public/assets/signage.jpg";
+import { apiUrl, imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GroupOfCompanies = () => {
+  const [pageData, setPageData] = useState([]);
+
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -55,6 +58,21 @@ const GroupOfCompanies = () => {
       );
   });
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-group-companies`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.about);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
   return (
     <>
       <Navbar />
@@ -89,31 +107,32 @@ const GroupOfCompanies = () => {
         </div>
       </div>
 
-      <div className="bg-[#F7F7F7] mb-4 sm:pb-5">
-        <div className="px-[5%]">
-          <div className="pb-5 pt-10 md:py-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center section-2">
-            <div className="relative sm:w-1/2 sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden">
-              <Image
-                unoptimized
-                src={Image1}
-                alt="BackgroundImage"
-                className="w-full sm:h-[20rem] md:h-[26rem] max-md:aspect-square object-cover img-1 clip-path-right-md"
-              />
-            </div>
-            <div className="xl:px-24 sm:shrink-1 sm:w-1/2">
-              <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#282828] font-semibold md:pb-10 pb-5 head-1 uppercase" style={{ color: '#fb511e' }}>
-  ELITE GROUP HOLDING
-</div>
-              <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                We have built a vast network of businesses strategically located
-                across prominent areas in the region. This strategic positioning
-                allows us to effectively serve diverse markets, leveraging our
-                extensive local knowledge and global expertise to deliver
-                exceptional value and innovative solutions to our clients. Our
-                group of companies is dedicated to excellence, ensuring that we
-                meet the highest standards in every industry we operate in.
-              </p>
-              {/* <p className="mb-4 text-[#808080] text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
+      {pageData && pageData?.length !== 0 &&
+
+
+        <div>
+
+          <div className="bg-[#F7F7F7] mb-4 sm:pb-5">
+            <div className="px-[5%]">
+              <div className="pb-5 pt-10 md:py-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center section-2">
+                <div className="relative sm:w-1/2 sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden">
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[0]?.image}
+                    alt="BackgroundImage"
+                    className="w-full sm:h-[20rem] md:h-[26rem] max-md:aspect-square object-cover img-1 clip-path-right-md"
+                  />
+                </div>
+                <div className="xl:px-24 sm:shrink-1 sm:w-1/2">
+                  <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#282828] font-semibold md:pb-10 pb-5 head-1 uppercase" style={{ color: '#fb511e' }}>
+                    {pageData[0]?.title}
+                  </div>
+                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"  dangerouslySetInnerHTML={{ __html: pageData[0]?.content }}>
+                    
+                  </p>
+                  {/* <p className="mb-4 text-[#808080] text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
                 You can ask your questions to the Elite Group Holding Assistant,
                 who will guide you through the Elite Group Holding.
               </p>
@@ -122,67 +141,85 @@ const GroupOfCompanies = () => {
                 please scroll down and get in touch with our dedicated Customer
                 Contact Center via phone or contact form.
               </p> */}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-hidden max-md:px-[5%] max-md:space-y-10">
+            <GroupSection
+              image={imgUrl + pageData[1]?.image}
+              title={<span style={{ color: '#fb511e' }}>{pageData[1]?.title}</span>} // Color applied here
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[1]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+              hasExplore={true}
+              linkexp="/automotive"
+            />
+
+            <div id="ecommerce">
+              <GroupSection
+                url="/group-of-companies/elite-investment"
+                image={imgUrl + pageData[2]?.image}
+              title={<span style={{ color: '#fb511e' }}>{pageData[2]?.title}</span>} // Color applied here
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+                direction="left"
+                hasExplore={true}
+                linkexp="/group-of-companies/elite-e-commerce"
+              />
+            </div>
+
+            <div id="real_estate">
+              <GroupSection
+                url="/group-of-companies/elite-real-estate"
+                image={imgUrl + pageData[3]?.image}
+              title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+                hasExplore={true}
+                linkexp="/group-of-companies/elite-real-estate"
+              />
+            </div>
+
+            <div id="investments">
+              <GroupSection
+                url="/group-of-companies/elite-e-commerce"
+                image={imgUrl + pageData[4]?.image}
+              title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
+              descriptions={[
+                <p
+                  dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>
+              ]}
+                direction="left"
+                hasExplore={true}
+                linkexp="/group-of-companies/elite-investment"
+              />
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="overflow-hidden max-md:px-[5%] max-md:space-y-10">
-  <GroupSection
-    image={groupImg1}
-    title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied here
-    descriptions={[
-      "Rooted in a legacy of excellence, Elite Group Holding’s automotive sector boasts extensive expertise in various domains of the automotive industry. Our automotive sector stands as a testament to its enduring legacy of excellence and innovation. With a deep-seated expertise across various domains of the automotive industry, the sector excels in delivering cutting-edge solutions that cater to the evolving needs of the market.",
-      // other descriptions
-    ]}
-    hasExplore={true}
-    linkexp="/automotive"
-  />
-
-  <div id="ecommerce">
-    <GroupSection
-      url="/group-of-companies/elite-investment"
-      image={groupImg2}
-      title={<span style={{ color: '#fb511e' }}>E-Commerce</span>} // Color applied here
-      descriptions={[
-        "As a dynamic and forward-thinking division within Elite Group Holding, our e-commerce sector is committed to revolutionizing the online shopping experience. Leveraging cutting-edge technology and a user-centric approach, the sector offers a diverse range of premium products through a seamless and intuitive online platform.",
-        // other descriptions
-      ]}
-      direction="left"
-      hasExplore={true}
-      linkexp="/group-of-companies/elite-e-commerce"
-    />
-  </div>
-
-  <div id="real_estate">
-    <GroupSection
-      url="/group-of-companies/elite-real-estate"
-      image={groupImg3}
-      title={<span style={{ color: '#fb511e' }}>Real Estate and contracting</span>} // Color applied here
-      descriptions={[
-        "Our real estate and contracting sector embodies a commitment to excellence and innovation in property development. By integrating modern technology and maintaining high standards of craftsmanship, we ensure that every development not only enhances urban landscapes but also provides enduring value and functionality. ​",
-        // other descriptions
-      ]}
-      hasExplore={true}
-      linkexp="/group-of-companies/elite-real-estate"
-    />
-  </div>
-
-  <div id="investments">
-    <GroupSection
-      url="/group-of-companies/elite-e-commerce"
-      image={groupImg6}
-      title={<span style={{ color: '#fb511e' }}>Investments</span>} // Color applied here
-      descriptions={[
-        "Elite Group Holding has a large and diversified portfolio of local and international investments. Our investments sector represents a strategic pillar of our diversified portfolio, focused on driving growth and value creation across multiple industries. ​",
-        // other descriptions
-      ]}
-      direction="left"
-      hasExplore={true}
-      linkexp="/group-of-companies/elite-investment"
-    />
-  </div>
-</div>
+      }
 
 
       <Footer />
