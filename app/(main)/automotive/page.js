@@ -1,7 +1,7 @@
 "use client";
 
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Footer from "../Footer";
@@ -18,10 +18,13 @@ import soueast from "../../../public/assets/home/soueast.jpg";
 import art from "../../../public/assets/home/art.jpg";
 import GroupSection from "../group-of-companies/GroupSection";
 import Auto from "/public/assets/Auto.jpg";
+import { apiUrl ,imgUrl} from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GroupOfCompanies = () => {
+  const [pageData, setPageData] = useState([]);
+
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -56,18 +59,39 @@ const GroupOfCompanies = () => {
       );
   });
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-automotive`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.automotive);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
+
   return (
     <>
       <Navbar />
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
+          width={200}
+          height={300}
           src={automobilemobile}
           alt="automobilemobile"
           className="object-cover object-center h-screen w-screen brightness-50 sm:hidden"
         />
         <Image
           unoptimized
+          width={200}
+          height={300}
           src={BackgroundImage}
           alt="BackgroundImage"
           className="object-cover object-center h-screen w-screen brightness-50 hidden sm:block"
@@ -91,102 +115,125 @@ const GroupOfCompanies = () => {
       </div>
 
       <div className="bg-[#ffffff] mb-4 sm:pb-3 lg:mb-10"></div>
+      {pageData && pageData.length !== 0 && (
 
-      <div className="overflow-hidden max-md:px-[5%] max-sm:space-y-10 mt-10">
- <div id="auto">
-          <GroupSection
-            url="#"
-            link="#"
-            image={Auto}
-title={<span style={{ color: '#fb511e' }}>Automotive</span>} // Color applied here
+        <div>
 
-            hasBtn={false}
-            descriptions={[
-              "Our automotive sector stands as a testament to its enduring legacy of excellence and innovation. With a deep-seated expertise across various domains of the automotive industry, we excel in delivering cutting-edge solutions that cater to the evolving needs of the market. ",
-              `Having decades of experience in the industry, we have grown to become UAE’s well- respected companies having a number of well-established networks at strategic locations across the country. We forged global partnerships with leading brands and officially represent various automotive brands in the UAE.`,
-            ]}
-            direction="left"
-          />
+          <div className="overflow-hidden max-md:px-[5%] max-sm:space-y-10 mt-10">
+            <div id="auto">
+              <GroupSection
+                url="#"
+                link="#"
+                image={imgUrl + pageData[0]?.image}
+                title={<span style={{ color: '#fb511e' }}>{pageData[0]?.title}</span>} // Color applied here
+
+                hasBtn={false}
+                descriptions={[
+                  <p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="left"
+              />
+            </div>
+            <div id="jetour">
+              <GroupSection
+                url="/automotive/jetour"
+                link="https://jetouruae.com/"
+                image={imgUrl + pageData[1]?.image}
+                title={<span style={{ color: '#fb511e' }}>{pageData[1]?.title}</span>} // Color applied here
+
+                hasBtn={true}
+                descriptions={[<p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="right"
+              />
+            </div>
+
+            <div id="zenvo">
+              <GroupSection
+                url="/automotive/zenvo"
+                link="https://zenvouae.com/"
+                image={imgUrl + pageData[2]?.image}
+                hasBtn={true}
+                title={<span style={{ color: '#fb511e' }}>{pageData[2]?.title}</span>} // Color applied here
+
+                descriptions={[<p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[2]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="left"
+              />
+            </div>
+            <div id="the-elite-cars">
+              <GroupSection
+                url="/automotive/the-elite-cars"
+                link="https://theelitecars.com/"
+                image={imgUrl + pageData[3]?.image}
+                title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
+
+                hasBtn={true}
+                descriptions={[<p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[3]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="right"
+              />
+            </div>
+
+            <div id="soueast">
+              <GroupSection
+                url="/automotive/the-elite-cars"
+                link="https://www.soueast-motor.com"
+                image={imgUrl + pageData[4]?.image}
+                title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
+
+                hasBtn={true}
+                descriptions={[<p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[4]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="left"
+              />
+            </div>
+            <div id="art_elite_car_rental">
+              <GroupSection
+                url="/automotive/the-elite-cars"
+                link="https://www.soueast-motor.com"
+                image={imgUrl + pageData[5]?.image}
+                title={<span style={{ color: '#fb511e' }}>{pageData[5]?.title}</span>} // Color applied here
+
+                hasBtn={false}
+                descriptions={[<p
+                 key="description-1"
+                  dangerouslySetInnerHTML={{ __html: pageData[5]?.description }}
+                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                >
+
+                </p>]}
+                direction="right"
+              />
+            </div>
+          </div>
         </div>
-        <div id="jetour">
-          <GroupSection
-            url="/automotive/jetour"
-            link="https://jetouruae.com/"
-            image={Jetour}
-title={<span style={{ color: '#fb511e' }}>Jetour</span>} // Color applied here
-
-            hasBtn={true}
-            descriptions={[
-              "Jetour has formed an exclusive partnership with Elite Group Holding to introduce the Jetour brand to the UAE.   ",
-              `This collaboration combines decades of expertise in the automotive industry, delivering exceptional vehicles at competitive prices. With a strong commitment to professional aftersales service, this partnership ensures our customers in the UAE enjoy complete peace of mind.`,
-            ]}
-            direction="right"
-          />
-        </div>
-
-        <div id="zenvo">
-          <GroupSection
-            url="/automotive/zenvo"
-            link="https://zenvouae.com/"
-            image={Zenvo3}
-            hasBtn={true}
-title={<span style={{ color: '#fb511e' }}>Zenvo Automotive</span>} // Color applied here
-
-            descriptions={[
-              "Zenvo Automotive is a Danish high-performance car manufacturer known for creating exclusive, hand-built hypercars that combine cutting-edge technology with artisanal craftsmanship. Renowned for their exceptional power, precision engineering, and striking design, Zenvo's limited-edition vehicles deliver a unique driving experience for discerning enthusiasts worldwide. ",
-            ]}
-direction="left"
-          />
-        </div>
-        <div id="the-elite-cars">
-          <GroupSection
-            url="/automotive/the-elite-cars"
-            link="https://theelitecars.com/"
-            image={theelitecars}
-title={<span style={{ color: '#fb511e' }}>The Elite Cars</span>} // Color applied here
-
-            hasBtn={true}
-            descriptions={[
-              "The Elite Cars, a subsidiary of Elite Group Holding, is a multi-brand dealership specializing in high-end car brands, offering an unmatched automotive experience.",
-              "With a commitment to quality, service, and customer satisfaction, The Elite Cars has been the undisputed leader in the UAE luxury automotive industry for decades.",
-            ]}
-            direction="right"
-          />
-        </div>
-
-        <div id="soueast">
-          <GroupSection
-            url="/automotive/the-elite-cars"
-            link="https://www.soueast-motor.com"
-            image={soueast}
-title={<span style={{ color: '#fb511e' }}>Soueast</span>} // Color applied here
-
-            hasBtn={true}
-            descriptions={[
-              "Soueast Motor Corporation Ltd is one of the earliest automobile companies based in China. Soueast integrates advanced international management experience and introduces world-class technology & equipment to form a modern production.",
-              "Since its establishment, SOUEAST has nearly 20 years of successful experience in global business.",
-            ]}
-            direction="left"
-          />
-        </div>
-<div id="art_elite_car_rental">
-          <GroupSection
-            url="/automotive/the-elite-cars"
-            link="https://www.soueast-motor.com"
-            image={art}
-title={<span style={{ color: '#fb511e' }}>ART Elite Car Rental</span>} // Color applied here
-
-            hasBtn={false}
-            descriptions={[
-              "Founded on the principles of luxury, innovation, and customer-centric service, ART Elite Car Rental is the premier choice for discerning clients who seek sophistication, performance, unparalleled comfort, and the best car hire deals.",
-              "Our brand embodies sophistication and excellence, offering meticulously checked and maintained fleet of high-end vehicles that cater to those who appreciate the finer things in life.",
-"With a commitment to excellence and a focus on delivering exceptional customer experiences, ART Elite Car Rental stands as the go-to choice for discerning individuals and businesses looking to elevate their driving experience."
-            ]}
-            direction="right"
-          />
-        </div>
-      </div>
-
+      )}
       <Footer />
     </>
   );
