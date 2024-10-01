@@ -4,7 +4,7 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -21,10 +21,13 @@ import BackgroundImagemobile from "/public/assets/aurora-mobile.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import "photoswipe/dist/photoswipe.css";
+import { apiUrl, blogImgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MediaCenter = () => {
+  const [blogs, setBlogs] = useState([]);
+
   useEffect(() => {
     // Smooth Scroll
     const handleSmoothScroll = (e) => {
@@ -144,7 +147,48 @@ const MediaCenter = () => {
     };
   }, []);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + 'get-blogs');  // Your API endpoint
+        const data = await response.json();
+
+        setBlogs(data?.blogs);
+
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
+
+  const formatCreatedAt = (createdAt) => {
+    const date = new Date(createdAt);
+
+    // Format the date
+    const formattedDate = new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: '2-digit',
+    }).format(date);
+
+    // Add static location details (Dubai, UAE)
+    return `${formattedDate}, Dubai, UAE`;
+  };
+
+  const stripHtml = (html) => {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
+
   return (
+
     <>
       <Navbar />
       <div className="h-screen w-screen relative section-1">
@@ -157,10 +201,10 @@ const MediaCenter = () => {
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-          Aug 12, 2024, Dubai, UAE
+            Aug 12, 2024, Dubai, UAE
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2">
-           Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth.. 
+            Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth..
           </div>
           <a
             href="/blog/elite-group-holding-and-soueast-motor"
@@ -224,25 +268,29 @@ const MediaCenter = () => {
             Press Releases
           </div> */}
           <div className="flex flex-col gap-10 section-3-1">
-<div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
+
+          {blogs?.map((blog, index) => (
+
+            <div key={blog?.id} className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
                 unoptimized
                 width={200}
                 height={200}
-                src={BackgroundImage} 
-                alt="The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA"
+                src={blogImgUrl + blog.image}
+                alt={blog.title}
                 className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                February 21, 2024, Dubai, UAE
+                {formatCreatedAt(blog.created_at)}
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
+                {blog.title}
                 </div>
                 <div className=" mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-The Elite Cars, the leading luxury automotive dealership in the United Arab Emirates, through their exclusive partnership...                </div>
-                <Link href="/blog/the-elite-cars-presents-zenvo-aurora">
+                {stripHtml(blog?.content).substring(0, 100) + ".."}
+                   </div>
+                <Link  href={'/blog/' +blog.slug}>
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
                     Read More
                     <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
@@ -250,24 +298,28 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 </Link>
               </div>
             </div>
-            <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
+
+          ))}
+
+
+            {/* <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
                 unoptimized
                 width={200}
                 height={200}
-                src={Carousel3Img1} 
+                src={Carousel3Img1}
                 alt="The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA"
                 className="w-[550px] h-[300px] object-cover"
               />
               <div className="lg:w-[65%]">
                 <div className="text-[#282828] font-semibold text-sm  mb-[5px] sm:mb-4">
-                Jan 21, 2024, Dubai, UAE
+                  Jan 21, 2024, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl  mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                The All-New Jetour T2 Debuts in the UAE
+                  The All-New Jetour T2 Debuts in the UAE
                 </div>
                 <div className=" mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                The historic event took place at Terra Solis, Dubai where guests were treated to a symphony of multi-sensory spectacle
+                  The historic event took place at Terra Solis, Dubai where guests were treated to a symphony of multi-sensory spectacle
                 </div>
                 <Link href="/blog/the-all-new-jetour-t2-debuts-in-the-uae">
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
@@ -277,7 +329,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                 </Link>
               </div>
             </div>
-                
+
             <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
                 unoptimized
@@ -289,10 +341,10 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4 md:mb-6">
-                27 January 2024, Dubai, UAE
+                  27 January 2024, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                Jetour Shines at 2023 Shanghai Auto Show with Its Latest...
+                  Jetour Shines at 2023 Shanghai Auto Show with Its Latest...
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
                   The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM, T2 (Named Traveler in the Chinese market), T3
@@ -306,7 +358,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               </div>
             </div>
 
-<div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
+            <div className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
                 unoptimized
                 width={200}
@@ -317,13 +369,13 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
-                June 06, 2023, Dubai, UAE
+                  June 06, 2023, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                The Elite Cars launches limited edition AED 8 Million...
+                  The Elite Cars launches limited edition AED 8 Million...
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE
+                  Dubai: The Elite Cars Group, one of the leading multi-brand luxury car dealerships in the UAE
                 </div>
                 <Link href="/blog/the-elite-cars-launches-zenvo-hypercar-to-the-middle-east">
                   <button className="block max-sm:text-xs  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
@@ -342,13 +394,13 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
               />
               <div className="lg:w-1/2">
                 <div className="text-[#282828] font-semibold text-sm mb-[5px] sm:mb-4">
-                March 16, 2023, Dubai, UAE
+                  March 16, 2023, Dubai, UAE
                 </div>
                 <div className="font-semibold text-2xl md:text-4xl mb-[5px] sm:mb-4 uppercase line-clamp-2">
-                THE GROWTH OF REAL ESTATE IN THE UAE
+                  THE GROWTH OF REAL ESTATE IN THE UAE
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                The United Arab Emirates (UAE) has witnessed a remarkable transformation over the past few decades, evolving from a desert landscape into a bustling hub of
+                  The United Arab Emirates (UAE) has witnessed a remarkable transformation over the past few decades, evolving from a desert landscape into a bustling hub of
                 </div>
                 <Link href="/blog/real-estate">
                   <button className="block max-sm:text-xs  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
@@ -357,7 +409,7 @@ The Elite Cars, the leading luxury automotive dealership in the United Arab Emir
                   </button>
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

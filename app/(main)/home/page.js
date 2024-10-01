@@ -354,9 +354,6 @@ const EliteHome = () => {
    
         setHomePageData(data);
         setCurrentVideo(data?.homePageVideo?.video)
-        console.log('====================================');
-        console.log(data);
-        console.log('====================================');
       } catch (error) {
         console.error('Error fetching data:', error);
       }
