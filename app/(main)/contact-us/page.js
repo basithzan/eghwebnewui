@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from 'axios';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import { apiUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +21,7 @@ const ContactUs = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [pageData, setPageData] = useState([]);
 
   useEffect(() => {
     gsap
@@ -107,6 +109,21 @@ const ContactUs = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-contact-us`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.contact);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
   return (
     <>
       <Navbar />
@@ -144,15 +161,16 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      {pageData && pageData.length !== 0 &&
+        <div>
 
       <div className="px-[5%]">
         <div className="text-center text-[#141414] sm:pt-10 pb-14 section-2">
           <div className="mt-10 sm:mt-5 common-heading text-1 text-left sm:text-center" style={{ color: '#fb511e' }}>
-            CONTACT US TODAY
+          {pageData[0]?.title}
           </div>
           <p className="py-3 md:py-5 text-2 common-description text-left sm:text-center">
-            Please fill in the form below and
-            we will try our best to get back to you as soon as we can.
+          {pageData[0]?.title2}
           </p>
 
           <div className="section-2-1">
@@ -229,7 +247,7 @@ const ContactUs = () => {
         <div className="relative sm:w-[56%] max-sm:mt-4 sm:grow sm:shrink-0 sm:-me-[3.5%] overflow-hidden section-3-2">
           <iframe
             className="w-full h-[400px] sm:h-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.0640573720193!2d55.2168977!3d25.133525100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6bd1a26ee393%3A0x31908953c6606f5!2sThe%20Elite%20Cars!5e0!3m2!1sen!2sin!4v1721760591057!5m2!1sen!2sin"
+            src= {pageData[0]?.iframesrc}
             width="600"
             height="450"
             allowFullScreen=""
@@ -240,18 +258,19 @@ const ContactUs = () => {
         </div>
 
         <div className="py-5 sm:py-0 md:grid md:place-content-center max-md:flex max-md:flex-col max-md:justify-center px-[5%] sm:px-0 md:w-1/2 h-full section-3-1">
-          <div className="mb-8 common-heading" style={{ color: '#fb511e' }}>HEADQUARTERS</div>
-          <p className="common-description">
-            723 Sheikh Zayed Road, P. O. Box 393316
+          <div className="mb-8 common-heading" style={{ color: '#fb511e' }}>{pageData[0]?.address_head}</div>
+          <p className="common-description" dangerouslySetInnerHTML={{ __html: pageData[0]?.address }} >
           </p>
-          <p className="common-description">Dubai, U.A.E.</p>
           <p className="mt-5 common-description">
-            inquiry@elitegroupholding.com
+            {pageData[0]?.email}
           </p>
-          <p className="mt-5 common-description">+971 2 806 0000 </p>
+          <p className="mt-5 common-description">            {pageData[0]?.phone}
+          </p>
           <p className="mt-5 common-description">800-535483 </p>
         </div>
       </div>
+          </div>
+        }
 
       {showThankYou && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
