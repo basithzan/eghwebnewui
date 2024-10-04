@@ -151,23 +151,16 @@ const Careers = () => {
                   />
                 </div>
                 <div className="xl:pe-10 md:shrink-1 md:w-1/2">
-                  <div className="common-heading mb-8 text-1" style={{ color: '#fb511e' }}>JOIN OUR TEAM</div>
-                  <p className="text-md md:text-lg font-semibold uppercase line-clamp-2 hover:line-clamp-none md:leading-8 mb-4">
+                  <div className="common-heading mb-8 text-1" style={{ color: '#fb511e' }}>{pageData[0]?.title}</div>
+                  {/* <p className="text-md md:text-lg font-semibold uppercase line-clamp-2 hover:line-clamp-none md:leading-8 mb-4" >
+                
                     Where Luxury Meets Opportunity
+                  </p> */}
+                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2" dangerouslySetInnerHTML={{ __html: pageData[0].content }} >
+                  
+                   
                   </p>
-                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2">
-                    At Elite Group Holding, we live by our commitment to make a
-                    positive impact on the lives of our customers, partners,
-                    stakeholders, and employees through outstanding products and
-                    customer-focused services.
-                  </p>
-                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2">
-                    We are constantly searching for motivated individuals who are
-                    dedicated to innovation and excellence, who view challenges as
-                    opportunities and successes as inspiration to join our team at
-                    various levels in industries such as automotive, real estate and
-                    construction, e-commerce and investments.
-                  </p>
+                  
                 </div>
               </div>
             </div>
@@ -175,43 +168,12 @@ const Careers = () => {
           <div className="px-[5%]">
             <div className="my-20 section-3">
               <div className="common-heading mb-10 text-1 uppercase" style={{ color: '#fb511e' }}>
-                Why Choose ELITE GROUP HOLDING?
+              {pageData[1]?.title}
               </div>
               <div className="px-5">
                 <ul className="list-disc mb-8 text-2">
-                  <li className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
-                    <strong className=" text-[#282828]">
-                      Career Growth Opportunities
-                    </strong>
-                    : We are committed to the professional development of our
-                    employees. With regular training sessions, mentorship programs,
-                    and clear career paths, Elite Group Holding provides ample
-                    opportunities for you to advance and grow within the company.
-                  </li>
-                  <li className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
-                    <strong className=" text-[#282828]">Collaborative Culture</strong>
-                    : Our success is built on teamwork. We cultivate a collaborative
-                    environment where every contribution is valued. Working here
-                    means being part of a supportive and inclusive team that works
-                    together to achieve common goals.
-                  </li>
-                  <li className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
-                    <strong className=" text-[#282828]">
-                      Commitment to Excellence and Integrity
-                    </strong>
-                    : Our commitment to excellence extends beyond our projects to
-                    our workplace culture. We uphold the highest standards of
-                    integrity and ethics in all our operations, ensuring a
-                    respectful and transparent working environment.
-                  </li>
-                  <li className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
-                    <strong className=" text-[#282828]">
-                      Community Engagement and Sustainability
-                    </strong>
-                    : Elite Group Holding is dedicated to making a positive impact
-                    on society. We engage in various community service initiatives
-                    and prioritize sustainable practices, giving you the chance to
-                    contribute to meaningful causes.
+                  <li className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2" dangerouslySetInnerHTML={{ __html: pageData[1].content }} >
+                    
                   </li>
                 </ul>
                 <p className="mt-5 text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2 text-center">
@@ -230,7 +192,7 @@ const Careers = () => {
                     rel="noopener noreferrer"
                     className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5 max-md:mb-16 bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
                   >
-                    SUBMIT CV
+                    {pageData[1]?.link_text}
                   </a>
                 </div>
               </div>

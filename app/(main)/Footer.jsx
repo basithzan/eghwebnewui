@@ -3,38 +3,49 @@
 import Image from "next/image";
 import SocialLinks from "./SocialLinks";
 import Logo from "/public/assets/Logo.png";
+import { useEffect, useState } from "react";
+import { apiUrl } from "@/lib/constants";
 
 const Footer = () => {
+  const [pageData, setPageData] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-footer`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.footer);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
   return (
     <div className="bg-[#141414] py-10">
+      {pageData && pageData.length !== 0 &&
+
       <div className="px-[5%] mx-auto">
         <Image
-  unoptimized
-  alt="img"
-  src={Logo}
-  className="w-[calc(7rem+25px)] md:w-[calc(10rem+25px)] mx-auto mb-5 md:mb-10"
-/>
+          unoptimized
+          alt="img"
+          src={Logo}
+          className="w-[calc(7rem+25px)] md:w-[calc(10rem+25px)] mx-auto mb-5 md:mb-10"
+        />
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-14 text-[#B3B3B3]">
           <div>
             <div className=" md:text-base text-[1.25rem] lg:text-[1.5rem] lg:leading-[1.75rem] mb-2.5  text-white">
               ABOUT US
             </div>
-            <p className="text-base md:text-base lg:text-[1rem] lg:leading-[1.75rem] mb-2.5">
-              At Elite Group Holding, we are committed to enhance the quality of
-              life within the communities we serve, continuously seek avenues
-              for fostering growth and make a positive impact on the world and
-              our community.{" "}
+            <p className="text-base md:text-base lg:text-[1rem] lg:leading-[1.75rem] mb-2.5" dangerouslySetInnerHTML={{ __html: pageData[0].content }} >
+             
             </p>
-            <p className="text-base md:text-base lg:text-[1rem] lg:leading-[1.75rem] mb-2.5">
-              Headquartered in the United Arab Emirates, our expansive portfolio
-              encompasses automotive, e-commerce, healthcare, real estate and
-              contracting, and investments.
-            </p>
-            <p className="text-base md:text-base lg:text-[1rem] lg:leading-[1.75rem] mb-2.5">
-              We pride ourselves on our unwavering dedication to excellence,
-              integrity, and teamwork.
-            </p>
+           
           </div>
 
           <div className="flex gap-2 md:justify-around justify-between">
@@ -110,6 +121,7 @@ const Footer = () => {
             <SocialLinks
               className="gap-0.5  flex items-center"
               iconClassName="w-6 h-6"
+              pageData={pageData}
             />
           </div>
         </div>
@@ -117,7 +129,7 @@ const Footer = () => {
         <hr className="my-10 border-[#808080]" />
 
         <p className="mb-2 text-[#C3C3C3] text-sm uppercase">
-          Copyright © 2024 | ALL RIGHTS RESERVED | ELITE GROUP HOLDING LTD |
+          {pageData[0]?.copyright}
           <span className="font-bold">
             <a href="/privacy"> PRIVACY POLICY</a> |{" "}
             <a href="/terms-and-condition">Terms & Condition</a>
@@ -129,6 +141,9 @@ const Footer = () => {
           manufacturer.
         </p> */}
       </div>
+
+    }
+
     </div>
   );
 };
