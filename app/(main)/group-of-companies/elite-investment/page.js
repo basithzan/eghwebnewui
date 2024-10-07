@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import gsap from "gsap";
 
@@ -17,10 +17,14 @@ import BackgroundImageecom from "/public/assets/about-us/BackgroundImageinvest.j
 import BackgroundImageecommob from "/public/assets/about-us/BackgroundImageinvestmob.jpg";
 import csr2 from "/public/assets/about-us/csr3.jpg";
 import vision from "/public/assets/investment2.jpg";
+import { apiUrl, imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
+
+  const [pageData, setPageData] = useState([]);
+
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -170,6 +174,22 @@ const AboutUs = () => {
       );
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-elite-investment`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.investment);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -192,7 +212,7 @@ const AboutUs = () => {
         />
 
         <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-<div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+          <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
             ELITE GROUP HOLDING
           </div>
           <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
@@ -208,86 +228,79 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="bg-[#F7F7F7] max-sm:mb-1">
-        <div className="px-[5%] section-2 overflow-hidden">
-          <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
-            <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={mission}
-                alt="img1"
-                className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
-              />
-            </div>
-            <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
-              {/* Updated Heading with Padding */}
-              <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e" }}
-              >
-                INVESTMENTS
-              </div>
-              {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
+      {pageData && pageData?.length !== 0 && (
+
+        <div>
+
+          <div className="bg-[#F7F7F7] max-sm:mb-1">
+            <div className="px-[5%] section-2 overflow-hidden">
+              <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
+                <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[0]?.image}
+                    alt="img1"
+                    className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
+                  />
+                </div>
+                <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
+                  {/* Updated Heading with Padding */}
+                  <div
+                    className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                    style={{ color: "#fb511e" }}
+                  >
+                    {pageData[0]?.title}
+                  </div>
+                  {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
                 It all started with a dream
               </p> */}
-              <p className="mb-2 md:mb-4  common-description text-3">
-                Elite Group Holding has a large and diversified portfolio of local and international investments.
-              </p>
-              <p className="mb-2 md:mb-4  common-description text-3">
-                Headquartered in the United Arab Emirates, our expansive
-                portfolio encompasses automotive, e-commerce, healthcare, real
-                estate and contracting, and investments.{" "}
-              </p>
-              <p className="mb-2 md:mb-4  common-description text-3 pb-[30px]">
-                With a relentless commitment to integrity, transparency, and prudent risk management, we navigate the dynamic landscape of global markets to unlock value and drive sustainable wealth creation.
-              </p>
+                  <p className="mb-2 md:mb-4  common-description text-3" dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
+
+                  </p>
+
+                </div>
+              </div>
+            </div>
+
+            <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
+              <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
+                <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
+                  {/* Updated Heading with Padding */}
+
+                  <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
+
+                  </p>
+
+                  <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
+
+                  </p>
+                  {/* <p className="mb-2 md:mb-4 common-description text-3">
+                For more information, contact us at
+                <br /><a href="mailto:ecommerce@elitegroupholding.com">
+                  <strong>investment@elitegroupholding.com</strong>
+                </a>
+              </p> */}
+                </div>
+                <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[1]?.image}
+                    alt="img2"
+                    className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
-          <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
-            <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
-              {/* Updated Heading with Padding */}
-              
-              <p className="mb-2 md:mb-4  common-description text-2 ">
-                Guided by an unwavering commitment to integrity, transparency,
-and prudent risk management, we navigate the ever-evolving
-landscape of global markets with precision and foresight. Our
-approach is centered on unlocking value, fostering innovation,
-and driving sustainable wealth creation for our stakeholders.
-              </p>
-
-              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
-                By staying attuned to market trends and maintaining a flexible
-investment strategy, Elite Group Holding continues to build a
-legacy of success, resilience, and long-term growth.
-              </p>
-<p className="mb-2 md:mb-4 common-description text-3">
-  For more information, contact us at
-  <br /><a href="mailto:ecommerce@elitegroupholding.com">
-    <strong>investment@elitegroupholding.com</strong>
-  </a>
-</p>
-            </div>
-            <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={vision}
-                alt="img2"
-                className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
+      )}
 
 
       {/* <div className="container mx-auto md:py-24 py-16 px-[5%] section-5 overflow-hidden">

@@ -10,16 +10,35 @@ import Footer from "../../Footer";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import TheEliteCarsImage from '/public/assets/61eb2205573fced65146611241f3b4c4.jpeg';
+import { apiUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GroupOfCompanies = ({ BackgroundImage, title, descriptions = [] }) => {
+    const [pageData, setPageData] = useState([]);
 
     useEffect(() => {
         gsap.timeline({ duration: 0.5, ease: 'power3.out' })
             .fromTo('.section-1 .text-1', { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
             .fromTo('.section-1 .text-2', { y: 50, opacity: 0 }, { y: 0, opacity: 1 });
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            // Example: Fetch images or posts asynchronously if not passed as props
+            const response = await fetch(apiUrl + `get-automotive`);  // Your API endpoint
+            const data = await response.json();
+    
+            setPageData(data?.automotive);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, [])
+    
 
     return (
         <>

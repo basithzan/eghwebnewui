@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import gsap from "gsap";
 
@@ -17,10 +17,39 @@ import BackgroundImageecom from "/public/assets/about-us/BackgroundImagereal.jpg
 import BackgroundImageecommob from "/public/assets/about-us/BackgroundImagerealmob.jpg";
 import csr2 from "/public/assets/about-us/csr3.jpg";
 import vision from "/public/assets/realestate2.jpg";
+import { apiUrl, imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutUs = () => {
+  const [pageData, setPageData] = useState([]);
+  const [banner, setBanner] = useState(null);
+
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    const cachedData = localStorage.getItem('banners');
+    if (cachedData) {
+      // If it exists, use it
+      setBanner(JSON.parse(cachedData));
+      const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'REAL ESTATE');
+
+      console.log(bnr)
+
+      setBanner(bnr);
+
+    } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+          setBanner(data?.banners?.find(banner => banner.page == 'REAL ESTATE'));
+
+
+        });
+    }
+  }, []);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -170,15 +199,33 @@ const AboutUs = () => {
       );
   }, []);
 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Example: Fetch images or posts asynchronously if not passed as props
+        const response = await fetch(apiUrl + `get-elite-real-estate`);  // Your API endpoint
+        const data = await response.json();
+
+        setPageData(data?.real_estate);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, [])
   return (
     <>
       <Navbar />
+      {banner &&
+
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
           width={200}
           height={300}
-          src={BackgroundImageecom}
+           src={imgUrl + banner?.image}
           alt="bg-img"
           className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
         />
@@ -186,17 +233,17 @@ const AboutUs = () => {
           unoptimized
           width={200}
           height={300}
-          src={BackgroundImageecommob}
+          src={imgUrl + banner?.image}
           alt="bg-img"
           className="object-cover object-center md:hidden h-screen w-screen brightness-50"
         />
 
         <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-<div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-            ELITE GROUP HOLDING
+          <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+          {banner?.title1}
           </div>
           <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-            REAL ESTATE AND CONTRACTING
+          {banner?.title2}
           </div>
         </div>
         <div className=" absolute bottom-0 right-0 px-[5%]">
@@ -207,8 +254,11 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+      }
+      {pageData && pageData?.length !== 0 && (
 
-            <div className="bg-[#F7F7F7] max-sm:mb-1">
+    <div>
+    <div className="bg-[#F7F7F7] max-sm:mb-1">
         <div className="px-[5%] section-2 overflow-hidden">
           <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
             <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
@@ -217,7 +267,7 @@ const AboutUs = () => {
                 unoptimized
                 width={200}
                 height={300}
-                src={mission}
+                src={imgUrl + pageData[0]?.image}
                 alt="img1"
                 className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
               />
@@ -225,26 +275,20 @@ const AboutUs = () => {
             <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
               {/* Updated Heading with Padding */}
               <div
-  className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-  style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
->
-  REAL ESTATE AND CONTRACTING
-</div>
+                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
+              >
+                 {pageData[0]?.title}
+              </div>
               {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
                 It all started with a dream
               </p> */}
+              <p className="mb-2 md:mb-4  common-description text-3"  dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
+                   </p>
               <p className="mb-2 md:mb-4  common-description text-3">
-Elite Group Holding has a carefully curated portfolio of
-projects across the UAE.              </p>
-              <p className="mb-2 md:mb-4  common-description text-3">
-                We manage a substantial amount of commercial,
-residential and retail properties and projects.
-Through innovative design, meticulous planning, and a
-commitment to excellence, we strive to exceed
-expectations, build enduring relationships, and leave a
-lasting legacy of unparalleled craftsmanship and integrity.{" "}
+               
               </p>
-              
+
             </div>
           </div>
         </div>
@@ -253,27 +297,22 @@ lasting legacy of unparalleled craftsmanship and integrity.{" "}
           <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
             <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
               {/* Updated Heading with Padding */}
+
+              <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
               
-              <p className="mb-2 md:mb-4  common-description text-2 ">
-                At the heart of our operations is a commitment to building enduring relationships
-with our clients, partners, and communities. We believe that trust and integrity
-are the foundations of success, and we work tirelessly to uphold these values in
-every project we manage.
               </p>
 
               <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
-                Through our steadfast dedication to these principles, Elite Group Holding
-continues to shape the future of real estate in the UAE, creating iconic properties
-that stand the test of time.
+                
               </p>
-<p className="mb-2 md:mb-4 common-description text-3">
-  For more information, contact us at
-  <br />
-<a href="mailto:ecommerce@elitegroupholding.com">
-    <strong>inquiry@elitegroupholding.com</strong>
-  </a>
-  
-</p>
+              {/* <p className="mb-2 md:mb-4 common-description text-3">
+                For more information, contact us at
+                <br />
+                <a href="mailto:ecommerce@elitegroupholding.com">
+                  <strong>inquiry@elitegroupholding.com</strong>
+                </a>
+
+              </p> */}
             </div>
             <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
               {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
@@ -281,7 +320,7 @@ that stand the test of time.
                 unoptimized
                 width={200}
                 height={300}
-                src={vision}
+                src={imgUrl + pageData[1]?.image}
                 alt="img2"
                 className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
               />
@@ -289,6 +328,10 @@ that stand the test of time.
           </div>
         </div>
       </div>
+    </div>
+  )}
+
+     
 
 
 

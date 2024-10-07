@@ -10,13 +10,40 @@ import BackgroundImageMobile from "/public/assets/career/banner-mobile.jpg";
 import Img from "/public/assets/career/join-our-team.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { apiUrl } from "@/lib/constants";
+import { apiUrl,imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Careers = () => {
 
   const [pageData, setPageData] = useState([]);
+  const [banner, setBanner] = useState(null);
+
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    const cachedData = localStorage.getItem('banners');
+    if (cachedData) {
+      // If it exists, use it
+      setBanner(JSON.parse(cachedData));
+      const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Careers');
+
+      console.log(bnr)
+
+      setBanner(bnr);
+
+    } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+          setBanner(data?.banners?.find(banner => banner.page == 'Careers'));
+
+
+        });
+    }
+  }, []);
 
   useEffect(() => {
     gsap
@@ -99,11 +126,16 @@ const Careers = () => {
   return (
     <>
       <Navbar />
+
+      {banner &&
+
       <div className="h-screen w-screen relative section-1">
         <div className="block md:hidden">
           <Image
             unoptimized
-            src={BackgroundImageMobile}
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
             alt="Mobile Background"
             className="object-cover object-center h-screen w-screen brightness-[0.3] sm:brightness-50"
           />
@@ -111,7 +143,9 @@ const Careers = () => {
         <div className="hidden md:block">
           <Image
             unoptimized
-            src={BackgroundImageDesktop}
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
             alt="Desktop Background"
             className="object-cover object-center h-screen w-screen brightness-[0.3] sm:brightness-50"
           />
@@ -119,10 +153,10 @@ const Careers = () => {
 
         <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
           <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-            CAREERS
+          {banner?.title1}
           </div>
           <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-            JOIN US
+          {banner?.title2}
           </div>
         </div>
         <div className="absolute bottom-0 right-0 px-[5%]">
@@ -133,6 +167,7 @@ const Careers = () => {
           </div>
         </div>
       </div>
+    }
 
       {pageData && pageData.length !== 0 &&
 

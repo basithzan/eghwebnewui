@@ -33,7 +33,7 @@ import Img9 from "/public/assets/home/Homepage-allsectors-investments.jpg";
 import Img8 from "/public/assets/home/Homepage-allsectors-real-estate.jpg";
 import zenvo from "/public/assets/home/zenvo.jpg";
 import Img1 from "/public/assets/night-showroom.jpg";
-import { apiUrl,imgUrl } from "@/lib/constants";
+import { apiUrl, imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -174,6 +174,8 @@ const EliteHome = () => {
   const [homePageData, setHomePageData] = useState([]);
   const videoRef = useRef(null);
   const [progress, setProgress] = useState(0);
+  const [banners, setBanners] = useState([]);
+
   const videoUrls = [
     video2,
     video3,
@@ -349,9 +351,9 @@ const EliteHome = () => {
     const fetchData = async () => {
       try {
         // Example: Fetch images or posts asynchronously if not passed as props
-        const response = await fetch( apiUrl +`get-homepage-data`);  // Your API endpoint
+        const response = await fetch(apiUrl + `get-homepage-data`);  // Your API endpoint
         const data = await response.json();
-   
+
         setHomePageData(data);
         setCurrentVideo(data?.homePageVideo?.video)
       } catch (error) {
@@ -362,6 +364,20 @@ const EliteHome = () => {
     fetchData();
   }, [])
 
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    // if (cachedData) {
+    //   // If it exists, use it
+    // } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+        });
+    // }
+  }, []);
   return (
     <>
       <Navbar />
@@ -451,12 +467,12 @@ const EliteHome = () => {
         <div className="max-md:my-10 md:flex md:flex-row-reverse items-center">
           <div className=" md:shrink-1 md:w-1/2 px-[5%] md:py-10">
             <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 uppercase">
-             {homePageData?.homePageAboutUs?.title}
+              {homePageData?.homePageAboutUs?.title}
             </div>
-            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2 pt-4"  dangerouslySetInnerHTML={{ __html: homePageData?.homePageAboutUs?.content }}>
-         
+            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2 pt-4" dangerouslySetInnerHTML={{ __html: homePageData?.homePageAboutUs?.content }}>
+
             </p>
-           
+
             <Link href="/about-group">
               <button
                 href="/about-group"
@@ -485,15 +501,15 @@ const EliteHome = () => {
       <div className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
         {homePageData?.homePageSectorsHeading?.main_heading}
       </div>
-      {homePageData?.homePageSectors && homePageData?.homePageSectors?.length > 0 && 
-      
-      <CarouselSection images={homePageData?.homePageSectors} />
+      {homePageData?.homePageSectors && homePageData?.homePageSectors?.length > 0 &&
+
+        <CarouselSection images={homePageData?.homePageSectors} />
       }
 
       <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
         <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
           <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
-          {homePageData?.homePageHighLightHeading?.main_heading}
+            {homePageData?.homePageHighLightHeading?.main_heading}
           </div>
           {/* <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
             <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
@@ -512,56 +528,56 @@ const EliteHome = () => {
             </p>
           </div> */}
         </div>
-        {homePageData?.homePageHighLights && homePageData?.homePageHighLights?.length > 0 && 
-        
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
-          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <Image
-             width={100}
-             height={100}
-              src="/assets/p1.png"
-              alt="Icon 1"
-              className="w-[60px] h-[60px] mb-[3px]"
-            />
-            <div>
-              {homePageData?.homePageHighLights[0]?.title}
+        {homePageData?.homePageHighLights && homePageData?.homePageHighLights?.length > 0 &&
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
+            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+              <Image
+                width={100}
+                height={100}
+                src="/assets/p1.png"
+                alt="Icon 1"
+                className="w-[60px] h-[60px] mb-[3px]"
+              />
+              <div>
+                {homePageData?.homePageHighLights[0]?.title}
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+              <Image
+                width={100}
+                height={100}
+                src="/assets/p2.png"
+                alt="Icon 2"
+                className="w-[60px] h-[60px] mb-[3px]"
+              />
+              <div>
+                <span className="sm:block">  {homePageData?.homePageHighLights[1]?.title}</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+              <Image
+                width={100}
+                height={100}
+                src="/assets/p3.png"
+                alt="Icon 3"
+                className="w-[60px] h-[60px] mb-[3px]"
+              />
+              <div>{homePageData?.homePageHighLights[2]?.title}</div>
+            </div>
+            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
+              <Image
+                width={100}
+                height={100}
+                src="/assets/p4.png"
+                alt="Icon 4"
+                className="w-[60px] h-[60px] mb-[3px]"
+              />
+              <div className="uppercase">
+                {homePageData?.homePageHighLights[3]?.title}
+              </div>
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <Image
-            width={100}
-            height={100}
-              src="/assets/p2.png"
-              alt="Icon 2"
-              className="w-[60px] h-[60px] mb-[3px]"
-            />
-            <div>
-              <span className="sm:block">  {homePageData?.homePageHighLights[1]?.title}</span>
-            </div>
-          </div>
-          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-            <Image
-             width={100}
-             height={100}
-              src="/assets/p3.png"
-              alt="Icon 3"
-              className="w-[60px] h-[60px] mb-[3px]"
-            />
-            <div>{homePageData?.homePageHighLights[2]?.title}</div>
-          </div>
-          <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-          <Image
-             width={100}
-             height={100}
-              src="/assets/p4.png"
-              alt="Icon 4"
-              className="w-[60px] h-[60px] mb-[3px]"
-            />
-            <div className="uppercase">
-            {homePageData?.homePageHighLights[3]?.title}
-            </div>
-          </div>
-        </div>
         }
       </div>
 
@@ -572,10 +588,10 @@ const EliteHome = () => {
         >
           {homePageData?.homePagePartnersHeading?.main_heading}
         </div>
-      {homePageData?.homePageAutomotivePartners && homePageData?.homePageAutomotivePartners?.length > 0 && 
+        {homePageData?.homePageAutomotivePartners && homePageData?.homePageAutomotivePartners?.length > 0 &&
 
-        <Partner images={homePageData?.homePageAutomotivePartners} />
-      }
+          <Partner images={homePageData?.homePageAutomotivePartners} />
+        }
       </div>
 
       <div className="px-[5%] mx-auto md:mt-24 section-6">
@@ -594,9 +610,9 @@ const EliteHome = () => {
         </div>
         <CarouselSection2 images={CarouselImage3} />
       </div>
-      {homePageData?.homePageBrands && homePageData?.homePageBrands?.length > 0 && 
-      
-      <Brands content={homePageData?.homePageBrands}/>
+      {homePageData?.homePageBrands && homePageData?.homePageBrands?.length > 0 &&
+
+        <Brands content={homePageData?.homePageBrands} />
       }
 
       <Footer />

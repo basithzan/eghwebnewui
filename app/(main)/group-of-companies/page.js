@@ -23,7 +23,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 const GroupOfCompanies = () => {
   const [pageData, setPageData] = useState([]);
+  const [banner, setBanner] = useState(null);
 
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    const cachedData = localStorage.getItem('banners');
+    if (cachedData) {
+      // If it exists, use it
+      setBanner(JSON.parse(cachedData));
+      const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Group of companies');
+
+      console.log(bnr)
+
+      setBanner(bnr);
+
+    } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+          setBanner(data?.banners?.find(banner => banner.page == 'Group of companies'));
+
+
+        });
+    }
+  }, []);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -76,37 +102,43 @@ const GroupOfCompanies = () => {
   return (
     <>
       <Navbar />
-      <div className="h-screen w-screen relative section-1">
-        <Image
-          unoptimized
-          src={BackgroundImage}
-          alt="BackgroundImage"
-          className="object-cover max-md:hidden object-center h-screen w-screen brightness-50"
-        />
-        <Image
-          unoptimized
-          src={BackgroundImagemobile}
-          alt="BackgroundImage"
-          className="object-cover md:hidden object-center h-screen w-screen brightness-50"
-        />
+      {banner &&
 
-        <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-          <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-            ELITE GROUP HOLDING
+        <div className="h-screen w-screen relative section-1">
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
+            alt="BackgroundImage"
+            className="object-cover max-md:hidden object-center h-screen w-screen brightness-50"
+          />
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
+            alt="BackgroundImage"
+            className="object-cover md:hidden object-center h-screen w-screen brightness-50"
+          />
+
+          <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
+            <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+              {banner?.title1}
+            </div>
+            <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+              {banner?.title2}
+            </div>
           </div>
-          <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-            OUR GROUP of COMPANIES
-          </div>
-        </div>
-        <div className=" absolute bottom-0 right-0 px-[5%]">
-          <div className="py-5 flex items-center justify-end">
-            <div className="text-[#fff]">
-              <a href="">Home</a> / Our group
+          <div className=" absolute bottom-0 right-0 px-[5%]">
+            <div className="py-5 flex items-center justify-end">
+              <div className="text-[#fff]">
+                <a href="">Home</a> / Our group
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
+      }
       {pageData && pageData?.length !== 0 &&
 
 
@@ -129,8 +161,8 @@ const GroupOfCompanies = () => {
                   <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#282828] font-semibold md:pb-10 pb-5 head-1 uppercase" style={{ color: '#fb511e' }}>
                     {pageData[0]?.title}
                   </div>
-                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"  dangerouslySetInnerHTML={{ __html: pageData[0]?.content }}>
-                    
+                  <p className="mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2" dangerouslySetInnerHTML={{ __html: pageData[0]?.content }}>
+
                   </p>
                   {/* <p className="mb-4 text-[#808080] text-base md:text-base lg:text-[1.25rem] lg:leading-[1.75rem] text-2">
                 You can ask your questions to the Elite Group Holding Assistant,
@@ -152,7 +184,7 @@ const GroupOfCompanies = () => {
               title={<span style={{ color: '#fb511e' }}>{pageData[1]?.title}</span>} // Color applied here
               descriptions={[
                 <p
-                key="description-1"
+                  key="description-1"
 
                   dangerouslySetInnerHTML={{ __html: pageData[1]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
@@ -168,17 +200,17 @@ const GroupOfCompanies = () => {
               <GroupSection
                 url="/group-of-companies/elite-investment"
                 image={imgUrl + pageData[2]?.image}
-              title={<span style={{ color: '#fb511e' }}>{pageData[2]?.title}</span>} // Color applied here
-              descriptions={[
-                <p
-                key="description-2"
+                title={<span style={{ color: '#fb511e' }}>{pageData[2]?.title}</span>} // Color applied here
+                descriptions={[
+                  <p
+                    key="description-2"
 
-                  dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
-                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
-                >
+                    dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
+                    className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                  >
 
-                </p>
-              ]}
+                  </p>
+                ]}
                 direction="left"
                 hasExplore={true}
                 linkexp="/group-of-companies/elite-e-commerce"
@@ -189,17 +221,17 @@ const GroupOfCompanies = () => {
               <GroupSection
                 url="/group-of-companies/elite-real-estate"
                 image={imgUrl + pageData[3]?.image}
-              title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
-              descriptions={[
-                <p
-                key="description-3"
+                title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
+                descriptions={[
+                  <p
+                    key="description-3"
 
-                  dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
-                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
-                >
+                    dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
+                    className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                  >
 
-                </p>
-              ]}
+                  </p>
+                ]}
                 hasExplore={true}
                 linkexp="/group-of-companies/elite-real-estate"
               />
@@ -209,17 +241,17 @@ const GroupOfCompanies = () => {
               <GroupSection
                 url="/group-of-companies/elite-e-commerce"
                 image={imgUrl + pageData[4]?.image}
-              title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
-              descriptions={[
-                <p
-                key="description-4"
+                title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
+                descriptions={[
+                  <p
+                    key="description-4"
 
-                  dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
-                  className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
-                >
+                    dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
+                    className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
+                  >
 
-                </p>
-              ]}
+                  </p>
+                ]}
                 direction="left"
                 hasExplore={true}
                 linkexp="/group-of-companies/elite-investment"

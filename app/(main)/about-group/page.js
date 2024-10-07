@@ -25,7 +25,32 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutUs = () => {
 
   const [pageData, setPageData] = useState([]);
+  const [banner, setBanner] = useState(null);
 
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    const cachedData = localStorage.getItem('banners');
+    if (cachedData) {
+      // If it exists, use it
+      setBanner(JSON.parse(cachedData));
+      const bnr = JSON.parse(cachedData)?.find(banner => banner.page === 'About');
+
+
+      setBanner(bnr);
+
+    } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+          setBanner(data?.banners?.find(banner => banner.page === 'About'));
+
+
+        });
+    }
+  }, []);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -193,40 +218,44 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
-      <div className="h-screen w-screen relative section-1">
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-          src={BackgroundImage}
-          alt="bg-img"
-          className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
-        />
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-          src={BackgroundImagemobile}
-          alt="bg-img"
-          className="object-cover object-center md:hidden h-screen w-screen brightness-50"
-        />
+      {banner &&
 
-        <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-          <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-            Elite Group Holding
+
+        <div className="h-screen w-screen relative section-1">
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
+            alt="bg-img"
+            className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
+          />
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
+            alt="bg-img"
+            className="object-cover object-center md:hidden h-screen w-screen brightness-50"
+          />
+
+          <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
+            <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+              {banner?.title1}
+            </div>
+            <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+              {banner?.title2}
+            </div>
           </div>
-          <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-            ABOUT THE group
-          </div>
-        </div>
-        <div className=" absolute bottom-0 right-0 px-[5%]">
-          <div className="py-5 flex items-center justify-end">
-            <div className="text-[#fff]">
-              <a href="">Home</a> / About us
+          <div className=" absolute bottom-0 right-0 px-[5%]">
+            <div className="py-5 flex items-center justify-end">
+              <div className="text-[#fff]">
+                <a href="">Home</a> / About us
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      }
       {pageData && pageData.length !== 0 &&
 
         <div>
@@ -309,7 +338,7 @@ const AboutUs = () => {
               hasBtn={false}
               descriptions={[
                 <p
-                 key="description-1"
+                  key="description-1"
                   dangerouslySetInnerHTML={{ __html: pageData[2]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
@@ -334,7 +363,7 @@ const AboutUs = () => {
               hasBtn={false}
               descriptions={[
                 <p
-                 key="description-2"
+                  key="description-2"
                   dangerouslySetInnerHTML={{ __html: pageData[3]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
@@ -359,7 +388,7 @@ const AboutUs = () => {
               hasBtn={false}
               descriptions={[
                 <p
-                 key="description-3"
+                  key="description-3"
                   dangerouslySetInnerHTML={{ __html: pageData[4]?.content }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
