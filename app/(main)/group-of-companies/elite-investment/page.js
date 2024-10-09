@@ -24,6 +24,33 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutUs = () => {
 
   const [pageData, setPageData] = useState([]);
+  const [banner, setBanner] = useState(null);
+
+
+  useEffect(() => {
+    // Check if the data exists in local storage
+    const cachedData = localStorage.getItem('banners');
+    if (cachedData) {
+      // If it exists, use it
+      setBanner(JSON.parse(cachedData));
+      const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Investment');
+
+      console.log(bnr)
+
+      setBanner(bnr);
+
+    } else {
+      // If not, fetch from API and cache it
+      fetch(apiUrl + `get-banners`)
+        .then((response) => response.json())
+        .then((data) => {
+          localStorage.setItem('banners', JSON.stringify(data.banners));
+          setBanner(data?.banners?.find(banner => banner.page == 'Investment'));
+
+
+        });
+    }
+  }, []);
 
   useEffect(() => {
     gsap
@@ -193,12 +220,13 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
+      {banner &&
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
           width={200}
           height={300}
-          src={BackgroundImageecom}
+          src={imgUrl + banner?.image}
           alt="bg-img"
           className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
         />
@@ -206,17 +234,17 @@ const AboutUs = () => {
           unoptimized
           width={200}
           height={300}
-          src={BackgroundImageecommob}
+          src={imgUrl + banner?.image}
           alt="bg-img"
           className="object-cover object-center md:hidden h-screen w-screen brightness-50"
         />
 
         <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
           <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-            ELITE GROUP HOLDING
+          {banner?.title1}
           </div>
           <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-            INVESTMENTS
+          {banner?.title2}
           </div>
         </div>
         <div className=" absolute bottom-0 right-0 px-[5%]">
@@ -227,6 +255,8 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
+
+    }
 
       {pageData && pageData?.length !== 0 && (
 
