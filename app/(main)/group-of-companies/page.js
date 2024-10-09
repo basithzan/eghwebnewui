@@ -25,6 +25,7 @@ const GroupOfCompanies = () => {
   const [pageData, setPageData] = useState([]);
   const [banner, setBanner] = useState(null);
 
+  const [seoData, setSeoData] = useState(null); // New state for SEO data
 
   useEffect(() => {
     // Check if the data exists in local storage
@@ -49,7 +50,73 @@ const GroupOfCompanies = () => {
 
         });
     }
+
+    fetch(apiUrl + 'get-seo-data?page=Group of companies')
+    .then((response) => response.json())
+    .then((data) => {
+      setSeoData(data?.seo); // Store SEO data in the state
+
+    });
   }, []);
+
+  useEffect(() => {
+    // Set the document title
+    document.title = seoData?.metaTitle || 'Elite group holdings';
+
+    // Set the meta description
+    let descriptionMetaTag = document.querySelector("meta[name='description']");
+    if (!descriptionMetaTag) {
+      descriptionMetaTag = document.createElement('meta');
+      descriptionMetaTag.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMetaTag);
+    }
+    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite group holdings');
+
+    // Set the meta keywords
+    let keywordsMetaTag = document.querySelector("meta[name='keywords']");
+    if (!keywordsMetaTag) {
+      keywordsMetaTag = document.createElement('meta');
+      keywordsMetaTag.setAttribute('name', 'keywords');
+      document.head.appendChild(keywordsMetaTag);
+    }
+    keywordsMetaTag.setAttribute('content', seoData?.metaKeywords || 'elite, group');
+
+    // Set Open Graph (og) title
+    let ogTitleTag = document.querySelector("meta[property='og:title']");
+    if (!ogTitleTag) {
+      ogTitleTag = document.createElement('meta');
+      ogTitleTag.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitleTag);
+    }
+    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite group holdings');
+
+    // Set Open Graph (og) description
+    let ogDescriptionTag = document.querySelector("meta[property='og:description']");
+    if (!ogDescriptionTag) {
+      ogDescriptionTag = document.createElement('meta');
+      ogDescriptionTag.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDescriptionTag);
+    }
+    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite group holdings');
+
+    // Set Open Graph (og) image
+    let ogImageTag = document.querySelector("meta[property='og:image']");
+    if (!ogImageTag) {
+      ogImageTag = document.createElement('meta');
+      ogImageTag.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImageTag);
+    }
+    ogImageTag.setAttribute('content', imgUrl+ seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
+
+    // Set Open Graph (og) url
+    let ogUrlTag = document.querySelector("meta[property='og:url']");
+    if (!ogUrlTag) {
+      ogUrlTag = document.createElement('meta');
+      ogUrlTag.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrlTag);
+    }
+    ogUrlTag.setAttribute('content', seoData?.ogUrl || 'https://elitegroupholding.com/');
+  }, [seoData]);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })

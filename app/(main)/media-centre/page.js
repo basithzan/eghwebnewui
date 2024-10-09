@@ -21,12 +21,13 @@ import BackgroundImagemobile from "/public/assets/aurora-mobile.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import "photoswipe/dist/photoswipe.css";
-import { apiUrl, blogImgUrl } from "@/lib/constants";
+import { apiUrl, blogImgUrl,imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MediaCenter = () => {
   const [blogs, setBlogs] = useState([]);
+  const [seoData, setSeoData] = useState(null); // New state for SEO data
 
   useEffect(() => {
     // Smooth Scroll
@@ -164,8 +165,74 @@ const MediaCenter = () => {
     };
 
     fetchData();
+
+    fetch(apiUrl + 'get-seo-data?page=Media center')
+    .then((response) => response.json())
+    .then((data) => {
+      setSeoData(data?.seo); // Store SEO data in the state
+
+    });
   }, [])
 
+
+  useEffect(() => {
+    // Set the document title
+    document.title = seoData?.metaTitle || 'Elite group holdings';
+
+    // Set the meta description
+    let descriptionMetaTag = document.querySelector("meta[name='description']");
+    if (!descriptionMetaTag) {
+      descriptionMetaTag = document.createElement('meta');
+      descriptionMetaTag.setAttribute('name', 'description');
+      document.head.appendChild(descriptionMetaTag);
+    }
+    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite group holdings');
+
+    // Set the meta keywords
+    let keywordsMetaTag = document.querySelector("meta[name='keywords']");
+    if (!keywordsMetaTag) {
+      keywordsMetaTag = document.createElement('meta');
+      keywordsMetaTag.setAttribute('name', 'keywords');
+      document.head.appendChild(keywordsMetaTag);
+    }
+    keywordsMetaTag.setAttribute('content', seoData?.metaKeywords || 'elite, group');
+
+    // Set Open Graph (og) title
+    let ogTitleTag = document.querySelector("meta[property='og:title']");
+    if (!ogTitleTag) {
+      ogTitleTag = document.createElement('meta');
+      ogTitleTag.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitleTag);
+    }
+    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite group holdings');
+
+    // Set Open Graph (og) description
+    let ogDescriptionTag = document.querySelector("meta[property='og:description']");
+    if (!ogDescriptionTag) {
+      ogDescriptionTag = document.createElement('meta');
+      ogDescriptionTag.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDescriptionTag);
+    }
+    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite group holdings');
+
+    // Set Open Graph (og) image
+    let ogImageTag = document.querySelector("meta[property='og:image']");
+    if (!ogImageTag) {
+      ogImageTag = document.createElement('meta');
+      ogImageTag.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImageTag);
+    }
+    ogImageTag.setAttribute('content', imgUrl+ seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
+
+    // Set Open Graph (og) url
+    let ogUrlTag = document.querySelector("meta[property='og:url']");
+    if (!ogUrlTag) {
+      ogUrlTag = document.createElement('meta');
+      ogUrlTag.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrlTag);
+    }
+    ogUrlTag.setAttribute('content', seoData?.ogUrl || 'https://elitegroupholding.com/');
+  }, [seoData]);
   const formatCreatedAt = (createdAt) => {
     const date = new Date(createdAt);
 
@@ -191,27 +258,31 @@ const MediaCenter = () => {
 
     <>
       <Navbar />
+      {blogs && blogs?.length > 0 &&
+      
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
-          src={Carousel3Img01}
+          width={200}
+          height={300}
+          src={blogImgUrl + blogs[0]?.image}
           alt="BackgroundImage"
           className="object-cover object-center h-screen w-screen brightness-50"
         />
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-            Aug 12, 2024, Dubai, UAE
+          {formatCreatedAt(blogs[0]?.created_at)}
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2">
-            Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth..
+          {blogs[2]?.title}
           </div>
-          <a
-            href="/blog/elite-group-holding-and-soueast-motor"
+          <Link
+            href={'/blog/' +blogs[0]?.slug}
             className="text-white text-sm font-light underline text-3"
           >
             Read More
-          </a>
+          </Link>
         </div>
         <div className=" absolute bottom-0 right-0 px-[5%]">
           <div className="py-5 flex items-center justify-end">
@@ -221,6 +292,7 @@ const MediaCenter = () => {
           </div>
         </div>
       </div>
+      }
 
       <div className="px-[5%]">
         <div className="section-2" id="main">
