@@ -184,7 +184,7 @@ const GroupOfCompanies = () => {
             unoptimized
             width={200}
             height={300}
-            src={imgUrl + banner?.image}
+            src={imgUrl + banner?.mobile_banner}
             alt="BackgroundImage"
             className="object-cover md:hidden object-center h-screen w-screen brightness-50"
           />

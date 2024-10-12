@@ -232,7 +232,7 @@ const AboutUs = () => {
           unoptimized
           width={200}
           height={300}
-          src={imgUrl + banner?.image}
+          src={imgUrl + banner?.mobile_banner}
           alt="bg-img"
           className="object-cover object-center md:hidden h-screen w-screen brightness-50"
         />

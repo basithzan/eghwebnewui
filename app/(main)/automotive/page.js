@@ -109,22 +109,22 @@ const GroupOfCompanies = () => {
       {banner &&
 
         <div className="h-screen w-screen relative section-1">
-          <Image
-            unoptimized
-            width={200}
-            height={300}
-            src={imgUrl + banner?.image}
-            alt="automobilemobile"
-            className="object-cover object-center h-screen w-screen brightness-50 sm:hidden"
-          />
-          <Image
-            unoptimized
-            width={200}
-            height={300}
-            src={imgUrl + banner?.image}
-            alt="BackgroundImage"
-            className="object-cover object-center h-screen w-screen brightness-50 hidden sm:block"
-          />
+        <Image
+          unoptimized
+          width={200}
+          height={300}
+          src={imgUrl + banner?.image}
+          alt="bg-img"
+          className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
+        />
+        <Image
+          unoptimized
+          width={200}
+          height={300}
+          src={imgUrl + banner?.mobile_banner}
+          alt="bg-img"
+          className="object-cover object-center md:hidden h-screen w-screen brightness-50"
+        />
 
           <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
             <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">

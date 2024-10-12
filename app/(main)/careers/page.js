@@ -213,7 +213,7 @@ const Careers = () => {
             unoptimized
             width={200}
             height={300}
-            src={imgUrl + banner?.image}
+            src={imgUrl + banner?.mobile_banner}
             alt="Desktop Background"
             className="object-cover object-center h-screen w-screen brightness-[0.3] sm:brightness-50"
           />
