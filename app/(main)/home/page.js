@@ -176,6 +176,8 @@ const EliteHome = () => {
   const [progress, setProgress] = useState(0);
   const [banners, setBanners] = useState([]);
   const [seoData, setSeoData] = useState(null); // New state for SEO data
+  const [isDataLoaded, setIsDataLoaded] = useState(false); // New state to track data loading
+  const [componentKey, setComponentKey] = useState(0); // Unique key to force re-render
 
   const videoUrls = [
     video2,
@@ -187,6 +189,12 @@ const EliteHome = () => {
     video2, // Add more video URLs here...
   ];
   const isMdOrLarger = useMediaQuery({ minWidth: 768 });
+
+  useEffect(() => {
+    if (isDataLoaded) {
+      // Do nothing, let React re-render naturally when state updates
+    }
+  }, [isDataLoaded]);
 
   useEffect(() => {
     gsap
@@ -357,6 +365,10 @@ const EliteHome = () => {
 
         setHomePageData(data);
         setCurrentVideo(data?.homePageVideo?.video)
+        setComponentKey((prevKey) => prevKey + 1); // Update key to force re-render
+
+        setIsDataLoaded(true); // Set data loaded to true once the data is available
+
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -451,7 +463,8 @@ const EliteHome = () => {
   return (
     <>
       <Navbar />
-      <div className="h-screen w-screen section-1 relative z-10">
+      <div className="h-screen w-screen section-1 relative z-10"  key={componentKey}>
+      {/* {homePageData?.homePageVideo?.video?.replace(/\\/g, '')} */}
         <div className="relative bg-black h-[100vh] w-screen text-white">
           <video
             ref={videoRef}
@@ -461,13 +474,15 @@ const EliteHome = () => {
             className="absolute inset-0 top-0 w-screen h-full object-cover video-banner"
             onEnded={handleVideoEnd}
           >
-            <source src={videoUrls[currentVideo]} type="video/mp4" />
+            <source src={homePageData?.homePageVideo?.video?.replace(/\\/g, '') || ''} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="absolute w-full h-full bg-[linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))]"></div>
           <div className="absolute top-1/2 left-[5%] -translate-y-1/2 z-10">
             <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
-              WELCOME TO ELITE GROUP HOLDING
+              WELCOME TO ELITE GROUP HOLDING 
+       
+        
             </div>
             <div className="text-[3rem] lg:text-6xl font-bold md:mb-5 mb-4 md:mb-10 text-2"> {/* Changed font size */}
               <div className="leading-[calc(1em+6px)] text-[#fb511e]">DRIVING</div>

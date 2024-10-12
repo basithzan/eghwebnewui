@@ -122,7 +122,7 @@ style={{ backgroundColor: 'black' }}  // Add this line
 
                   <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
                     <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
-                      {image.title}
+                      {image.title} 
                     </div>
                     <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]"  dangerouslySetInnerHTML={{ __html: image?.content }}>
                       

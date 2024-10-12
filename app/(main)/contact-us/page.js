@@ -233,10 +233,11 @@ const ContactUs = () => {
               backgroundPosition: 'center',
             }}
           />
+
           <div
             className="object-cover object-center md:hidden h-screen w-screen brightness-50"
             style={{
-              backgroundImage: `url('${imgUrl}${banner?.image}')`,
+              backgroundImage: `url('${imgUrl}${banner?.mobile_banner}')`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
