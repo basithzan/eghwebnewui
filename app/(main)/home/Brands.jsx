@@ -6,6 +6,7 @@ import BrandImg4 from "/public/assets/brands/soueast-black.png";
 import BrandImg5 from "/public/assets/brands/art-logo.png";
 import BrandImg3 from "/public/assets/brands/TEC.png";
 import BrandImg2 from "/public/assets/brands/Zenvo.png";
+import BrandImg7 from "/public/assets/brands/zrt-contracting.png";
 import BrandsBgImg from "/public/assets/DSC07990.jpg";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
@@ -15,7 +16,7 @@ import { imgUrl } from "@/lib/constants";
 gsap.registerPlugin(ScrollTrigger);
 const defaultWidth = '150px'; // Default width for logos
 const defaultHeight = '100px'; // Height for logos
-const Brands = ({content}) => {
+const Brands = ({ content }) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -53,8 +54,8 @@ const Brands = ({content}) => {
     }
   }, []);
 
-  const images2 = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
-const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
+  const images2 = [BrandImg1, BrandImg2,BrandImg7, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
+  const images = [BrandImg1, BrandImg2,BrandImg7, BrandImg3, BrandImg4, BrandImg5];
   return (
     <div
       style={{ backgroundImage: `url(${imgUrl + content[0]?.image})` }}
@@ -69,93 +70,97 @@ const images = [BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
           {/* <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]" dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
            
            </p> */}
-         
-<p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]"  dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
-         
+
+          <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]" dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
+
           </p>
         </div>
-{/* Conditional rendering for Desktop */}
-{!isMobile && (
-  <div className="flex" style={{ gap: '50px', overflowX: 'auto' }}>
-    {images.map((img, index) => {
-      // Define the width for the 3rd, 4th, and last logos
-      const width = index === 3
-        ? `calc(200px * 1.1)` // Increase 4th logo width by 15%
-        : index === 2
-        ? `calc(${defaultWidth} + 22px)` // Increase 3rd logo width by 20px
-        : index === images.length - 1
-        ? `calc(${defaultWidth} - 35px)` // Reduce last logo width by 50px
-        : defaultWidth; // Default width for other logos
+        {/* Conditional rendering for Desktop */}
+        {!isMobile && (
+          <div className="flex" style={{ gap: '50px', overflowX: 'auto' }}>
+            {images.map((img, index) => {
+              // Define the width for the 3rd, 4th, and last logos
+              const width = index === 4
+                ? `calc(200px * 1.1)`
+                : index === 2
+                  ? `calc(${defaultWidth} - 70px)` // Increase 4th logo width by 15%
+                : index === 3
+                  ? `calc(${defaultWidth} + 22px)` // Increase 3rd logo width by 20px
+                  : index === images.length - 1
+                    ? `calc(${defaultWidth} - 35px)` // Reduce last logo width by 50px
+                    : defaultWidth; // Default width for other logos
 
-      return (
-        <div
-          key={index}
-          className="flex items-center"
-          style={{
-            flexShrink: 0,
-            width: width, // Apply the calculated width
-            height: defaultHeight
-          }}
-        >
-          <Image
-            unoptimized
-            src={img}
-            className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
-            alt="brands"
-          />
-        </div>
-      );
-    })}
-  </div>
-)}
+              return (
+                <div
+                  key={index}
+                  className="flex items-center"
+                  style={{
+                    flexShrink: 0,
+                    width: width, // Apply the calculated width
+                    height: defaultHeight
+                  }}
+                >
+                  <Image
+                    unoptimized
+                    src={img}
+                    className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
+                    alt="brands"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
 
 
 
 
         {/* Conditional rendering for Mobile */}
         {isMobile && (
-          <Marquee 
-  loop={0} 
-  speed={80}  // Adjust the speed for smoother scroll
-  direction="left"
-  className="w-full gap-[40px] brands mb-5 md:mb-0"
->
+          <Marquee
+            loop={0}
+            speed={8}  // Adjust the speed for smoother scroll
+            direction="left"
+            className="w-full gap-[40px] brands mb-5 md:mb-0"
+          >
             {images2.map((img, index) => {
-  // Define the width for the 1st, 3rd, 4th, and last logos
-  const width = index === 0
-    ? `calc(${defaultWidth} + 10px)` // Increase the width of the 1st logo by 10px
-    : index === 3
-    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
-: index === 8
-    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
-: index === 13
-    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
-    : index === 2
-    ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
-    : index === images2.length - 1
-    ? `calc(${defaultWidth} - 25px)` // Decrease the width of the last logo by 10px
-    : defaultWidth; // Default width for other logos
+              // Define the width for the 1st, 3rd, 4th, and last logos
+              const width = index === 0
+                ? `calc(${defaultWidth} + 10px)` 
+                : index === 2
+                ? `calc(200px * 0.40)`// Increase the width of the 1st logo by 10px
+                : index === 4
+                  ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
+                  : index === 9
+                    ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
+                    : index === 14
+                      ? `calc(200px * 1.10)` // Increase the 4th logo width by 15%
+                      : index === 3
+                        ? `calc(${defaultWidth} + 20px)` // Increase the 3rd logo width by 20px
+                        : index === images2.length - 1
+                          ? `calc(${defaultWidth} - 25px)` // Decrease the width of the last logo by 10px
+                          : defaultWidth; // Default width for other logos
 
-  return (
-    <div
-      key={index}
-      className="flex items-center"
-      style={{
-        flexShrink: 0,
-        width: width, // Apply the calculated width
-        height: defaultHeight,
-        marginRight: index !== images2.length - 1 ? '40px' : '0px', // Add 40px gap except for the last logo
-      }}
-    >
-      <Image
-        unoptimized
-        src={img}
-        className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
-        alt="brands"
-      />
-    </div>
-  );
-})}
+              return (
+                <div
+                  key={index}
+                  className="flex items-center"
+                  style={{
+                    flexShrink: 0,
+                    width: width, // Apply the calculated width
+                    height: defaultHeight,
+                    marginRight: index !== images2.length - 1 ? '40px' : '0px', // Add 40px gap except for the last logo
+                  }}
+                >
+                  <Image
+                    unoptimized
+                    src={img}
+                    className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
+                    alt="brands"
+                  />
+                </div>
+              );
+            })}
 
           </Marquee>
         )}
