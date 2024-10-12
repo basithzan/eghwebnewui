@@ -186,8 +186,11 @@ const Partner = ({ images }) => {
               </div>
               <div
                 className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
-              >
-                {image.description}
+               >
+               <p  className={` max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
+                dangerouslySetInnerHTML={{ __html: image?.content }}>
+
+               </p>
                 <a
                   
                   href={image.url}
