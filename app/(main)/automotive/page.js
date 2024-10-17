@@ -179,7 +179,7 @@ const GroupOfCompanies = () => {
                 hasBtn={true}
                 descriptions={[<p
                   key="description-1"
-                  dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}
+                  dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}
                   className="mb-2 md:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2"
                 >
 
