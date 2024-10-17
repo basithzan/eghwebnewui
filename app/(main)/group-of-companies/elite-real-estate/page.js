@@ -298,7 +298,7 @@ const AboutUs = () => {
             <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
               {/* Updated Heading with Padding */}
 
-              <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
+              <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
               
               </p>
 
