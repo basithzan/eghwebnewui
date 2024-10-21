@@ -6,7 +6,7 @@ const PrivacyPolicyPage = () => {
   return (
     <div>
       <Navbar />
-<div className="relative">
+      <div className="relative">
         <div
           className="absolute top-0 right-0 mr-8 text-[#282828] text-sm"
           style={{ paddingTop: '15px' }}
@@ -151,8 +151,8 @@ const PrivacyPolicyPage = () => {
           Elite Group Holding<br />
           PO Box 393316<br />
           Dubai, United Arab Emirates<br />
-          Email: info@theelitecars.com<br />
-          Phone: +971 4 123 4567
+          Email: inquiry@elitegroupholding.com<br />
+          Phone: +971 2 806 0000
         </p>
       </div>
       <Footer />
