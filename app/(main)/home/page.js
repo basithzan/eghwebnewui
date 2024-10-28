@@ -339,6 +339,32 @@ const EliteHome = () => {
     }
   }, [currentVideo]);
 
+  useEffect(() => {
+    (function (g, e, n, es, ys) {
+      g["_genesysJs"] = e;
+      g[e] =
+        g[e] ||
+        function () {
+          (g[e].q = g[e].q || []).push(arguments);
+        };
+      g[e].t = 1 * new Date();
+      g[e].c = es;
+      ys = document.createElement("script");
+      ys.async = 1;
+      ys.src = n;
+      ys.charset = "utf-8";
+      document.head.appendChild(ys);
+    })(
+      window,
+      "Genesys",
+      "https://apps.mec1.pure.cloud/genesys-bootstrap/genesys.min.js",
+      {
+        environment: "prod-mec1",
+        deploymentId: "9f1dcf87-64ba-4c37-b55f-436921e5ae08",
+      }
+    );
+  }, []);
+
   const handleVideoClick = (index) => {
     // setCurrentVideo(index);
     if (videoRef.current) {
