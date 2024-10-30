@@ -298,11 +298,13 @@ const AboutUs = () => {
             <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
               {/* Updated Heading with Padding */}
 
-              <p className="mb-2 md:mb-4  common-description text-2 " dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
-              
-              </p>
-
-              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]">
+              <div
+                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
+              >
+                 {pageData[1]?.title}
+              </div>
+              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]"  dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
                 
               </p>
               {/* <p className="mb-2 md:mb-4 common-description text-3">
