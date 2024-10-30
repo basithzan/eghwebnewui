@@ -52,11 +52,11 @@ const ContactUs = () => {
     }
 
     fetch(apiUrl + 'get-seo-data?page=Contact us')
-    .then((response) => response.json())
-    .then((data) => {
-      setSeoData(data?.seo); // Store SEO data in the state
+      .then((response) => response.json())
+      .then((data) => {
+        setSeoData(data?.seo); // Store SEO data in the state
 
-    });
+      });
   }, []);
 
   useEffect(() => {
@@ -208,7 +208,7 @@ const ContactUs = () => {
       ogImageTag.setAttribute('property', 'og:image');
       document.head.appendChild(ogImageTag);
     }
-    ogImageTag.setAttribute('content', imgUrl+ seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
+    ogImageTag.setAttribute('content', imgUrl + seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
 
     // Set Open Graph (og) url
     let ogUrlTag = document.querySelector("meta[property='og:url']");
@@ -361,11 +361,18 @@ const ContactUs = () => {
               <p className="common-description" dangerouslySetInnerHTML={{ __html: pageData[0]?.address }} >
               </p>
               <p className="mt-5 common-description">
-                {pageData[0]?.email}
-              </p>
-              <p className="mt-5 common-description">            {pageData[0]?.phone}
-              </p>
-              <p className="mt-5 common-description">800-535483 </p>
+  <a href={`mailto:${pageData[0]?.email}`}>{pageData[0]?.email}</a>
+</p>
+{/* Uncommented the phone block and added the phone link */}
+{/* <p className="mt-5 common-description">
+  <a href={`tel:${pageData[0]?.phone}`}>{pageData[0]?.phone}</a>
+</p> */}
+<p className="mt-5 common-description">
+  International (outside UAE): <a href="tel:+97128060000">+971 2 806 0000</a>
+  <br />
+  <a href="tel:800535483">Local (within UAE): 800-5-ELITE (800-5-35483)</a>
+</p>
+
             </div>
           </div>
         </div>
