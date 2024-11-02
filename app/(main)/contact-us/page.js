@@ -7,6 +7,7 @@ import axios from 'axios';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import { apiUrl, imgUrl } from "@/lib/constants";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -361,17 +362,31 @@ const ContactUs = () => {
               <p className="common-description" dangerouslySetInnerHTML={{ __html: pageData[0]?.address }} >
               </p>
               <p className="mt-5 common-description">
-  <a href={`mailto:${pageData[0]?.email}`}>{pageData[0]?.email}</a>
-</p>
-{/* Uncommented the phone block and added the phone link */}
-{/* <p className="mt-5 common-description">
+                <a href={`mailto:${pageData[0]?.email}`}>{pageData[0]?.email}</a>
+              </p>
+              {/* Uncommented the phone block and added the phone link */}
+              {/* <p className="mt-5 common-description">
   <a href={`tel:${pageData[0]?.phone}`}>{pageData[0]?.phone}</a>
 </p> */}
-<p className="mt-5 common-description">
-  International (outside UAE): <a href="tel:+97128060000">+971 2 806 0000</a>
-  <br />
-  <a href="tel:800535483">Local (within UAE): 800-5-ELITE (800-5-35483)</a>
-</p>
+
+              <a
+                href="tel:97128060000"
+                className="mt-5 block max-sm:text-xs hover:bg-[#fb511e] max-sm:mt-3 hover:text-white transition-all border border-1 border-black hover:border-[#fb511e]  rounded-[8px] sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
+              >
+                International (outside UAE):  +971 2 806 0000
+              </a>
+
+              <a
+                href="tel:800535483"
+                className="mt-5 block max-sm:text-xs hover:bg-[#fb511e] max-sm:mt-3 hover:text-white transition-all border border-1 border-black hover:border-[#fb511e]  rounded-[8px] sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
+              >
+               Local (within UAE): 800-5-ELITE (800-5-35483)
+              </a>
+              {/* <p className="mt-5 common-description">
+                International (outside UAE): <a href="tel:+97128060000">+971 2 806 0000</a>
+                <br />
+                <a href="tel:800535483">Local (within UAE): 800-5-ELITE (800-5-35483)</a>
+              </p> */}
 
             </div>
           </div>
