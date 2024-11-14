@@ -126,15 +126,19 @@ const ContactUs = () => {
     try {
       const response = await axios.post('/api/send-email', formData);
       if (response.data.success) {
-        setShowThankYou(true);
-        setFormData({
-          fullName: '',
-          phoneNumber: '',
-          email: '',
-          sector: '',
-          message: '',
-        });
-        setTimeout(() => setShowThankYou(false), 5000);
+        const saveResponse = await axios.post(apiUrl + '/save-enquiry', formData);
+        if (saveResponse.data.success) {
+
+          setShowThankYou(true);
+          setFormData({
+            fullName: '',
+            phoneNumber: '',
+            email: '',
+            sector: '',
+            message: '',
+          });
+          setTimeout(() => setShowThankYou(false), 5000);
+        }
       } else {
         setError('Failed to send email. Please try again.');
       }
@@ -380,7 +384,7 @@ const ContactUs = () => {
                 href="tel:800535483"
                 className="mt-5 block max-sm:text-xs hover:bg-[#fb511e] max-sm:mt-3 hover:text-white transition-all border border-1 border-black hover:border-[#fb511e]  rounded-[8px] sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
               >
-               Local (within UAE): 800-5-ELITE (800-5-35483)
+                Local (within UAE): 800-5-ELITE (800-5-35483)
               </a>
               {/* <p className="mt-5 common-description">
                 International (outside UAE): <a href="tel:+97128060000">+971 2 806 0000</a>
