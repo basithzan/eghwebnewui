@@ -126,7 +126,7 @@ const ContactUs = () => {
     try {
       const response = await axios.post('/api/send-email', formData);
       if (response.data.success) {
-        const saveResponse = await axios.post(apiUrl + '/save-enquiry', formData);
+        const saveResponse = await axios.post(apiUrl + 'save-enquiry', formData);
         if (saveResponse.data.success) {
 
           setShowThankYou(true);
