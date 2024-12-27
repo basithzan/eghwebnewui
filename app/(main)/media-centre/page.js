@@ -275,7 +275,7 @@ const MediaCenter = () => {
           {formatCreatedAt(blogs[0]?.created_at)}
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2">
-          {blogs[2]?.title}
+          {blogs[0]?.title}
           </div>
           <Link
             href={'/blog/' +blogs[0]?.slug}
@@ -341,7 +341,7 @@ const MediaCenter = () => {
           </div> */}
           <div className="flex flex-col gap-10 section-3-1">
 
-          {blogs?.map((blog, index) => (
+          {blogs?.slice(1).map((blog, index) => (
 
             <div key={blog?.id} className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
