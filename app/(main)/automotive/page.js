@@ -228,7 +228,7 @@ const GroupOfCompanies = () => {
             <div id="soueast">
               <GroupSection
                 url="/automotive/the-elite-cars"
-                link="https://www.soueast-motor.com"
+                link="https://soueastuae.com"
                 image={imgUrl + pageData[4]?.image}
                 title={<span style={{ color: '#fb511e' }}>{pageData[4]?.title}</span>} // Color applied here
 
@@ -246,7 +246,7 @@ const GroupOfCompanies = () => {
             <div id="art_elite_car_rental">
               <GroupSection
                 url="/automotive/the-elite-cars"
-                link="https://soueastuae.com"
+                link="https://soueastuae.com/"
                 image={imgUrl + pageData[5]?.image}
                 title={<span style={{ color: '#fb511e' }}>{pageData[5]?.title}</span>} // Color applied here
 
