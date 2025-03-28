@@ -291,7 +291,7 @@ const Careers = () => {
                 <div className="flex justify-center mt-10">
                   <a
                   
-                    href="https://www.linkedin.com/company/elite-groupholding/jobs"
+                    href="https://www.linkedin.com/company/elite-groupholding/jobs/?viewAsMember=true"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5 max-md:mb-16 bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
