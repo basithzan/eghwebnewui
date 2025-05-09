@@ -431,7 +431,7 @@ const EliteHome = () => {
 
   useEffect(() => {
     // Set the document title
-    document.title = seoData?.metaTitle || 'Elite group holdings';
+    document.title = seoData?.metaTitle || 'Elite Group Holding | Business Excellence in UAE';
 
     // Set the meta description
     let descriptionMetaTag = document.querySelector("meta[name='description']");
@@ -458,7 +458,7 @@ const EliteHome = () => {
       ogTitleTag.setAttribute('property', 'og:title');
       document.head.appendChild(ogTitleTag);
     }
-    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite group holdings');
+    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite Group Holding | Business Excellence in UAE');
 
     // Set Open Graph (og) description
     let ogDescriptionTag = document.querySelector("meta[property='og:description']");
@@ -521,7 +521,7 @@ const EliteHome = () => {
           <div className="absolute w-full h-full bg-[linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))]"></div>
           <div className="absolute top-1/2 left-[5%] -translate-y-1/2 z-10">
             <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
-              WELCOME TO ELITE GROUP HOLDING 
+              <h1>WELCOME TO ELITE GROUP HOLDING </h1>
        
         
             </div>
@@ -743,7 +743,56 @@ const EliteHome = () => {
 
       <Footer />
     </>
+ {/* Structured Data for Organization */}
+      <Script
+        id="organization-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Elite Group Holding",
+            "url": "https://elitegroupholding.com/",
+            "logo": "https://elitegroupholding.com/_next/static/media/Logo.3819c8f8.png",
+            "description":
+              "Explore Elite Group Holding, a diversified leader in automotive, real estate, investments, and e-commerce. Driving growth and innovation across the UAE.",
+            "foundingDate": "2014",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "723 Sheikh Zayed Road, P. O. Box 393316",
+              "addressLocality": "Dubai",
+              "addressRegion": "Dubai",
+              "postalCode": "393316",
+              "addressCountry": "AE",
+            },
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service - International",
+                "telephone": "+97128060000",
+                "areaServed": "International",
+              },
+              {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service - Local",
+                "telephone": "800535483",
+                "areaServed": "AE",
+              },
+              {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "info@elitegroupholding.com",
+              },
+            ],
+            "sameAs": [
+              "https://www.instagram.com/elitegroupholding/",
+              "https://www.facebook.com/elitegroupholding/",
+              "https://www.linkedin.com/company/elite-groupholding/",
+            ],
+          }),
+        }}
+      />
+    </>
   );
 };
-
 export default EliteHome;
