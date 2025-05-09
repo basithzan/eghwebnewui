@@ -54,7 +54,7 @@ const AboutUs = () => {
     }
 
       // Fetch SEO data from the API with page type parameter
-      fetch(apiUrl + 'get-seo-data?page=About the group')
+      fetch(apiUrl + 'get-seo-data?page=About Elite Group Holding')
         .then((response) => response.json())
         .then((data) => {
           setSeoData(data?.seo); // Store SEO data in the state
@@ -68,7 +68,7 @@ const AboutUs = () => {
 
   useEffect(() => {
     // Set the document title
-    document.title = seoData?.metaTitle || 'Elite group holdings';
+    document.title = seoData?.metaTitle || 'About Elite Group Holding | Business Group in Dubai';
 
     // Set the meta description
     let descriptionMetaTag = document.querySelector("meta[name='description']");
@@ -77,7 +77,7 @@ const AboutUs = () => {
       descriptionMetaTag.setAttribute('name', 'description');
       document.head.appendChild(descriptionMetaTag);
     }
-    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite group holdings');
+    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Learn about Elite Group Holding, a pioneering company in Dubai, shaping the future with diverse industries and sustainable growth strategies.');
 
     // Set the meta keywords
     let keywordsMetaTag = document.querySelector("meta[name='keywords']");
@@ -104,7 +104,7 @@ const AboutUs = () => {
       ogDescriptionTag.setAttribute('property', 'og:description');
       document.head.appendChild(ogDescriptionTag);
     }
-    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite group holdings');
+    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Learn about Elite Group Holding, a pioneering company in Dubai, shaping the future with diverse industries and sustainable growth strategies.');
 
     // Set Open Graph (og) image
     let ogImageTag = document.querySelector("meta[property='og:image']");
