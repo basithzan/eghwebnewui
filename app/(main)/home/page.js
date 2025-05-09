@@ -794,4 +794,5 @@ const EliteHome = () => {
     </>
   );
 };
+
 export default EliteHome;
