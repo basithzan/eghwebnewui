@@ -742,7 +742,6 @@ const EliteHome = () => {
       }
 
       <Footer />
-    </>
  {/* Structured Data for Organization */}
       <Script
         id="organization-schema"
