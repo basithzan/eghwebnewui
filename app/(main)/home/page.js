@@ -440,7 +440,7 @@ const EliteHome = () => {
       descriptionMetaTag.setAttribute('name', 'description');
       document.head.appendChild(descriptionMetaTag);
     }
-    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite group holdings');
+    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite Group Holding is a diversified business leader in the UAE, specializing in automotive, real estate & contracting, investments, and e-commerce. Committed to innovation and sustainability, we drive growth and deliver excellence across multiple industries in the Middle East region. Explore our world-class services and partnerships that shape the future of business.');
 
     // Set the meta keywords
     let keywordsMetaTag = document.querySelector("meta[name='keywords']");
@@ -467,7 +467,7 @@ const EliteHome = () => {
       ogDescriptionTag.setAttribute('property', 'og:description');
       document.head.appendChild(ogDescriptionTag);
     }
-    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite group holdings');
+    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite Group Holding is a diversified business leader in the UAE, specializing in automotive, real estate & contracting, investments, and e-commerce. Committed to innovation and sustainability, we drive growth and deliver excellence across multiple industries in the Middle East region. Explore our world-class services and partnerships that shape the future of business.');
 
     // Set Open Graph (og) image
     let ogImageTag = document.querySelector("meta[property='og:image']");
@@ -476,7 +476,7 @@ const EliteHome = () => {
       ogImageTag.setAttribute('property', 'og:image');
       document.head.appendChild(ogImageTag);
     }
-    ogImageTag.setAttribute('content', imgUrl+ seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
+    ogImageTag.setAttribute('content', imgUrl + seoData?.ogImage || 'https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/egh-elitecars-fullwhite-1.png');
 
     // Set Open Graph (og) url
     let ogUrlTag = document.querySelector("meta[property='og:url']");
@@ -486,6 +486,16 @@ const EliteHome = () => {
       document.head.appendChild(ogUrlTag);
     }
     ogUrlTag.setAttribute('content', seoData?.ogUrl || 'https://elitegroupholding.com/');
+
+    // Set Canonical Link Tag
+    let canonicalLink = document.querySelector("link[rel='canonical']");
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', 'https://elitegroupholding.com/');
+
   }, [seoData]);
 
   useEffect(() => {
