@@ -61,7 +61,7 @@ const GroupOfCompanies = () => {
 
   useEffect(() => {
     // Set the document title
-    document.title = seoData?.metaTitle || 'Elite Group of Companies in Dubai & UAE';
+    document.title = seoData?.metaTitle || 'Elite group holdings';
 
     // Set the meta description
     let descriptionMetaTag = document.querySelector("meta[name='description']");
@@ -70,7 +70,7 @@ const GroupOfCompanies = () => {
       descriptionMetaTag.setAttribute('name', 'description');
       document.head.appendChild(descriptionMetaTag);
     }
-    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Discover Elite Groups companies in Dubai, Sharjah, and across the UAE. Innovating in automotive, real estate, e-commerce and investments.');
+    descriptionMetaTag.setAttribute('content', seoData?.metaDescription || 'Elite group holdings');
 
     // Set the meta keywords
     let keywordsMetaTag = document.querySelector("meta[name='keywords']");
@@ -88,7 +88,7 @@ const GroupOfCompanies = () => {
       ogTitleTag.setAttribute('property', 'og:title');
       document.head.appendChild(ogTitleTag);
     }
-    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite Group of Companies in Dubai & UAE');
+    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite group holdings');
 
     // Set Open Graph (og) description
     let ogDescriptionTag = document.querySelector("meta[property='og:description']");
@@ -97,7 +97,7 @@ const GroupOfCompanies = () => {
       ogDescriptionTag.setAttribute('property', 'og:description');
       document.head.appendChild(ogDescriptionTag);
     }
-    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Discover Elite Groups companies in Dubai, Sharjah, and across the UAE. Innovating in automotive, real estate, e-commerce and investments.');
+    ogDescriptionTag.setAttribute('content', seoData?.ogDescription || 'Elite group holdings');
 
     // Set Open Graph (og) image
     let ogImageTag = document.querySelector("meta[property='og:image']");
