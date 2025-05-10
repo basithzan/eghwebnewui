@@ -241,9 +241,9 @@ const AboutUs = () => {
           <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
           {banner?.title1}
           </div>
-          <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
           {banner?.title2}
-          </div>
+          </h1>
         </div>
         <div className=" absolute bottom-0 right-0 px-[5%]">
           <div className="py-5 flex items-center justify-end">

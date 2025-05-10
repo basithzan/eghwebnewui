@@ -23,117 +23,117 @@ import { apiUrl, imgUrl } from "@/lib/constants";
 gsap.registerPlugin(ScrollTrigger);
 
 const GroupOfCompanies = () => {
-  const [pageData, setPageData] = useState([]);
+const [pageData, setPageData] = useState([]);
 
-  const [banner, setBanner] = useState(null);
-
-
-  useEffect(() => {
-    // Check if the data exists in local storage
-    const cachedData = localStorage.getItem('banners');
-    if (cachedData) {
-      // If it exists, use it
-      setBanner(JSON.parse(cachedData));
-      const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Automotive');
-
-      console.log(bnr)
-
-      setBanner(bnr);
-
-    } else {
-      // If not, fetch from API and cache it
-      fetch(apiUrl + `get-banners`)
-        .then((response) => response.json())
-        .then((data) => {
-          localStorage.setItem('banners', JSON.stringify(data.banners));
-          setBanner(data?.banners?.find(banner => banner.page == 'Automotive'));
+const [banner, setBanner] = useState(null);
 
 
-        });
-    }
-  }, []);
-  useEffect(() => {
-    gsap
-      .timeline({ duration: 0.5, ease: "power3.out" })
-      .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
-      .fromTo(
-        ".section-1 .text-2",
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1 }
-      );
+useEffect(() => {
+// Check if the data exists in local storage
+const cachedData = localStorage.getItem('banners');
+if (cachedData) {
+  // If it exists, use it
+  setBanner(JSON.parse(cachedData));
+  const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Automotive');
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-2",
-          start: "top bottom",
-        },
-      })
-      .fromTo(
-        ".section-2 .img-1",
-        { x: 150, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .head-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .text-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
-  });
+  console.log(bnr)
+
+  setBanner(bnr);
+
+} else {
+  // If not, fetch from API and cache it
+  fetch(apiUrl + `get-banners`)
+    .then((response) => response.json())
+    .then((data) => {
+      localStorage.setItem('banners', JSON.stringify(data.banners));
+      setBanner(data?.banners?.find(banner => banner.page == 'Automotive'));
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Example: Fetch images or posts asynchronously if not passed as props
-        const response = await fetch(apiUrl + `get-automotive`);  // Your API endpoint
-        const data = await response.json();
+    });
+}
+}, []);
+useEffect(() => {
+gsap
+  .timeline({ duration: 0.5, ease: "power3.out" })
+  .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
+  .fromTo(
+    ".section-1 .text-2",
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1 }
+  );
 
-        setPageData(data?.automotive);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+gsap
+  .timeline({
+    scrollTrigger: {
+      trigger: ".section-2",
+      start: "top bottom",
+    },
+  })
+  .fromTo(
+    ".section-2 .img-1",
+    { x: 150, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+  )
+  .fromTo(
+    ".section-2 .head-1",
+    { x: -50, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+  )
+  .fromTo(
+    ".section-2 .text-1",
+    { x: -50, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+  );
+});
 
-    fetchData();
-  }, [])
 
-  return (
-    <>
-      <Navbar />  
-      {banner &&
+useEffect(() => {
+const fetchData = async () => {
+  try {
+    // Example: Fetch images or posts asynchronously if not passed as props
+    const response = await fetch(apiUrl + `get-automotive`);  // Your API endpoint
+    const data = await response.json();
 
-        <div className="h-screen w-screen relative section-1">
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-          src={imgUrl + banner?.image}
-          alt="bg-img"
-          className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
-        />
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-          src={imgUrl + banner?.mobile_banner}
-          alt="bg-img"
-          className="object-cover object-center md:hidden h-screen w-screen brightness-50"
-        />
+    setPageData(data?.automotive);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+};
 
-          <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-            <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-              {banner?.title1}
-            </div>
-            <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-              {banner?.title2}
-            </div>
-          </div>
+fetchData();
+}, [])
+
+return (
+<>
+  <Navbar />  
+  {banner &&
+
+    <div className="h-screen w-screen relative section-1">
+    <Image
+      unoptimized
+      width={200}
+      height={300}
+      src={imgUrl + banner?.image}
+      alt="bg-img"
+      className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
+    />
+    <Image
+      unoptimized
+      width={200}
+      height={300}
+      src={imgUrl + banner?.mobile_banner}
+      alt="bg-img"
+      className="object-cover object-center md:hidden h-screen w-screen brightness-50"
+    />
+
+      <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
+        <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+          {banner?.title1}
+        </div>
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+          {banner?.title2}
+        </h1>
+      </div>
           <div className=" absolute bottom-0 right-0 px-[5%]">
             <div className="py-5 flex items-center justify-end">
               <div className="text-[#fff]">

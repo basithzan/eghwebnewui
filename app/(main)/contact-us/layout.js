@@ -1,12 +1,25 @@
+import Head from 'next/head';
+import { headers } from 'next/headers';
+
 export const metadata = {
   title: "Contact Elite Group Holding | Dubai, UAE Office",
   description: "Get in touch with Elite Group Holding. Contact our Dubai office for inquiries about services, investments, and partnerships.",
 };
 
 export default function RootLayout({ children }) {
-  
+  const headersList = headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'http';
+  const path = headersList.get('x-nextjs-rewrite') || '';
+  const canonicalUrl = `${protocol}://${host}${path}`;
+
   return (
     <html lang="en">
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <body>{children}</body>
     </html>
   );
