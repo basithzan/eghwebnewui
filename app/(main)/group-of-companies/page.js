@@ -190,12 +190,12 @@ const GroupOfCompanies = () => {
           />
 
           <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-            <div className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+            <h1 className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
               {banner?.title1}
-            </div>
-            <div className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+            </h1>
+            <h2 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
               {banner?.title2}
-            </div>
+            </h2>
           </div>
           <div className=" absolute bottom-0 right-0 px-[5%]">
             <div className="py-5 flex items-center justify-end">
