@@ -50,6 +50,16 @@ const AboutUs = () => {
         });
     }
   }, []);
+
+  useEffect(() => {
+  let canonicalLink = document.querySelector("link[rel='canonical']");
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.setAttribute('href', 'https://elitegroupholding.com/group-of-companies/elite-real-estate');
+}, []);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })

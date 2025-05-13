@@ -51,6 +51,15 @@ const AboutUs = () => {
     }
   }, []);
   useEffect(() => {
+  let canonicalLink = document.querySelector("link[rel='canonical']");
+  if (!canonicalLink) {
+    canonicalLink = document.createElement('link');
+    canonicalLink.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonicalLink);
+  }
+  canonicalLink.setAttribute('href', 'https://elitegroupholding.com/group-of-companies/elite-e-commerce');
+}, []);
+  useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
       .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
