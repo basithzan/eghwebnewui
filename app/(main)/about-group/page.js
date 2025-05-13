@@ -292,6 +292,10 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
+
+      <Head>
+  <link rel="canonical" href="https://elitegroupholding.com/automotive" />
+</Head>
       {banner &&
 
 
