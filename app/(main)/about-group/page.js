@@ -123,6 +123,15 @@ const AboutUs = () => {
       document.head.appendChild(ogUrlTag);
     }
     ogUrlTag.setAttribute('content', seoData?.ogUrl || 'https://elitegroupholding.com/');
+    // Set Canonical Link Tag
+let canonicalLink = document.querySelector("link[rel='canonical']");
+if (!canonicalLink) {
+  canonicalLink = document.createElement('link');
+  canonicalLink.setAttribute('rel', 'canonical');
+  document.head.appendChild(canonicalLink);
+}
+canonicalLink.setAttribute('href', 'https://elitegroupholding.com/automotive');
+
   }, [seoData]);
 
   useEffect(() => {
@@ -291,9 +300,6 @@ const AboutUs = () => {
   }, [])
   return (
     <>
-    <Head>
-  <link rel="canonical" href="https://elitegroupholding.com/automotive" />
-</Head>
       <Navbar />
 
       
