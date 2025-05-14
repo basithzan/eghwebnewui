@@ -300,7 +300,7 @@ const GroupOfCompanies = () => {
                   </p>
                 ]}
                 hasBtn={true}
-                linkexp="https://zrtcontracting.com/"
+                link="https://zrtcontracting.com/"
               />
             </div>
 
