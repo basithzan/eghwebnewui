@@ -286,7 +286,7 @@ const GroupOfCompanies = () => {
 
             <div id="real_estate">
               <GroupSection
-                url="/group-of-companies/elite-real-estate"
+                url="https://zrtcontracting.com/"
                 image={imgUrl + pageData[3]?.image}
                 title={<span style={{ color: '#fb511e' }}>{pageData[3]?.title}</span>} // Color applied here
                 descriptions={[
@@ -300,7 +300,7 @@ const GroupOfCompanies = () => {
                   </p>
                 ]}
                 hasExplore={true}
-                linkexp="/group-of-companies/elite-real-estate"
+                linkexp="https://zrtcontracting.com/"
               />
             </div>
 
