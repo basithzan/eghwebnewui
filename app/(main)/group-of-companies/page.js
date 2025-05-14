@@ -299,7 +299,7 @@ const GroupOfCompanies = () => {
 
                   </p>
                 ]}
-                hasExplore={false}
+                hasBtn={true}
                 linkexp="https://zrtcontracting.com/"
               />
             </div>
