@@ -306,7 +306,7 @@ const AboutUs = () => {
                       href=""
                       className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
                     >
-                      Explore
+                      Explore 
                       <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
                     </button>
                   </Link>
@@ -336,7 +336,7 @@ const AboutUs = () => {
                       className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
                     >
                       Visit Website
-                      <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
+                      <ArrowLongRightIcon className="ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
                     </button>
                   </Link>
                   {/* <p className="mb-2 md:mb-4 common-description text-3">
