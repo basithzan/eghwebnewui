@@ -301,9 +301,9 @@ const AboutUs = () => {
 
                   </p>
 
-                  <Link target="blank" href="https://www.elitegroupholding.com/group-of-companies/elite-real-estate">
+                  <Link href="https://www.elitegroupholding.com/group-of-companies/elite-real-estate">
                     <button
-                      href=""
+                      href="https://www.elitegroupholding.com/group-of-companies/elite-real-estate"
                       className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
                     >
                       Explore 
@@ -332,7 +332,7 @@ const AboutUs = () => {
 
                   <Link target="blank" href="https://www.zrtcontracting.com/">
                     <button
-                      href=""
+                      href="https://www.zrtcontracting.com/"
                       className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
                     >
                       Visit Website
