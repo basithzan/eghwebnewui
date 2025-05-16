@@ -18,6 +18,8 @@ import BackgroundImageecommob from "/public/assets/about-us/BackgroundImagerealm
 import csr2 from "/public/assets/about-us/csr3.jpg";
 import vision from "/public/assets/realestate2.jpg";
 import { apiUrl, imgUrl } from "@/lib/constants";
+import Link from "next/link";
+import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,14 +54,14 @@ const AboutUs = () => {
   }, []);
 
   useEffect(() => {
-  let canonicalLink = document.querySelector("link[rel='canonical']");
-  if (!canonicalLink) {
-    canonicalLink = document.createElement('link');
-    canonicalLink.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonicalLink);
-  }
-  canonicalLink.setAttribute('href', 'https://elitegroupholding.com/group-of-companies/elite-real-estate');
-}, []);
+    let canonicalLink = document.querySelector("link[rel='canonical']");
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', 'https://elitegroupholding.com/group-of-companies/elite-real-estate');
+  }, []);
   useEffect(() => {
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
@@ -230,94 +232,114 @@ const AboutUs = () => {
       <Navbar />
       {banner &&
 
-      <div className="h-screen w-screen relative section-1">
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-           src={imgUrl + banner?.image}
-          alt="bg-img"
-          className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
-        />
-        <Image
-          unoptimized
-          width={200}
-          height={300}
-          src={imgUrl + banner?.mobile_banner}
-          alt="bg-img"
-          className="object-cover object-center md:hidden h-screen w-screen brightness-50"
-        />
+        <div className="h-screen w-screen relative section-1">
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.image}
+            alt="bg-img"
+            className="object-cover object-center h-screen max-md:hidden w-screen brightness-50"
+          />
+          <Image
+            unoptimized
+            width={200}
+            height={300}
+            src={imgUrl + banner?.mobile_banner}
+            alt="bg-img"
+            className="object-cover object-center md:hidden h-screen w-screen brightness-50"
+          />
 
-        <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
-          <span className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
-          {banner?.title1}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
-          {banner?.title2}
-          </h1>
-        </div>
-        <div className=" absolute bottom-0 right-0 px-[5%]">
-          <div className="py-5 flex items-center justify-end">
-            <div className="text-[#fff]">
-              <a href="">Home</a> / Group of companies / Real Estate and contracting
+          <div className="absolute top-1/2 left-[3%] -translate-y-1/2 z-10 text-white">
+            <span className="text-lg md:text-xl font-medium mb-4 uppercase text-1">
+              {banner?.title1}
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-4 uppercase text-2">
+              {banner?.title2}
+            </h1>
+          </div>
+          <div className=" absolute bottom-0 right-0 px-[5%]">
+            <div className="py-5 flex items-center justify-end">
+              <div className="text-[#fff]">
+                <a href="">Home</a> / Group of companies / Real Estate and contracting
+              </div>
             </div>
           </div>
         </div>
-      </div>
       }
       {pageData && pageData?.length !== 0 && (
 
-    <div>
-    <div className="bg-[#F7F7F7] max-sm:mb-1">
-        <div className="px-[5%] section-2 overflow-hidden">
-          <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
-            <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={imgUrl + pageData[0]?.image}
-                alt="img1"
-                className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
-              />
-            </div>
-            <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
-              {/* Updated Heading with Padding */}
-              <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
-              >
-                 {pageData[0]?.title}
-              </div>
-              {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
+        <div>
+          <div className="bg-[#F7F7F7] max-sm:mb-1">
+            <div className="px-[5%] section-2 overflow-hidden">
+              <div className="my-5 md:my-10 flex max-md:flex-col-reverse max-md:gap-3 sm:flex-row-reverse sm:items-center">
+                <div className="relative sm:w-[48%] sm:grow sm:shrink-0 sm:-me-[5.65%] overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 -top-10 xl:-left-[19.4%] lg:-left-[14%] md:-left-[12%] sm:-left-[14%] "></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[0]?.image}
+                    alt="img1"
+                    className="w-full sm:h-[30rem] max-md:aspect-square clip-path-right-md lg:h-[36rem] object-cover"
+                  />
+                </div>
+                <div className="xl:px-24 sm:shrink-1 sm:w-[52%] xl:pb-10">
+                  {/* Updated Heading with Padding */}
+                  <div
+                    className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                    style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
+                  >
+                    {pageData[0]?.title}
+                  </div>
+                  {/* <p className="font-semibold mb-2 md:mb-4 text-[#282828] text-xl md:text-xl xl:text-[1.25rem] text-2">
                 It all started with a dream
               </p> */}
-              <p className="mb-2 md:mb-4  common-description text-3"  dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
-                   </p>
-              <p className="mb-2 md:mb-4  common-description text-3">
-               
-              </p>
+                  <p className="mb-2 md:mb-4  common-description text-3" dangerouslySetInnerHTML={{ __html: pageData[0]?.description }}>
+                  </p>
+                  <p className="mb-2 md:mb-4  common-description text-3">
 
-            </div>
-          </div>
-        </div>
+                  </p>
 
-        <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
-          <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
-            <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
-              {/* Updated Heading with Padding */}
+                  <Link target="blank" href="https://www.elitegroupholding.com/group-of-companies/elite-real-estate">
+                    <button
+                      href=""
+                      className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
+                    >
+                      Explore
+                      <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
+                    </button>
+                  </Link>
 
-              <div
-                className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
-                style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
-              >
-                 {pageData[1]?.title}
+                </div>
               </div>
-              <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]"  dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
-                
-              </p>
-              {/* <p className="mb-2 md:mb-4 common-description text-3">
+            </div>
+
+            <div className="px-[5%] sm:-mt-16 md:-mt-20 lg:-mt-24 xl:-mt-20 section-3 overflow-hidden">
+              <div className=" mb-5 sm:my-5 md:my-10 sm:flex sm:flex-row-reverse sm:items-center">
+                <div className="xl:px-24 sm:shrink-1  sm:w-[48%] xl:pt-10">
+                  {/* Updated Heading with Padding */}
+
+                  <div
+                    className="common-heading mb-5 md:mb-10 text-1 pt-[50px] pb-[15px]"
+                    style={{ color: "#fb511e", lineHeight: "calc(1em + 10px)" }}
+                  >
+                    {pageData[1]?.title}
+                  </div>
+                  <p className="mb-2 md:mb-4  common-description text-2 pb-[15px]" dangerouslySetInnerHTML={{ __html: pageData[1]?.description }}>
+
+                  </p>
+
+                  <Link target="blank" href="https://www.zrtcontracting.com/">
+                    <button
+                      href=""
+                      className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5  bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
+                    >
+                      Visit Website
+                      <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
+                    </button>
+                  </Link>
+                  {/* <p className="mb-2 md:mb-4 common-description text-3">
                 For more information, contact us at
                 <br />
                 <a href="mailto:ecommerce@elitegroupholding.com">
@@ -325,25 +347,25 @@ const AboutUs = () => {
                 </a>
 
               </p> */}
-            </div>
-            <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
-              {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
-              <Image
-                unoptimized
-                width={200}
-                height={300}
-                src={imgUrl + pageData[1]?.image}
-                alt="img2"
-                className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
-              />
+                </div>
+                <div className="relative sm:w-[52%] sm:grow sm:shrink-0 sm:-ms-[5.65%] max-md:mt-3 overflow-hidden img-1">
+                  {/* <div className="hidden sm:block absolute bg-[#F7F7F7] w-1/4 h-[120%] rotate-12 xl:-right-[17.65%] lg:-right-[15%] sm:-right-[11%]"></div> */}
+                  <Image
+                    unoptimized
+                    width={200}
+                    height={300}
+                    src={imgUrl + pageData[1]?.image}
+                    alt="img2"
+                    className="w-full md:h-[30rem] max-md:aspect-square  clip-path-md  lg:h-[36rem] object-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )}
+      )}
 
-     
+
 
 
 
