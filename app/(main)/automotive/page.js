@@ -255,11 +255,11 @@ return (
             <div id="art_elite_car_rental">
               <GroupSection
                 url="/automotive/the-elite-cars"
-                link="https://soueastuae.com/"
+                link="https://artelitecarrental.com"
                 image={imgUrl + pageData[5]?.image}
                 title={<span style={{ color: '#fb511e' }}>{pageData[5]?.title}</span>} // Color applied here
 
-                hasBtn={false}
+                hasBtn={true}
                 descriptions={[<p
                   key="description-1"
                   dangerouslySetInnerHTML={{ __html: pageData[5]?.description }}

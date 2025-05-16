@@ -300,7 +300,7 @@ const GroupOfCompanies = () => {
                   </p>
                 ]}
                 hasBtn={true}
-                link="https://zrtcontracting.com/"
+                link="/group-of-companies/elite-real-estate"
               />
             </div>
 

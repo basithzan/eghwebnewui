@@ -90,7 +90,7 @@ const Partner = ({ images }) => {
             <div key={index}>
               <div className="px-5 lg:hidden flex flex-col w-full">
                 <Link
-                  target="blank"
+                target="_blank"
                   href={image.url}
                   className={`relative border mb-4 rounded-[10px] sm:rounded-full w-full px-2 min-w-[80px]   sm:px-5  py-1  flex-auto  border-black  md:border-[#808080] group transition-all `}
                 >
