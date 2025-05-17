@@ -299,7 +299,7 @@ const GroupOfCompanies = () => {
 
                   </p>
                 ]}
-                hasBtn={true}
+                hasExplore={true}
                 link="/group-of-companies/elite-real-estate"
               />
             </div>
