@@ -300,7 +300,7 @@ const GroupOfCompanies = () => {
                   </p>
                 ]}
                 hasExplore={true}
-                link="/group-of-companies/elite-real-estate"
+                linkexp="/group-of-companies/elite-real-estate"
               />
             </div>
 
