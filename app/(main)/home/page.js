@@ -39,7 +39,7 @@ import Script from "next/script";
 gsap.registerPlugin(ScrollTrigger);
 
 const CarouselImage1 = [
-  {
+  {   
     src: Img3,
     name: "JETOUR",
     description:
@@ -70,14 +70,14 @@ performance.`,
     src: soueast,
     name: "SOUEAST",
     description: `SOUEAST's entry into the UAE with Elite Group Holding as its exclusive authorised distributor, is set to introduce a new standard of premium mobility solutions with its "EASE YOUR LIFE" proposition. Since its establishment, SOUEAST has nearly 20 years of successful experience in global business.`,
-    url: "https://www.soueast-motor.com",
+    url: "https://soueastuae.com/",
   },
-  {
-    src: soueast1,
-    name: "ART ELITE CAR RENTAL",
-    description: `ART Elite Car Rental is a subsidiary of Elite Group Holding, automotive division. They specialize in the leasing and rental of high-end luxury vehicles offering an exclusive selection of top-tier automobiles, catering to clients who seek sophistication, performance, and unparalleled comfort. ​`,
-    url: "/automotive#art_elite_car_rental",
-  },
+  // {
+  //   src: soueast1,
+  //   name: "ART ELITE CAR RENTAL",
+  //   description: `ART Elite Car Rental is a subsidiary of Elite Group Holding, automotive division. They specialize in the leasing and rental of high-end luxury vehicles offering an exclusive selection of top-tier automobiles, catering to clients who seek sophistication, performance, and unparalleled comfort. ​`,
+  //   url: "/automotive#art_elite_car_rental",
+  // },
 ];
 
 const CarouselImage2 = [
@@ -726,7 +726,8 @@ const EliteHome = () => {
         </div>
         {homePageData?.homePageAutomotivePartners && homePageData?.homePageAutomotivePartners?.length > 0 &&
 
-          <Partner images={homePageData?.homePageAutomotivePartners} />
+          // <Partner images={homePageData?.homePageAutomotivePartners} />
+          <Partner images={CarouselImage1} />
         }
       </div>
 
