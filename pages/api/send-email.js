@@ -9,7 +9,7 @@ export default async function handler(req, res) {
       port: 587,
       auth: {
         user: 'no-reply@elitegroupholding.com',
-        pass: 's3s%kbm7FXdD!zT^'
+        pass: 'dbrldfrymllbgrtj'
       }
     });
 
