@@ -27,6 +27,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const MediaCenter = () => {
   const [blogs, setBlogs] = useState([]);
+  const [featuredBlog, setFeaturedBlog] = useState(null);
   const [seoData, setSeoData] = useState(null); // New state for SEO data
 
   useEffect(() => {
@@ -158,6 +159,31 @@ const MediaCenter = () => {
 
         setBlogs(data?.blogs);
 
+        // Find featured blog or use specific slug as fallback
+        let featured = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
+                      data?.blogs?.find(blog => blog.slug === 'elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
+        
+        // If the specific blog is not found in the main blogs array, fetch it separately
+        if (!featured) {
+          try {
+            const specificBlogResponse = await fetch(apiUrl + 'get-single-blog/elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
+            const specificBlogData = await specificBlogResponse.json();
+            
+            if (specificBlogData?.blog) {
+              featured = specificBlogData.blog;
+              featured.featured = true; // Mark it as featured
+            } else {
+              // Fallback to other blogs if the specific one doesn't exist
+              featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+            }
+          } catch (error) {
+            console.error('Error fetching specific blog:', error);
+            // Fallback to other blogs if API call fails
+            featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+          }
+        }
+        
+        setFeaturedBlog(featured);
 
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -256,32 +282,39 @@ const MediaCenter = () => {
 
   return (
 
-    <>
+          <>
       <Navbar />
-      {blogs && blogs?.length > 0 &&
+      {featuredBlog && 
       
       <div className="h-screen w-screen relative section-1">
         <Image
           unoptimized
           width={200}
           height={300}
-          src={blogImgUrl + blogs[0]?.image}
-          alt="BackgroundImage"
+          src={blogImgUrl + featuredBlog?.image}
+          alt="Featured Blog Background"
           className="object-cover object-center h-screen w-screen brightness-50"
         />
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-          {formatCreatedAt(blogs[0]?.created_at)}
+            <span className="bg-[#fb511e] px-3 py-1 rounded-full text-xs uppercase tracking-wider mr-3">
+              Featured
+            </span>
+            {formatCreatedAt(featuredBlog?.created_at)}
           </div>
-          <div className="text-[#FFFFFF] text-4xl font-bold text-2">
-          {blogs[0]?.title}
+          <div className="text-[#FFFFFF] text-4xl font-bold text-2 max-w-4xl">
+            {featuredBlog?.title}
+          </div>
+          <div className="text-[#FFFFFF] text-lg font-light text-3 max-w-3xl mt-2">
+            {stripHtml(featuredBlog?.content).substring(0, 150)}...
           </div>
           <Link
-            href={'/blog/' +blogs[0]?.slug}
-            className="text-white text-sm font-light underline text-3"
+            href={'/blog/' + featuredBlog?.slug}
+            className="text-white text-sm font-light underline text-3 inline-flex items-center gap-2 mt-4 hover:text-[#fb511e] transition-colors"
           >
             Read More
+            <ArrowLongRightIcon className="w-4 h-4" />
           </Link>
         </div>
         <div className=" absolute bottom-0 right-0 px-[5%]">
@@ -341,7 +374,7 @@ const MediaCenter = () => {
           </div> */}
           <div className="flex flex-col gap-10 section-3-1">
 
-          {blogs?.slice(1).map((blog, index) => (
+          {blogs?.filter(blog => blog.id !== featuredBlog?.id).map((blog, index) => (
 
             <div key={blog?.id} className="flex sm:items-center max-lg:flex-col gap-5 sm:gap-10">
               <Image
@@ -419,7 +452,7 @@ const MediaCenter = () => {
                   Jetour Shines at 2023 Shanghai Auto Show with Its Latest...
                 </div>
                 <div className="mb-4 sm:mb-4 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2">
-                  The Chinese’ up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM, T2 (Named Traveler in the Chinese market), T3
+                  The Chinese' up-and-coming SUV brand Jetour Auto showcased multiple models including the DASHING i-DM, T2 (Named Traveler in the Chinese market), T3
                 </div>
                 <Link href="/blog/jetour-shines-at-2023-shanghai-auto-show">
                   <button className="block max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-lg sm:rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1">
