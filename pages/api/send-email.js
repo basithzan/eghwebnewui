@@ -5,11 +5,11 @@ export default async function handler(req, res) {
     const { fullName, phoneNumber, email, sector, message } = req.body;
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp.office365.com',
+      host: 'smtp.gmail.com',
       port: 587,
       auth: {
-        user: 'no-reply@elitegroupholding.com',
-        pass: 'dbrldfrymllbgrtj'
+        user: 'elitegroupholdinguae@gmail.com',
+        pass: 'vieyibabcspqxpda'
       }
     });
 
