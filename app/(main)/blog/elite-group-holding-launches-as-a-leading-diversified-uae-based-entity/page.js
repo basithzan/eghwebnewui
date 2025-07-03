@@ -6,7 +6,7 @@ import Footer from "../../Footer";
 import Navbar from "../../Navbar";
 import { apiUrl, blogImgUrl } from "@/lib/constants";
 
-const page = () => {
+const Page = () => {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -104,4 +104,4 @@ const page = () => {
   );
 };
 
-export default page; 
+export default Page; 
