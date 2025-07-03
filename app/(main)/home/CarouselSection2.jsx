@@ -10,6 +10,7 @@ import "react-multi-carousel/lib/styles.css";
 const CarouselSection2 = ({ images }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [blogs, setBlogs] = useState([]);
+  const [featuredBlog, setFeaturedBlog] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,8 +41,37 @@ const CarouselSection2 = ({ images }) => {
         const response = await fetch(apiUrl + 'get-blogs');  // Your API endpoint
         const data = await response.json();
 
-        setBlogs(data?.blogs);
+        // Find featured blog or use specific slug as fallback
+        let featured = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
+                      data?.blogs?.find(blog => blog.slug === 'elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
+        
+        // If the specific blog is not found in the main blogs array, fetch it separately
+        if (!featured) {
+          try {
+            const specificBlogResponse = await fetch(apiUrl + 'get-single-blog/elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
+            const specificBlogData = await specificBlogResponse.json();
+            
+            if (specificBlogData?.blog) {
+              featured = specificBlogData.blog;
+              featured.featured = true; // Mark it as featured
+            } else {
+              // Fallback to other blogs if the specific one doesn't exist
+              featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+            }
+          } catch (error) {
+            console.error('Error fetching specific blog:', error);
+            // Fallback to other blogs if API call fails
+            featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+          }
+        }
+        
+        setFeaturedBlog(featured);
 
+        // Filter out the featured blog from the main blogs list and put featured blog first
+        const otherBlogs = data?.blogs?.filter(blog => blog.id !== featured?.id) || [];
+        const orderedBlogs = featured ? [featured, ...otherBlogs] : data?.blogs || [];
+        
+        setBlogs(orderedBlogs);
 
       } catch (error) {
         console.error('Error fetching data:', error);

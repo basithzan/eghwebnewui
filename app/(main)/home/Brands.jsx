@@ -62,7 +62,7 @@ const Brands = ({ content }) => {
       className="xl:h-screen w-screen bg-no-repeat bg-center bg-cover px-[5%] flex flex-col md:justify-center text-white overflow-hidden section-brand relative py-4"
     >
       <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
-      <div className="flex items-start gap-12 flex-col md:pt-0 pt-16">
+      <div className="flex items-start gap-12 flex-col md:pt-0 pt-4">
         <div className="flex items-start md:gap-8 flex-col max-w-[900px]">
           <h4 className="md:text-md text-[2rem] lg:text-[2.5rem] font-semibold text-white relative z-10 head-1 max-md:mb-4">
             {content[0]?.title}
@@ -119,7 +119,7 @@ const Brands = ({ content }) => {
         {isMobile && (
           <Marquee
             loop={0}
-            speed={8}  // Adjust the speed for smoother scroll
+            speed={70}  // Increased speed to 70 for mobile (8.75x faster than original 8)
             direction="left"
             className="w-full gap-[40px] brands mb-5 md:mb-0"
           >
