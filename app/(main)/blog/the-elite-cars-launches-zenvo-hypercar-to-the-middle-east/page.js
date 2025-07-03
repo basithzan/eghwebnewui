@@ -29,7 +29,7 @@ const page = () => {
             <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               The Elite Cars launches limited edition AED 8 Million Zenvo
               Hypercar to the Middle East
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description">
               Dubai: The Elite Cars Group, one of the leading multi-brand luxury
               car dealerships in the UAE becomes the authorized distributor of

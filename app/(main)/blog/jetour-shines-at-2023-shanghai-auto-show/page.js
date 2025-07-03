@@ -31,7 +31,7 @@ const page = () => {
               Jetour Shines at 2023 Shanghai Auto Show with Its Latest
               Achievements, Kicking Off an Accelerated Pace for Its Overseas
               Expansion
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description">
               The Chinese’ up-and-coming SUV brand Jetour Auto showcased
               multiple models including the DASHING i-DM, T2 (Named Traveler in
