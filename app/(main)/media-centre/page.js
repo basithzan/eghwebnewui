@@ -298,9 +298,6 @@ const MediaCenter = () => {
 
         <div className="absolute bottom-24 left-[3%] flex flex-col gap-1.5">
           <div className="text-white font-bold text-sm text-1">
-            <span className="bg-[#fb511e] px-3 py-1 rounded-full text-xs uppercase tracking-wider mr-3">
-              Featured
-            </span>
             {formatCreatedAt(featuredBlog?.created_at)}
           </div>
           <div className="text-[#FFFFFF] text-4xl font-bold text-2 max-w-4xl">
