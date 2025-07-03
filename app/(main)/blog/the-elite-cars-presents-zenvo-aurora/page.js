@@ -29,9 +29,9 @@ const page = () => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               The Elite Cars Presents Zenvo Aurora - Agil & Tur in the MENA
-            </h3>
+                          </h1>
             <p className="mb-2 md:mb-3 common-description">
               The Elite Cars, the leading luxury automotive dealership in the
               United Arab Emirates, through their exclusive partnership with

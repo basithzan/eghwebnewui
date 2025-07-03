@@ -59,9 +59,9 @@ const Page = ({ params }) => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               {blog?.title}
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description" dangerouslySetInnerHTML={{ __html: blog.content }} >
             </p>
            

@@ -48,11 +48,11 @@ const TheEliteCars = ({ title, descriptions = [] }) => {
       <div className="sm:px-[5%] pb-10">
         <div className="section-spaced !pt-5  max-w-7xl mx-auto ">
           <div className="md:pb-10 md:pt-5 py-2 flex items-center md:justify-end justify-center"></div>
-          <h2 className="common-heading mb-8 md:mt-6 mt-6 uppercase !font-normal !leading-[120%]">
+          <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !font-normal !leading-[120%]">
             <strong>The Rise of Luxury SUVs in the UAE:</strong> How The Elite
             Cars is Catering to the Growing Demand for High-End Off-Road
             Vehicles
-          </h2>
+          </h1>
           {[
             "UAE’s booming luxury car market, valued at USD 4.12 billion in 2023, is on a growth trajectory. What drives this growth is the increasing appeal of luxury cars, which are often seen as status symbols and are prized for their comfort and superior driving experience. Among luxury car sales, off-road vehicles including SUVs play an imperative part, with revenue projected to reach US$2,822m in 2024, according to this Statista report. In this blog, we will observe how store interest largely goes to high-end luxury SUVs, which could be caused by lifestyle factors, economic factors, and environmental factors, all serviced by The Elite Cars.",
           ].map((description, index) => (

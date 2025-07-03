@@ -29,9 +29,9 @@ const page = () => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               The All-New Jetour T2 Debuts in the UAE
-            </h3>
+                          </h1>
             <p className="mb-2 md:mb-3 common-description">
               The historic event took place at Terra Solis, Dubai where guests
               were treated to a symphony of multi-sensory spectacle, human

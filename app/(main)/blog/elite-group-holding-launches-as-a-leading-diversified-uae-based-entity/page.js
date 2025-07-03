@@ -89,9 +89,9 @@ const Page = () => {
             <div className="text-[#282828] font-semibold text-sm mb-4">
               {formatCreatedAt(blog.created_at)}
             </div>
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               {blog.title}
-            </h3>
+            </h1>
             <div 
               className="common-description prose prose-lg max-w-none"
               dangerouslySetInnerHTML={{ __html: blog.content }}

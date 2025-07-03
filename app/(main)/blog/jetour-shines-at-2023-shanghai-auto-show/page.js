@@ -27,7 +27,7 @@ const page = () => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               Jetour Shines at 2023 Shanghai Auto Show with Its Latest
               Achievements, Kicking Off an Accelerated Pace for Its Overseas
               Expansion

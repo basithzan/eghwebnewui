@@ -45,9 +45,9 @@ const Page = ({ title, descriptions = [] }) => {
         <div className="section-spaced !pt-5 max-w-7xl mx-auto">
           {/* Content extracted from the image */}
           <div className="mt-10">
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               New Jetour T2 Makes A Big Impression In The UAE
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description">
               Dubai was the chosen venue for the launch of the groundbreaking
               Jetour T2 on 27th January 2024 in Terra Solis. The guests had the

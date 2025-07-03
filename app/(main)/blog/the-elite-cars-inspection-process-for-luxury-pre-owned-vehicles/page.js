@@ -29,10 +29,10 @@ const page = ({ title, descriptions = [] }) => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               The Elite Car&apos;s Inspection Process for Luxury Pre-Owned
               Vehicles
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description">
               <strong> The Elite Cars Commitment to Quality:</strong> How Their
               Rigorous Inspection Process Ensures Premium Pre-Owned Luxury

@@ -29,9 +29,9 @@ const page = () => {
           {/* Content extracted from the image */}
           <div className="mt-10">
             {/* New Content */}
-            <h3 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
+            <h1 className="common-heading mb-8 md:mt-6 mt-6 uppercase !leading-[120%]">
               Elite Group Holding and SOUEAST Motor Form Strategic Partnership to Accelerate Growth in UAEs Booming Market Segment
-            </h3>
+            </h1>
             <p className="mb-2 md:mb-3 common-description">
               Elite Group Holding Ltd. and SOUEAST Motor Corporation Ltd. marked a significant milestone in their collaboration by signing a strategic partnership agreement. Formalized on August 7 at the prestigious Bvlgari Yacht Club, this partnership celebrates a remarkable achievement for both the group and the automotive brand.
             </p>
