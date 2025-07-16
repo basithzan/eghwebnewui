@@ -431,7 +431,7 @@ const EliteHome = () => {
 
   useEffect(() => {
     // Set the document title
-    document.title = seoData?.metaTitle || 'Elite Group Holding | Business Excellence in UAE';
+    document.title = seoData?.metaTitle || 'Elite Group Holding Company In UAE';
 
     // Set the meta description
     let descriptionMetaTag = document.querySelector("meta[name='description']");
@@ -458,7 +458,7 @@ const EliteHome = () => {
       ogTitleTag.setAttribute('property', 'og:title');
       document.head.appendChild(ogTitleTag);
     }
-    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite Group Holding | Business Excellence in UAE');
+    ogTitleTag.setAttribute('content', seoData?.ogTitle || 'Elite Group Holding Company In UAE');
 
     // Set Open Graph (og) description
     let ogDescriptionTag = document.querySelector("meta[property='og:description']");
