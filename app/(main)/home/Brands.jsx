@@ -56,6 +56,16 @@ const Brands = ({ content }) => {
 
   const images2 = [BrandImg1, BrandImg2,BrandImg7, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5, BrandImg1, BrandImg2, BrandImg3, BrandImg4, BrandImg5];
   const images = [BrandImg1, BrandImg2,BrandImg7, BrandImg3, BrandImg4, BrandImg5];
+  
+  // Define the URLs for each brand
+  const brandUrls = [
+    "https://jetouruae.com/",
+    "https://zenvouae.com/",
+    "https://www.zrtcontracting.com/",
+    "https://theelitecars.com/",
+    "https://soueastuae.com/",
+    "https://artelitecarrental.com/"
+  ];
   return (
     <div
       style={{ backgroundImage: `url(${imgUrl + content[0]?.image})` }}
@@ -91,9 +101,12 @@ const Brands = ({ content }) => {
                     : defaultWidth; // Default width for other logos
 
               return (
-                <div
+                <a
                   key={index}
-                  className="flex items-center"
+                  href={brandUrls[index]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center cursor-pointer"
                   style={{
                     flexShrink: 0,
                     width: width, // Apply the calculated width
@@ -106,7 +119,7 @@ const Brands = ({ content }) => {
                     className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
                     alt="brands"
                   />
-                </div>
+                </a>
               );
             })}
           </div>
@@ -141,10 +154,17 @@ const Brands = ({ content }) => {
                           ? `calc(${defaultWidth} - 25px)` // Decrease the width of the last logo by 10px
                           : defaultWidth; // Default width for other logos
 
+              // Get the URL for the current logo (using modulo to handle repeated logos)
+              const urlIndex = index % brandUrls.length;
+              const logoUrl = brandUrls[urlIndex];
+
               return (
-                <div
+                <a
                   key={index}
-                  className="flex items-center"
+                  href={logoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center cursor-pointer"
                   style={{
                     flexShrink: 0,
                     width: width, // Apply the calculated width
@@ -158,7 +178,7 @@ const Brands = ({ content }) => {
                     className="w-full h-full object-contain transition-opacity duration-10 opacity-80 hover:opacity-60"
                     alt="brands"
                   />
-                </div>
+                </a>
               );
             })}
 
