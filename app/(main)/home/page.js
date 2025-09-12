@@ -498,22 +498,10 @@ const EliteHome = () => {
 
   }, [seoData]);
 
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-LYF1R4R4F9');
-  }, []);
   
   return (
     <>
       <Navbar />
-      <Script
-        strategy="afterInteractive"
-        src="https://www.googletagmanager.com/gtag/js?id=G-LYF1R4R4F9"
-      />
       <div className="h-screen w-screen section-1 relative z-10"  key={componentKey}>
       {/* {homePageData?.homePageVideo?.video?.replace(/\\/g, '')} */}
         <div className="relative bg-black h-[100vh] w-screen text-white">

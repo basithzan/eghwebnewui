@@ -1,5 +1,6 @@
 import { Barlow } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -13,10 +14,27 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html lang="en">
-      <body className={barlow.className}>{children}</body>
+      <body className={barlow.className}>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-LYF1R4R4F9"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-LYF1R4R4F9');
+            `,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
