@@ -7,6 +7,8 @@ import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
 
+// Mobile-specific video URL
+const MOBILE_VIDEO_URL = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/Xl1SlB9XahkInhgJ4NmIMrqCT46CV5pvsK0hCZ2Q.mp4";
 
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -190,6 +192,7 @@ const EliteHome = () => {
     video2, // Add more video URLs here...
   ];
   const isMdOrLarger = useMediaQuery({ minWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     if (isDataLoaded) {
@@ -513,7 +516,14 @@ const EliteHome = () => {
             className="absolute inset-0 top-0 w-screen h-full object-cover video-banner"
             onEnded={handleVideoEnd}
           >
-            <source src={homePageData?.homePageVideo?.video?.replace(/\\/g, '') || ''} type="video/mp4" />
+            <source 
+              src={
+                isMobile 
+                  ? MOBILE_VIDEO_URL 
+                  : homePageData?.homePageVideo?.video?.replace(/\\/g, '') || ''
+              } 
+              type="video/mp4" 
+            />
             Your browser does not support the video tag.
           </video>
           <div className="absolute w-full h-full bg-[linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))]"></div>
