@@ -91,11 +91,11 @@ const CarouselImage2 = [
     url: "/automotive",
   },
   {
-    src: Img6,
-    name: "E-COMMERCE",
+    src: Img9,
+    name: "INVESTMENTS",
     description:
-      "We are at the forefront of the digital revolution, providing seamless online shopping experiences through our cutting-edge e-commerce platforms. Our goal is to make shopping convenient, efficient, and enjoyable, catering to the evolving needs of modern consumers. ",
-    url: "/group-of-companies/elite-e-commerce",
+      "Our investments arm is instrumental in the development and implementation of various projects and businesses that drive economic growth. We are involved in a wide range of projects ensuring long-term value creation and sustainability.",
+    url: "/group-of-companies/elite-investment",
   },
   {
     src: Img8,
@@ -103,13 +103,6 @@ const CarouselImage2 = [
     description:
       "Our real estate and contracting division is synonymous with luxury, quality, and innovation. We develop, manage, and invest in a diverse portfolio of residential, commercial, and mixed-use properties, setting new benchmarks in the real estate industry. ",
     url: "/group-of-companies/elite-real-estate",
-  },
-  {
-    src: Img9,
-    name: "INVESTMENTS",
-    description:
-      "Our investments arm is instrumental in the development and implementation of various projects and businesses that drive economic growth. We are involved in a wide range of projects ensuring long-term value creation and sustainability.",
-    url: "/group-of-companies/elite-investment",
   },
 ];
 
@@ -550,23 +543,19 @@ const EliteHome = () => {
             {[
               {
                 title: "Our Company",
-                url: "/group-of-companies",
+                url: "/about-group",
               },
               {
                 title: "Automotive",
                 url: "/automotive",
               },
               {
-                title: "Investments",
-                url: "/group-of-companies/elite-investment",
+                title: "Our Sectors",
+                url: "/group-of-companies",
               },
               {
-                title: "Real-Estate",
-                url: "/group-of-companies/elite-real-estate",
-              },
-              {
-                title: "Ecommerce",
-                url: "/group-of-companies/elite-e-commerce",
+                title: "Media Centre",
+                url: "/media-centre",
               },
             ].map((item, index) => (
               <div
@@ -767,7 +756,7 @@ const EliteHome = () => {
             "foundingDate": "2014",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "723 Sheikh Zayed Road, P. O. Box 393316",
+              "streetAddress": "The Elite Cars, 4th St - Al Quoz - Al Quoz Industrial Area 3",
               "addressLocality": "Dubai",
               "addressRegion": "Dubai",
               "postalCode": "393316",
