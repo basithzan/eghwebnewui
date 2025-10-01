@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+import { SpeakerWaveIcon, SpeakerXMarkIcon } from "@heroicons/react/24/solid";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useMediaQuery } from "react-responsive";
 
@@ -174,6 +175,7 @@ const EliteHome = () => {
   const [seoData, setSeoData] = useState(null); // New state for SEO data
   const [isDataLoaded, setIsDataLoaded] = useState(false); // New state to track data loading
   const [componentKey, setComponentKey] = useState(0); // Unique key to force re-render
+  const [isMuted, setIsMuted] = useState(true);
 
   const videoUrls = [
     video2,
@@ -192,6 +194,60 @@ const EliteHome = () => {
       // Do nothing, let React re-render naturally when state updates
     }
   }, [isDataLoaded]);
+
+  // Attempt to auto-unmute if the user previously allowed sound (desktop/tablet only)
+  useEffect(() => {
+    try {
+      if (isMobile) return; // keep muted on mobile to allow autoplay
+      const allowSound = typeof window !== 'undefined' && localStorage.getItem('allowSound') === 'true';
+      if (allowSound && videoRef.current) {
+        videoRef.current.muted = false;
+        setIsMuted(false);
+        try { videoRef.current.volume = 1; } catch (e) {}
+        const maybePromise = videoRef.current.play && videoRef.current.play();
+        if (maybePromise && typeof maybePromise.then === 'function') {
+          maybePromise.catch(() => {
+            // Autoplay with sound blocked, revert to muted
+            setIsMuted(true);
+            if (videoRef.current) videoRef.current.muted = true;
+          });
+        }
+      }
+    } catch (e) {}
+  }, [isMobile]);
+
+  // Ensure autoplay starts muted, especially on mobile Safari
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    // Ensure required attributes are set very early
+    try {
+      el.setAttribute('playsinline', '');
+      el.setAttribute('muted', '');
+      el.muted = true;
+    } catch (e) {}
+
+    const tryPlay = () => {
+      try {
+        if (el.paused) {
+          const p = el.play && el.play();
+          if (p && typeof p.then === 'function') {
+            p.catch(() => {/* ignore autoplay errors when muted should pass */});
+          }
+        }
+      } catch (e) {}
+    };
+
+    // Try on ready events
+    el.addEventListener('loadeddata', tryPlay, { once: true });
+    el.addEventListener('canplay', tryPlay, { once: true });
+    // Fallback timer in case events fire before listener attachment
+    const t = setTimeout(tryPlay, 300);
+
+    return () => {
+      clearTimeout(t);
+    };
+  }, [componentKey]);
 
   useEffect(() => {
     gsap
@@ -504,7 +560,7 @@ const EliteHome = () => {
           <video
             ref={videoRef}
             autoPlay
-            muted
+            muted={isMuted}
             playsInline
             className="absolute inset-0 top-0 w-screen h-full object-cover video-banner"
             onEnded={handleVideoEnd}
@@ -520,6 +576,37 @@ const EliteHome = () => {
             Your browser does not support the video tag.
           </video>
           <div className="absolute w-full h-full bg-[linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.9))]"></div>
+          {isMuted ? (
+            <button
+              className="absolute z-10 bottom-6 left-6 bg-black/60 text-white p-2 rounded-full"
+              aria-label="Unmute video"
+              onClick={() => {
+                setIsMuted(false);
+                if (videoRef.current) {
+                  videoRef.current.muted = false;
+                  try { videoRef.current.play && videoRef.current.play(); } catch (e) {}
+                  try { videoRef.current.volume = 1; } catch (e) {}
+                }
+                try { localStorage.setItem('allowSound', 'true'); } catch (e) {}
+              }}
+            >
+              <SpeakerWaveIcon className="w-6 h-6" />
+            </button>
+          ) : (
+            <button
+              className="absolute z-10 bottom-6 left-6 bg-black/60 text-white p-2 rounded-full"
+              aria-label="Mute video"
+              onClick={() => {
+                setIsMuted(true);
+                if (videoRef.current) {
+                  videoRef.current.muted = true;
+                }
+                try { localStorage.setItem('allowSound', 'false'); } catch (e) {}
+              }}
+            >
+              <SpeakerXMarkIcon className="w-6 h-6" />
+            </button>
+          )}
           <div className="absolute top-1/2 left-[5%] -translate-y-1/2 z-10">
             <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
               <h1>WELCOME TO ELITE GROUP HOLDING </h1>
