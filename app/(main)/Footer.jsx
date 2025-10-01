@@ -3,7 +3,6 @@
 import Image from "next/image";
 import SocialLinks from "./SocialLinks";
 import Logo from "/public/assets/Logo.png";
-import SuperbrandsLogo from "/public/assets/superbrands.png";
 import { useEffect, useState } from "react";
 import { apiUrl } from "@/lib/constants";
 
@@ -40,12 +39,6 @@ const Footer = () => {
 
         <div className="grid md:grid-cols-3 gap-5 md:gap-14 text-[#B3B3B3]">
           <div>
-            <Image
-              unoptimized
-              alt="Superbrands Award"
-              src={SuperbrandsLogo}
-              className="w-20 h-20 mb-4 md:hidden"
-            />
             <div className=" md:text-base text-[1.25rem] lg:text-[1.5rem] lg:leading-[1.75rem] mb-2.5  text-white">
               ABOUT US
             </div>
@@ -129,12 +122,6 @@ const Footer = () => {
               className="gap-0.5  flex items-center"
               iconClassName="w-6 h-6"
               pageData={pageData}
-            />
-            <Image
-              unoptimized
-              alt="Superbrands Award"
-              src={SuperbrandsLogo}
-              className="w-20 h-20 mt-6 hidden md:block"
             />
           </div>
         </div>
