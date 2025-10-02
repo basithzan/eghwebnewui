@@ -590,7 +590,7 @@ const EliteHome = () => {
                 try { localStorage.setItem('allowSound', 'true'); } catch (e) {}
               }}
             >
-              <SpeakerWaveIcon className="w-6 h-6" />
+              <SpeakerXMarkIcon className="w-6 h-6" />
             </button>
           ) : (
             <button
@@ -604,7 +604,7 @@ const EliteHome = () => {
                 try { localStorage.setItem('allowSound', 'false'); } catch (e) {}
               }}
             >
-              <SpeakerXMarkIcon className="w-6 h-6" />
+              <SpeakerWaveIcon className="w-6 h-6" />
             </button>
           )}
           <div className="absolute top-1/2 left-[5%] -translate-y-1/2 z-10">
