@@ -157,33 +157,63 @@ const MediaCenter = () => {
         const response = await fetch(apiUrl + 'get-blogs');  // Your API endpoint
         const data = await response.json();
 
-        setBlogs(data?.blogs);
+        // Find blog with id 34 as the new featured blog (handle both string and number IDs)
+        let newFeaturedBlog = data?.blogs?.find(blog => {
+          const blogId = Number(blog.id);
+          return blogId === 34;
+        });
+        
+        // Log for debugging if blog 34 is not found
+        if (!newFeaturedBlog) {
+          console.warn('Blog with id 34 not found in the blogs list. Available IDs:', data?.blogs?.map(b => b.id));
+        }
 
-        // Find featured blog or use specific slug as fallback
-        let featured = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
+        // Find the current featured blog (the one that was previously featured)
+        let currentFeaturedBlog = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
                       data?.blogs?.find(blog => blog.slug === 'elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
         
-        // If the specific blog is not found in the main blogs array, fetch it separately
-        if (!featured) {
+        // If the current featured blog is not found in the main blogs array, fetch it separately
+        if (!currentFeaturedBlog) {
           try {
             const specificBlogResponse = await fetch(apiUrl + 'get-single-blog/elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
             const specificBlogData = await specificBlogResponse.json();
             
             if (specificBlogData?.blog) {
-              featured = specificBlogData.blog;
-              featured.featured = true; // Mark it as featured
+              currentFeaturedBlog = specificBlogData.blog;
             } else {
               // Fallback to other blogs if the specific one doesn't exist
-              featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+              currentFeaturedBlog = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
             }
           } catch (error) {
-            console.error('Error fetching specific blog:', error);
+            console.error('Error fetching current featured blog:', error);
             // Fallback to other blogs if API call fails
-            featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+            currentFeaturedBlog = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
+          }
+        }
+
+        // Set the new featured blog (id 34) or fallback to current featured blog if id 34 not found
+        const featuredBlogToShow = newFeaturedBlog || currentFeaturedBlog;
+        setFeaturedBlog(featuredBlogToShow);
+
+        // Filter out the new featured blog (id 34) from the blogs list (handle both string and number IDs)
+        let otherBlogs = data?.blogs?.filter(blog => blog.id !== 34 && blog.id !== '34' && Number(blog.id) !== 34) || [];
+        
+        // If we have a current featured blog and it's not the same as the new featured blog,
+        // place it at the 5th position (index 4)
+        if (currentFeaturedBlog && currentFeaturedBlog.id !== 34 && currentFeaturedBlog.id !== '34' && Number(currentFeaturedBlog.id) !== 34) {
+          // Remove the current featured blog from otherBlogs if it exists
+          otherBlogs = otherBlogs.filter(blog => blog.id !== currentFeaturedBlog.id);
+          
+          // Insert the current featured blog at position 5 (index 4)
+          if (otherBlogs.length >= 4) {
+            otherBlogs.splice(4, 0, currentFeaturedBlog);
+          } else {
+            // If there are fewer than 4 blogs, append it at the end
+            otherBlogs.push(currentFeaturedBlog);
           }
         }
         
-        setFeaturedBlog(featured);
+        setBlogs(otherBlogs);
 
       } catch (error) {
         console.error('Error fetching data:', error);
