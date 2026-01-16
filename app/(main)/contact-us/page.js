@@ -14,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger);
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     fullName: '',
-    phoneNumber: '',
+    phoneNumber: '+971 ',
     email: '',
     sector: '',
     message: '',
@@ -114,10 +114,28 @@ const ContactUs = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    
+    // Handle phone number with +971 prefix
+    if (name === 'phoneNumber') {
+      // Remove any existing +971 to avoid duplication
+      let cleanedValue = value.replace(/^\+971\s*/, '');
+      
+      // Remove any non-digit characters except + at the start
+      cleanedValue = cleanedValue.replace(/[^\d]/g, '');
+      
+      // Always prepend +971
+      const phoneWithPrefix = '+971' + (cleanedValue ? ' ' + cleanedValue : '');
+      
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: phoneWithPrefix
+      }));
+    } else {
+      setFormData(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -132,7 +150,7 @@ const ContactUs = () => {
           setShowThankYou(true);
           setFormData({
             fullName: '',
-            phoneNumber: '',
+            phoneNumber: '+971 ',
             email: '',
             sector: '',
             message: '',
@@ -288,15 +306,18 @@ const ContactUs = () => {
                     placeholder="Full Name *"
                     required
                   />
-                  <input
-                    type="tel"
-                    name="phoneNumber"
-                    value={formData.phoneNumber}
-                    onChange={handleInputChange}
-                    className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-1"
-                    placeholder="Telephone Number *"
-                    required
-                  />
+                  <div className="relative flex items-center border border-1 border-[#141414B2] rounded-xl overflow-hidden">
+                    <span className="text-[#141414B2] px-4 py-1 whitespace-nowrap border-r border-[#141414B2]">+971</span>
+                    <input
+                      type="tel"
+                      name="phoneNumber"
+                      value={formData.phoneNumber.replace(/^\+971\s*/, '') || ''}
+                      onChange={handleInputChange}
+                      className="outline-none text-[#141414B2] border-none px-4 py-1 flex-1"
+                      placeholder="Telephone Number *"
+                      required
+                    />
+                  </div>
                   <input
                     type="email"
                     name="email"
