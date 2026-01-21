@@ -41,45 +41,24 @@ const CarouselSection2 = ({ images }) => {
         const response = await fetch(apiUrl + 'get-blogs');  // Your API endpoint
         const data = await response.json();
 
-        // Find blog with id 34 as the featured blog (handle both string and number IDs)
-        let featured = data?.blogs?.find(blog => {
-          const blogId = Number(blog.id);
-          return blogId === 34;
-        });
+        // Find featured blog where is_first === 1
+        let featured = data?.blogs?.find(blog => blog.is_first === 1 || blog.is_first === '1' || Number(blog.is_first) === 1);
         
-        // If blog id 34 is not found, fallback to featured blog or specific slug
+        // If no blog with is_first === 1 is found, fallback to first blog
         if (!featured) {
-          featured = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
-                    data?.blogs?.find(blog => blog.slug === 'elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
-          
-          // If the specific blog is not found in the main blogs array, fetch it separately
-          if (!featured) {
-            try {
-              const specificBlogResponse = await fetch(apiUrl + 'get-single-blog/elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
-              const specificBlogData = await specificBlogResponse.json();
-              
-              if (specificBlogData?.blog) {
-                featured = specificBlogData.blog;
-                featured.featured = true; // Mark it as featured
-              } else {
-                // Fallback to other blogs if the specific one doesn't exist
-                featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
-              }
-            } catch (error) {
-              console.error('Error fetching specific blog:', error);
-              // Fallback to other blogs if API call fails
-              featured = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
-            }
-          }
+          console.warn('Blog with is_first === 1 not found in the blogs list.');
+          featured = data?.blogs?.[0];
         }
         
         setFeaturedBlog(featured);
 
-        // Filter out the featured blog from the main blogs list (handle both string and number IDs)
+        // Filter out the featured blog from the main blogs list
         const otherBlogs = data?.blogs?.filter(blog => {
-          const blogId = Number(blog.id);
-          const featuredId = featured ? Number(featured.id) : null;
-          return blogId !== 34 && blogId !== featuredId;
+          if (!featured) return true;
+          // Compare by id (handle both string and number IDs)
+          return blog.id !== featured.id && 
+                 blog.id !== String(featured.id) && 
+                 String(blog.id) !== String(featured.id);
         }) || [];
         
         // Put featured blog first
