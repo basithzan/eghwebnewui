@@ -157,61 +157,25 @@ const MediaCenter = () => {
         const response = await fetch(apiUrl + 'get-blogs');  // Your API endpoint
         const data = await response.json();
 
-        // Find blog with id 34 as the new featured blog (handle both string and number IDs)
-        let newFeaturedBlog = data?.blogs?.find(blog => {
-          const blogId = Number(blog.id);
-          return blogId === 34;
-        });
+        // Find featured blog where is_first === 1
+        let featuredBlogToShow = data?.blogs?.find(blog => blog.is_first === 1 || blog.is_first === '1' || Number(blog.is_first) === 1);
         
-        // Log for debugging if blog 34 is not found
-        if (!newFeaturedBlog) {
-          console.warn('Blog with id 34 not found in the blogs list. Available IDs:', data?.blogs?.map(b => b.id));
+        // If no blog with is_first === 1 is found, fallback to first blog
+        if (!featuredBlogToShow) {
+          console.warn('Blog with is_first === 1 not found in the blogs list.');
+          featuredBlogToShow = data?.blogs?.[0];
         }
 
-        // Find the current featured blog (the one that was previously featured)
-        let currentFeaturedBlog = data?.blogs?.find(blog => blog.featured === true || blog.featured === 1) || 
-                      data?.blogs?.find(blog => blog.slug === 'elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
-        
-        // If the current featured blog is not found in the main blogs array, fetch it separately
-        if (!currentFeaturedBlog) {
-          try {
-            const specificBlogResponse = await fetch(apiUrl + 'get-single-blog/elite-group-holding-launches-as-a-leading-diversified-uae-based-entity');
-            const specificBlogData = await specificBlogResponse.json();
-            
-            if (specificBlogData?.blog) {
-              currentFeaturedBlog = specificBlogData.blog;
-            } else {
-              // Fallback to other blogs if the specific one doesn't exist
-              currentFeaturedBlog = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
-            }
-          } catch (error) {
-            console.error('Error fetching current featured blog:', error);
-            // Fallback to other blogs if API call fails
-            currentFeaturedBlog = data?.blogs?.find(blog => blog.slug === 'elite-group-holding-and-soueast-motor') || data?.blogs?.[0];
-          }
-        }
-
-        // Set the new featured blog (id 34) or fallback to current featured blog if id 34 not found
-        const featuredBlogToShow = newFeaturedBlog || currentFeaturedBlog;
         setFeaturedBlog(featuredBlogToShow);
 
-        // Filter out the new featured blog (id 34) from the blogs list (handle both string and number IDs)
-        let otherBlogs = data?.blogs?.filter(blog => blog.id !== 34 && blog.id !== '34' && Number(blog.id) !== 34) || [];
-        
-        // If we have a current featured blog and it's not the same as the new featured blog,
-        // place it at the 5th position (index 4)
-        if (currentFeaturedBlog && currentFeaturedBlog.id !== 34 && currentFeaturedBlog.id !== '34' && Number(currentFeaturedBlog.id) !== 34) {
-          // Remove the current featured blog from otherBlogs if it exists
-          otherBlogs = otherBlogs.filter(blog => blog.id !== currentFeaturedBlog.id);
-          
-          // Insert the current featured blog at position 5 (index 4)
-          if (otherBlogs.length >= 4) {
-            otherBlogs.splice(4, 0, currentFeaturedBlog);
-          } else {
-            // If there are fewer than 4 blogs, append it at the end
-            otherBlogs.push(currentFeaturedBlog);
-          }
-        }
+        // Filter out the featured blog from the blogs list
+        let otherBlogs = data?.blogs?.filter(blog => {
+          if (!featuredBlogToShow) return true;
+          // Compare by id (handle both string and number IDs)
+          return blog.id !== featuredBlogToShow.id && 
+                 blog.id !== String(featuredBlogToShow.id) && 
+                 String(blog.id) !== String(featuredBlogToShow.id);
+        }) || [];
         
         setBlogs(otherBlogs);
 
