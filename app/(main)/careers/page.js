@@ -29,8 +29,6 @@ const Careers = () => {
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Careers');
 
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {

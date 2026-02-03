@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="fixed z-50 w-screen bg-black/40 h-[90px] sm:h-[120px] ">
         <div className="absolute top-0 md:left-1/2 left-[5%] md:-translate-x-1/2 z-[60] py-[5%] md:py-4">
           <a href="/" className="">
-            <Image unoptimized alt="img" src={Logo} className="w-28 md:w-40" />
+            <Image unoptimized alt="img" src={Logo} className="w-28 md:w-40" priority />
           </a>
         </div>
         <div className="flex justify-between  items-center px-[4.5%] md:px-[2.5%] py-[5%] md:py-4 bg-[linear-gradient(rgba(15,15,15,0.9),rgba(0,0,0,0))]">

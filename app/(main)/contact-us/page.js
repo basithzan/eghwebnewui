@@ -35,9 +35,6 @@ const ContactUs = () => {
       // If it exists, use it
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Contact us');
-
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {
@@ -61,6 +58,8 @@ const ContactUs = () => {
   }, []);
 
   useEffect(() => {
+    if (!document.querySelector(".section-1 .text-1")) return;
+
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
       .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
@@ -70,58 +69,62 @@ const ContactUs = () => {
         { y: 0, opacity: 1 }
       );
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-2",
-          start: "top bottom",
-        },
-      })
-      .fromTo(
-        ".section-2 .text-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .text-2",
-        { x: 150, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .section-2-1",
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
+    if (document.querySelector(".section-2")) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-2",
+            start: "top bottom",
+          },
+        })
+        .fromTo(
+          ".section-2 .text-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-2 .text-2",
+          { x: 150, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-2 .section-2-1",
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+    }
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-3",
-          start: "top bottom",
-        },
-      })
-      .fromTo(
-        ".section-3 .section-3-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-3 .section-3-2",
-        { x: 150, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
+    if (document.querySelector(".section-3")) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-3",
+            start: "top bottom",
+          },
+        })
+        .fromTo(
+          ".section-3 .section-3-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-3 .section-3-2",
+          { x: 150, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+    }
   }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     
-    // Handle phone number with +971 prefix
+    // Handle phone number with +971 prefix (max 9 digits)
     if (name === 'phoneNumber') {
       // Remove any existing +971 to avoid duplication
       let cleanedValue = value.replace(/^\+971\s*/, '');
       
-      // Remove any non-digit characters except + at the start
-      cleanedValue = cleanedValue.replace(/[^\d]/g, '');
+      // Remove any non-digit characters and limit to 9 digits
+      cleanedValue = cleanedValue.replace(/[^\d]/g, '').slice(0, 9);
       
       // Always prepend +971
       const phoneWithPrefix = '+971' + (cleanedValue ? ' ' + cleanedValue : '');
@@ -313,6 +316,7 @@ const ContactUs = () => {
                       name="phoneNumber"
                       value={formData.phoneNumber.replace(/^\+971\s*/, '') || ''}
                       onChange={handleInputChange}
+                      maxLength={9}
                       className="outline-none text-[#141414B2] border-none px-4 py-1 flex-1"
                       placeholder="Telephone Number *"
                       required

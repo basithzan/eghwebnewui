@@ -36,8 +36,6 @@ const AboutUs = () => {
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'REAL ESTATE');
 
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {

@@ -35,8 +35,6 @@ const AboutUs = () => {
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Investment');
 
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {

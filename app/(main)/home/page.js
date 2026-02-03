@@ -250,6 +250,9 @@ const EliteHome = () => {
   }, [componentKey]);
 
   useEffect(() => {
+    const el1 = document.querySelector(".section-1 .text-1");
+    if (!el1) return;
+
     gsap
       .timeline({ duration: 0.5, ease: "power3.out" })
       .fromTo(".section-1 .text-1", { y: 50, opacity: 0 }, { y: 0, opacity: 1 })
@@ -260,116 +263,128 @@ const EliteHome = () => {
         { y: 0, opacity: 1 }
       );
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-2",
-          start: "top bottom",
-        },
-      })
+    const section2 = document.querySelector(".section-2");
+    if (section2) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-2",
+            start: "top bottom",
+          },
+        })
+        .fromTo(
+          ".section-2 .text-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-2 .text-2",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-2 .button-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-2 .img-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+    }
 
-      .fromTo(
-        ".section-2 .text-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .text-2",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .button-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-2 .img-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
+    const section3Head = document.querySelector(".section-3-head");
+    if (section3Head) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-3-head",
+            start: "top center",
+          },
+        })
+        .fromTo(
+          ".section-3-head",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-3-head+.carouselSection",
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+    }
 
-    // gsap.fromTo('.section-2 .img-1', { opacity: 0 }, {
-    //   scrollTrigger: {
-    //     trigger: '.section-2',
-    //     start: 'top bottom',
-    //   }, opacity: 1, duration: 0.75, ease: 'power3.out'
-    // });
+    const section4 = document.querySelector(".section-4");
+    if (section4) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-4",
+            start: "top center",
+          },
+          delay: 0.25,
+        })
+        .fromTo(
+          ".section-4 .head-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-4 .text",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-4 .count",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+    }
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-3-head",
-          start: "top center",
-        },
-      })
-      .fromTo(
-        ".section-3-head",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-3-head+.carouselSection",
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
+    const section5 = document.querySelector(".section-5");
+    if (section5) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-5",
+            start: "top center",
+          },
+          delay: 0.25,
+        })
+        .fromTo(
+          ".section-5 .head-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-5 .carouselSection",
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+    }
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-4",
-          start: "top center",
-        },
-        delay: 0.25,
-      })
-      .fromTo(
-        ".section-4 .head-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-4 .text",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-4 .count",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-5",
-          start: "top center",
-        },
-        delay: 0.25,
-      })
-      .fromTo(
-        ".section-5 .head-1",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      )
-      .fromTo(
-        ".section-5 .carouselSection",
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-      );
-
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: ".section-6",
-          start: "top center",
-        },
-        delay: 0.25,
-      })
-      .fromTo(
-        ".section-6 ",
-        { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-      );
+    const section6 = document.querySelector(".section-6");
+    if (section6) {
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".section-6",
+            start: "top center",
+          },
+          delay: 0.25,
+        })
+        .fromTo(
+          ".section-6 .head-1",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        )
+        .fromTo(
+          ".section-6 .text",
+          { x: -50, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
+        );
+    }
   }, []);
 
   useEffect(() => {

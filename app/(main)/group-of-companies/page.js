@@ -35,8 +35,6 @@ const GroupOfCompanies = () => {
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Group of companies');
 
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {

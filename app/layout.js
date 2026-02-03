@@ -15,8 +15,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={barlow.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={barlow.className} suppressHydrationWarning>
         <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-LYF1R4R4F9"

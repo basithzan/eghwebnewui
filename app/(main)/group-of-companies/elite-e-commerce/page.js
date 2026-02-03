@@ -34,8 +34,6 @@ const AboutUs = () => {
       setBanner(JSON.parse(cachedData));
       const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'E-Commerce');
 
-      console.log(bnr)
-
       setBanner(bnr);
 
     } else {

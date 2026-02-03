@@ -35,9 +35,6 @@ if (cachedData) {
   // If it exists, use it
   setBanner(JSON.parse(cachedData));
   const bnr = JSON.parse(cachedData)?.find(banner => banner.page == 'Automotive');
-
-  console.log(bnr)
-
   setBanner(bnr);
 
 } else {
