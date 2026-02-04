@@ -5,15 +5,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-import { apiUrl, imgUrl } from "@/lib/constants";
+import { imgUrl } from "@/lib/constants";
 
 gsap.registerPlugin(ScrollTrigger);
-
-// Salesforce WebToCase endpoint (UAT)
-const WEB_TO_CASE_ACTION =
-  "https://elitegroupholding--uat.sandbox.my.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00DFV00000144HN";
-const ORG_ID = "00DFV00000144HN";
-const RECORD_TYPE_ID = "012FV000000EKwZ";
 
 const CASE_REASONS = [
   { value: "", label: "--None--" },
@@ -30,6 +24,17 @@ const CASE_REASONS = [
 const Feedback = () => {
   const [banner, setBanner] = useState(null);
   const [phoneDigits, setPhoneDigits] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    description: "",
+    reason: "",
+    vin: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const cachedData = localStorage.getItem("banners");
@@ -74,10 +79,55 @@ const Feedback = () => {
     setPhoneDigits(cleaned);
   };
 
-  const retURL =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/feedback`
-      : "https://elitegroupholding.com/feedback";
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setIsSubmitting(true);
+    try {
+      const retURL =
+        typeof window !== "undefined"
+          ? `${window.location.origin}/feedback`
+          : "https://elitegroupholding.com/feedback";
+      const res = await fetch("/api/save/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: phoneDigits ? `+971 ${phoneDigits}` : "+971 ",
+          subject: formData.subject,
+          description: formData.description,
+          reason: formData.reason,
+          vin: formData.vin,
+          retURL,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to submit feedback");
+      }
+      setShowThankYou(true);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        description: "",
+        reason: "",
+        vin: "",
+      });
+      setPhoneDigits("");
+      setTimeout(() => setShowThankYou(false), 5000);
+    } catch (err) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -153,14 +203,9 @@ const Feedback = () => {
 
           <div className="section-2-1">
             <form
-              action={WEB_TO_CASE_ACTION}
-              method="POST"
+              onSubmit={handleSubmit}
               className="grid md:grid-cols-2 w-full md:max-w-3xl mx-auto gap-5 md:my-10 my-5"
             >
-              <input type="hidden" name="orgid" value={ORG_ID} />
-              <input type="hidden" name="recordType" value={RECORD_TYPE_ID} />
-              <input type="hidden" name="retURL" value={retURL} />
-
               <div className="md:col-span-2">
                 <label
                   htmlFor="name"
@@ -174,6 +219,8 @@ const Feedback = () => {
                   type="text"
                   maxLength={80}
                   required
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
                   placeholder="Your name"
                 />
@@ -192,6 +239,8 @@ const Feedback = () => {
                   type="email"
                   maxLength={80}
                   required
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
                   placeholder="your@email.com"
                 />
@@ -218,7 +267,6 @@ const Feedback = () => {
                     className="outline-none text-[#141414B2] border-none px-4 py-2 flex-1"
                     placeholder="50 123 4567"
                   />
-                  <input type="hidden" name="phone" value={`+971 ${phoneDigits}`} readOnly />
                 </div>
               </div>
 
@@ -235,6 +283,8 @@ const Feedback = () => {
                   type="text"
                   maxLength={80}
                   required
+                  value={formData.subject}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
                   placeholder="Subject"
                 />
@@ -252,6 +302,8 @@ const Feedback = () => {
                   name="description"
                   rows={4}
                   required
+                  value={formData.description}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full resize-y"
                   placeholder="Please describe your feedback..."
                 />
@@ -268,6 +320,8 @@ const Feedback = () => {
                   id="reason"
                   name="reason"
                   required
+                  value={formData.reason}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full appearance-none bg-white"
                 >
                   {CASE_REASONS.map((opt) => (
@@ -286,10 +340,12 @@ const Feedback = () => {
                   VIN
                 </label>
                 <input
-                  id="00NFV000001yOOn"
-                  name="00NFV000001yOOn"
+                  id="vin"
+                  name="vin"
                   type="text"
                   maxLength={100}
+                  value={formData.vin}
+                  onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
                   placeholder="Vehicle Identification Number (optional)"
                 />
@@ -298,10 +354,10 @@ const Feedback = () => {
               <div className="md:col-span-2 flex justify-center">
                 <button
                   type="submit"
-                  name="submit"
-                  className="max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-2 md:py-3"
+                  disabled={isSubmitting}
+                  className={`max-sm:text-xs bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-2 md:py-3 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -322,6 +378,31 @@ const Feedback = () => {
           </div>
         </div>
       </div>
+
+      {showThankYou && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-4">
+            <h2 className="text-xl font-semibold mb-2">Thank you</h2>
+            <p>Your feedback has been submitted successfully. We appreciate your input.</p>
+          </div>
+        </div>
+      )}
+
+      {error && (
+        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-4 border-l-4 border-red-500">
+            <h2 className="text-xl font-semibold mb-2">Error</h2>
+            <p>{error}</p>
+            <button
+              type="button"
+              onClick={() => setError("")}
+              className="mt-4 text-[#fb511e] hover:underline"
+            >
+              Dismiss
+            </button>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
