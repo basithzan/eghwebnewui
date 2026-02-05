@@ -206,12 +206,13 @@ const Feedback = () => {
               onSubmit={handleSubmit}
               className="grid md:grid-cols-2 w-full md:max-w-3xl mx-auto gap-5 md:my-10 my-5"
             >
+              {/* 1. Name */}
               <div className="md:col-span-2">
                 <label
                   htmlFor="name"
                   className="block text-left text-[#141414] mb-1 text-sm"
                 >
-                  Contact Name *
+                  Name *
                 </label>
                 <input
                   id="name"
@@ -226,26 +227,7 @@ const Feedback = () => {
                 />
               </div>
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-left text-[#141414] mb-1 text-sm"
-                >
-                  Email *
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  maxLength={80}
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
-                  placeholder="your@email.com"
-                />
-              </div>
-
+              {/* 2. Phone */}
               <div>
                 <label
                   htmlFor="phone"
@@ -270,6 +252,72 @@ const Feedback = () => {
                 </div>
               </div>
 
+              {/* 3. Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-left text-[#141414] mb-1 text-sm"
+                >
+                  Email *
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  maxLength={80}
+                  required
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              {/* 4. Reason */}
+              <div className="md:col-span-2">
+                <label
+                  htmlFor="reason"
+                  className="block text-left text-[#141414] mb-1 text-sm"
+                >
+                  Reason *
+                </label>
+                <select
+                  id="reason"
+                  name="reason"
+                  required
+                  value={formData.reason}
+                  onChange={handleInputChange}
+                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full appearance-none bg-white"
+                >
+                  {CASE_REASONS.map((opt) => (
+                    <option key={opt.value || "none"} value={opt.value}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* 5. VIN */}
+              <div className="md:col-span-2">
+                <label
+                  htmlFor="vin"
+                  className="block text-left text-[#141414] mb-1 text-sm"
+                >
+                  VIN
+                </label>
+                <input
+                  id="vin"
+                  name="vin"
+                  type="text"
+                  maxLength={100}
+                  value={formData.vin}
+                  onChange={handleInputChange}
+                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
+                  placeholder="Vehicle Identification Number (optional)"
+                />
+              </div>
+
+              {/* 6. Subject */}
               <div className="md:col-span-2">
                 <label
                   htmlFor="subject"
@@ -290,6 +338,7 @@ const Feedback = () => {
                 />
               </div>
 
+              {/* 7. Description */}
               <div className="md:col-span-2">
                 <label
                   htmlFor="description"
@@ -306,48 +355,6 @@ const Feedback = () => {
                   onChange={handleInputChange}
                   className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full resize-y"
                   placeholder="Please describe your feedback..."
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label
-                  htmlFor="reason"
-                  className="block text-left text-[#141414] mb-1 text-sm"
-                >
-                  Case Reason *
-                </label>
-                <select
-                  id="reason"
-                  name="reason"
-                  required
-                  value={formData.reason}
-                  onChange={handleInputChange}
-                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full appearance-none bg-white"
-                >
-                  {CASE_REASONS.map((opt) => (
-                    <option key={opt.value || "none"} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="md:col-span-2">
-                <label
-                  htmlFor="vin"
-                  className="block text-left text-[#141414] mb-1 text-sm"
-                >
-                  VIN
-                </label>
-                <input
-                  id="vin"
-                  name="vin"
-                  type="text"
-                  maxLength={100}
-                  value={formData.vin}
-                  onChange={handleInputChange}
-                  className="outline-none text-[#141414B2] border border-1 border-[#141414B2] rounded-xl px-4 py-2 w-full"
-                  placeholder="Vehicle Identification Number (optional)"
                 />
               </div>
 
