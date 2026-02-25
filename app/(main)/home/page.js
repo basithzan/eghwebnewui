@@ -25,6 +25,11 @@ import AboutImage from "/public/assets/homepage-about-us.jpg";
 // import Img1 from "/public/assets/home/Homepage-allsectors--automotive.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import OurAwards from "./OurAwards";
+import PillarsOfExcellence from "./PillarsOfExcellence";
+import MissionVision from "./MissionVision";
+import Testimonials from "./Testimonials";
+import FAQ from "./FAQ";
 import Partner from "./partner";
 import soueast from "/public/assets/03.jpg";
 import soueast1 from "/public/assets/about-us/Homepage-partners-art.jpg";
@@ -688,6 +693,8 @@ const EliteHome = () => {
         </div>
       </div>
 
+      <OurAwards />
+
       <div className="section-2 max-md:py-4 mt-8">
         <div className="max-md:my-10 md:flex md:flex-row-reverse items-center">
           <div className=" md:shrink-1 md:w-1/2 px-[5%] md:py-10">
@@ -730,6 +737,8 @@ const EliteHome = () => {
 
         <CarouselSection images={homePageData?.homePageSectors} />
       }
+
+      <PillarsOfExcellence />
 
       <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
         <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
@@ -819,6 +828,12 @@ const EliteHome = () => {
           <Partner images={CarouselImage1} />
         }
       </div>
+
+      <MissionVision />
+
+      <Testimonials />
+
+      <FAQ />
 
       <div className="px-[5%] mx-auto md:mt-24 section-6">
         <div className=" flex justify-between items-center md:pe-3">

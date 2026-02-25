@@ -84,6 +84,27 @@ body {
   display: none;
 }
 
+/* Our Awards carousel: ensure list and items have height so images show */
+.awards-carousel-full.react-multi-carousel-list {
+  height: 100%;
+}
+.awards-carousel-full .react-multi-carousel-track {
+  height: 100%;
+  align-items: stretch;
+}
+.awards-carousel-full .react-multi-carousel-item {
+  height: 100%;
+  display: flex;
+}
+.awards-carousel-item-full {
+  height: 100% !important;
+  width: 100%;
+}
+
+.awards-scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* .section-2 .text-1 {
   text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
 } */
