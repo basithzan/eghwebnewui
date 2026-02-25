@@ -11,42 +11,58 @@ const AWARDS = [
   { image: "/awards/post-sixth.jpg", alt: "MENA Digital Awards - Best Use of Instagram" },
 ];
 
-const SLIDES_VISIBLE = 3.5; // 3 full columns + half of the 4th
-const TOTAL_DOTS = Math.ceil(AWARDS.length - SLIDES_VISIBLE + 1);
+const SLIDES_VISIBLE_DESKTOP = 3.5;
+const MOBILE_BREAKPOINT = 768;
 
 const OurAwards = () => {
   const scrollRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const slideWidthPx = (el) => el ? el.clientWidth / SLIDES_VISIBLE : 0;
+  useEffect(() => {
+    const check = () => setIsMobile(typeof window !== "undefined" && window.innerWidth < MOBILE_BREAKPOINT);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const slidesVisible = isMobile ? 1 : SLIDES_VISIBLE_DESKTOP;
+  const totalDots = isMobile ? AWARDS.length : Math.ceil(AWARDS.length - SLIDES_VISIBLE_DESKTOP + 1);
+
+  const slideWidthPx = useCallback(
+    (el) => (el ? el.clientWidth / slidesVisible : 0),
+    [slidesVisible]
+  );
 
   const onScroll = useCallback(() => {
     const el = scrollRef.current;
     if (!el) return;
     const width = slideWidthPx(el);
     const index = Math.round(el.scrollLeft / width);
-    setCurrentSlide(Math.min(Math.max(0, index), TOTAL_DOTS - 1));
-  }, []);
+    setCurrentSlide(Math.min(Math.max(0, index), totalDots - 1));
+  }, [slideWidthPx, totalDots]);
 
-  const goToSlide = useCallback((index) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const width = slideWidthPx(el);
-    el.scrollTo({ left: index * width, behavior: "smooth" });
-    setCurrentSlide(index);
-  }, []);
+  const goToSlide = useCallback(
+    (index) => {
+      const el = scrollRef.current;
+      if (!el) return;
+      const width = slideWidthPx(el);
+      el.scrollTo({ left: index * width, behavior: "smooth" });
+      setCurrentSlide(index);
+    },
+    [slideWidthPx]
+  );
 
-  // Auto-slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => {
-        const next = prev >= TOTAL_DOTS - 1 ? 0 : prev + 1;
+        const next = prev >= totalDots - 1 ? 0 : prev + 1;
         goToSlide(next);
         return next;
       });
     }, 5000);
     return () => clearInterval(interval);
-  }, [goToSlide]);
+  }, [goToSlide, totalDots]);
 
   return (
     <section className="w-screen bg-white overflow-hidden">
@@ -73,18 +89,14 @@ const OurAwards = () => {
         <div
           ref={scrollRef}
           onScroll={onScroll}
-          className="relative z-10 w-full h-[200px] md:h-[244px] flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth awards-scroll-hide py-4 md:py-6"
+          className="relative z-10 w-full h-[240px] md:h-[244px] flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth awards-scroll-hide py-4 md:py-6 px-2 md:px-0"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {AWARDS.map((award, index) => (
             <div
               key={index}
-              className="relative flex-shrink-0 h-full snap-center snap-always box-border"
-              style={{
-                width: "calc(100% / 3.5)",
-                marginLeft: index === 0 ? 0 : "-1%",
-                zIndex: index,
-              }}
+              className={`relative flex-shrink-0 h-full snap-center snap-always box-border w-full md:w-[calc(100%/3.5)] ${index === 0 ? "" : "md:ml-[-1%]"}`}
+              style={{ zIndex: index }}
             >
               {/* Gold border layer */}
               <div
@@ -115,7 +127,7 @@ const OurAwards = () => {
       </div>
 
       <div className="w-full flex justify-center items-center py-6 bg-white gap-1.5">
-        {Array.from({ length: TOTAL_DOTS }).map((_, index) => (
+        {Array.from({ length: totalDots }).map((_, index) => (
           <button
             key={index}
             type="button"
