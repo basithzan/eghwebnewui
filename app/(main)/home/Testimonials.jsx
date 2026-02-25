@@ -53,7 +53,7 @@ const Testimonials = () => {
     <section className="w-full bg-white px-[5%] py-12 md:py-16">
       {/* Header */}
       <div className="flex items-start justify-between mb-8">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase text-[#fb511e]">
+        <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase">
           Testimonials
         </h2>
         {/* Google Reviews logo */}

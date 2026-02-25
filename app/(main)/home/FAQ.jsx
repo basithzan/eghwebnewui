@@ -50,7 +50,7 @@ const FAQ = () => {
 
   return (
     <section className="w-full bg-[#f0f0f0] px-[5%] py-12 md:py-16">
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase text-[#fb511e] mb-8 md:mb-10">
+      <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-8 md:mb-10">
         Frequently Asked Questions
       </h2>
 

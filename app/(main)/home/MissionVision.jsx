@@ -21,7 +21,7 @@ const MissionVision = () => {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <FlagIcon className={iconClassName} />
-              <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#fb511e]">
+              <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase">
                 Mission
               </h2>
             </div>
@@ -35,7 +35,7 @@ const MissionVision = () => {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <EyeIcon className={iconClassName} />
-              <h2 className="text-3xl md:text-4xl font-extrabold uppercase text-[#fb511e]">
+              <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase">
                 Vision
               </h2>
             </div>
