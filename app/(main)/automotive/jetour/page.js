@@ -122,23 +122,24 @@ const JetourPage = () => {
 
       {/* 4. Trusted By Thousands – testimonial + 3 images */}
       <section className="w-full bg-white py-12 md:py-20 px-[5%]">
-        <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">Trusted By Thousands</h2>
-        {/* Google Reviews logo – visible only on small screens / mobile, right after heading */}
-        <div className="lg:hidden mb-6">
-          <svg viewBox="0 0 120 44" className="w-32 md:w-40 h-auto">
-            <text x="0" y="22" fontSize="18" fontWeight="bold" fontFamily="Arial, sans-serif">
-              <tspan fill="#4285F4">G</tspan>
-              <tspan fill="#EA4335">o</tspan>
-              <tspan fill="#FBBC05">o</tspan>
-              <tspan fill="#4285F4">g</tspan>
-              <tspan fill="#34A853">l</tspan>
-              <tspan fill="#EA4335">e</tspan>
-            </text>
-            <text x="0" y="40" fontSize="12" fontWeight="bold" fontFamily="Arial, sans-serif" fill="#666">Reviews</text>
-            <text x="52" y="40" fontSize="12" fill="#FBBC05">★★★★★</text>
-          </svg>
-        </div>
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 items-start">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">Trusted By Thousands</h2>
+          {/* Google Reviews logo – visible only on small screens / mobile, right after heading */}
+          <div className="lg:hidden mb-6">
+            <svg viewBox="0 0 120 44" className="w-32 md:w-40 h-auto">
+              <text x="0" y="22" fontSize="18" fontWeight="bold" fontFamily="Arial, sans-serif">
+                <tspan fill="#4285F4">G</tspan>
+                <tspan fill="#EA4335">o</tspan>
+                <tspan fill="#FBBC05">o</tspan>
+                <tspan fill="#4285F4">g</tspan>
+                <tspan fill="#34A853">l</tspan>
+                <tspan fill="#EA4335">e</tspan>
+              </text>
+              <text x="0" y="40" fontSize="12" fontWeight="bold" fontFamily="Arial, sans-serif" fill="#666">Reviews</text>
+              <text x="52" y="40" fontSize="12" fill="#FBBC05">★★★★★</text>
+            </svg>
+          </div>
+          <div className="flex flex-col lg:flex-row gap-10 items-start">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold">
@@ -187,6 +188,7 @@ const JetourPage = () => {
               </div>
             ))}
             </div>
+          </div>
           </div>
         </div>
       </section>
