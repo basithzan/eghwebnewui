@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const CarouselSection2 = ({ images }) => {
+const CarouselSection2 = ({ images, hideFeatured = false }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [blogs, setBlogs] = useState([]);
   const [featuredBlog, setFeaturedBlog] = useState(null);
@@ -120,7 +120,7 @@ const CarouselSection2 = ({ images }) => {
       {blogs && blogs?.length > 0 &&
         <>
 
-          {!isMobile && (
+          {!isMobile && !hideFeatured && (
             <div className="mb-10 md:block hidden md:px-3">
               <div className="overflow-hidden mb-5" style={{ height: 'calc(100vh - 250px)' }}>
                 <Image
@@ -170,7 +170,7 @@ const CarouselSection2 = ({ images }) => {
             containerClass="carousel-container"
             itemClass="md:px-3"
           >
-            {blogs.slice(isMobile ? 0 : 1).map((blog, index) => (
+            {blogs.slice(isMobile || hideFeatured ? 0 : 1).map((blog, index) => (
               <div
                 key={index}
                 className="carousel-slide pt-0 pb-12 md:py-12  overflow-hidden"
