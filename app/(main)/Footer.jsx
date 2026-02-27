@@ -24,9 +24,30 @@ const Footer = () => {
     };
 
     fetchData();
-  }, [])
+  }, []);
+
   return (
-    <div className="bg-[#141414] py-10">
+    <>
+      <section className="w-full bg-white pt-12 md:pt-16 pb-0">
+        <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-8 md:mb-10 px-[5%]">
+          Contact Us
+        </h2>
+        <div className="w-full" style={{ minHeight: "400px" }}>
+          <iframe
+            title="Elite Group Holding - Areas of Operation"
+            src="https://www.google.com/maps?q=Al+Quoz+Industrial+Area+3,Dubai,UAE&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="w-full block"
+          />
+        </div>
+      </section>
+
+      <div className="bg-[#141414] py-10">
       {pageData && pageData.length !== 0 &&
 
       <div className="px-[5%] mx-auto">
@@ -147,7 +168,8 @@ const Footer = () => {
 
     }
 
-    </div>
+      </div>
+    </>
   );
 };
 

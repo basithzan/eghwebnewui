@@ -11,6 +11,8 @@ import { useMediaQuery } from "react-responsive";
 // Mobile-specific video URL
 const MOBILE_VIDEO_URL = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/Xl1SlB9XahkInhgJ4NmIMrqCT46CV5pvsK0hCZ2Q.mp4";
 
+const DEFAULT_ABOUT_US_CONTENT = `<p>At Elite Group Holding, we are committed to enhancing the quality of life within the communities we serve, continuously seeking avenues for fostering growth and making a positive impact on the world and our community.</p><p>We stand as one of the most dynamic businesses in the Middle East, proudly rooted in Dubai, United Arab Emirates, and recognized as a diversified conglomerate. With a diverse portfolio that encompasses Automotive, Investment, Real Estate, and E-commerce, our dedicated team is united by a powerful vision: driving excellence and building futures.</p><p>As a company that embraces innovative technologies, we aim to foster cooperation, create unique experiences, and ensure readiness across all our sectors.</p>`;
+
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import Brands from "./Brands";
@@ -628,11 +630,9 @@ const EliteHome = () => {
             </button>
           )}
           <div className="absolute top-1/2 left-[5%] -translate-y-1/2 z-10">
-            <div className="text-lg md:text-xl font-medium md:mb-4 text-1">
-              <h1>WELCOME TO ELITE GROUP HOLDING </h1>
-       
-        
-            </div>
+            <h1 className="text-lg md:text-xl font-medium md:mb-4 text-1">
+              WELCOME TO ELITE GROUP HOLDING
+            </h1>
             <div className="text-[3rem] lg:text-6xl font-bold md:mb-5 mb-4 md:mb-10 text-2"> {/* Changed font size */}
               <div className="leading-[calc(1em+6px)] text-[#fb511e]">DRIVING</div>
               <div className="leading-[calc(1em+6px)] text-[#fb511e]">EXCELLENCE,</div>
@@ -698,12 +698,11 @@ const EliteHome = () => {
       <div className="section-2 max-md:py-4 mt-8">
         <div className="max-md:my-10 md:flex md:flex-row-reverse items-center">
           <div className=" md:shrink-1 md:w-1/2 px-[5%] md:py-10">
-            <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 uppercase">
+            <h2 className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 uppercase">
               {homePageData?.homePageAboutUs?.title}
-            </div>
-            <p className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]	 text-2 pt-4" dangerouslySetInnerHTML={{ __html: homePageData?.homePageAboutUs?.content }}>
+            </h2>
+            <div className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 pt-4 [&>p]:mb-4 [&>p:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: DEFAULT_ABOUT_US_CONTENT }} />
 
-            </p>
 
             <Link href="/about-group">
               <button
@@ -730,9 +729,9 @@ const EliteHome = () => {
         </div>
       </div>
 
-      <div className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
+      <h2 className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
         {homePageData?.homePageSectorsHeading?.main_heading}
-      </div>
+      </h2>
       {homePageData?.homePageSectors && homePageData?.homePageSectors?.length > 0 &&
 
         <CarouselSection images={homePageData?.homePageSectors} />
@@ -742,9 +741,9 @@ const EliteHome = () => {
 
       <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
         <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
-          <div className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
+          <h2 className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
             {homePageData?.homePageHighLightHeading?.main_heading}
-          </div>
+          </h2>
           {/* <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
             <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
               Trust and integrity are our core currencies, it is a foundation on
@@ -816,12 +815,12 @@ const EliteHome = () => {
       </div>
 
       <div className="section-5  max-md:mt-8">
-        <div
+        <h2
           className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4"
           style={{ color: "#fb511e", lineHeight: "2.5rem" }}
         >
           {homePageData?.homePagePartnersHeading?.main_heading}
-        </div>
+        </h2>
         {homePageData?.homePageAutomotivePartners && homePageData?.homePageAutomotivePartners?.length > 0 &&
 
           // <Partner images={homePageData?.homePageAutomotivePartners} />
@@ -837,9 +836,9 @@ const EliteHome = () => {
 
       <div className="px-[5%] mx-auto md:mt-24 section-6">
         <div className=" flex justify-between items-center md:pe-3">
-          <div className="md:text-md text-[2rem]  lg:text-[2.5rem] uppercase font-semibold  text-[#fb511e] py-8  md:px-3">
+          <h2 className="md:text-md text-[2rem]  lg:text-[2.5rem] uppercase font-semibold  text-[#fb511e] py-8  md:px-3">
             Media Center
-          </div>
+          </h2>
           <Link href="/media-centre">
             <button
               href="/about-group"

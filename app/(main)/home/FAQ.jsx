@@ -5,27 +5,23 @@ import React, { useState } from "react";
 const FAQS = [
   {
     question: "What industries does Elite Group Holding operate in?",
-    answer: "Elite Group Holding operates across multiple sectors including automotive, real estate & contracting, investments, and e-commerce. We are a diversified business group committed to driving growth and excellence across all our industries.",
+    answer: "We are a diversified UAE-based conglomerate with expertise spanning Automotive, Real Estate, Investment, and E-commerce.",
   },
   {
     question: "Where is your office located?",
-    answer: "Our headquarters are located in Dubai, UAE, at The Elite Cars, 4th St - Al Quoz - Al Quoz Industrial Area 3. We have a strategic presence across the UAE to ensure accessibility for our valued clients and partners.",
+    answer: "We are located in Al Quoz Industrial Area 3.",
   },
   {
     question: "Are you open to partnerships?",
-    answer: "Yes, we are always open to strategic partnerships that align with our vision and values. We believe in creating lasting relationships that drive mutual growth and innovation. Please reach out to us through our contact page.",
+    answer: "Yes. Kindly reach out to us on xxxx.",
   },
   {
     question: "How does Elite Group Holding promote diversity and inclusion?",
-    answer: "We are committed to fostering a diverse and inclusive workplace. Our team comprises professionals from various backgrounds, cultures, and expertise areas, reflecting the cosmopolitan nature of the UAE.",
+    answer: 'At Elite Group Holding, our belief in "People First, Always" shapes everything we do. We actively invest in a culture that nurtures personal growth, encourages innovation, and celebrates ownership. Our culture is not static; it\'s a dynamic tapestry of diverse nationalities, generations, and lived experiences, each enriching our collective journey and driving us forward with purpose.',
   },
   {
     question: "What automobile brands are associated with Elite Group Holding?",
-    answer: "We are proud partners of several global automobile brands including Jetour, Zenvo Automotive, SOUEAST, and The Elite Cars - our premier multi-brand luxury dealership specializing in high-end automotive marques.",
-  },
-  {
-    question: "What industries does Elite Group Holding operate in?",
-    answer: "Elite Group Holding is a diversified conglomerate operating in automotive, real estate & contracting, investments, and e-commerce sectors across the UAE and the broader Middle East region.",
+    answer: "We are the exclusive partners and official distributors of Jetour, SOUEAST, and Zenvo.",
   },
 ];
 

@@ -74,9 +74,9 @@ const Brands = ({ content }) => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
       <div className="flex items-start gap-12 flex-col md:pt-0 pt-4">
         <div className="flex items-start md:gap-8 flex-col max-w-[900px]">
-          <h4 className="md:text-md text-[2rem] lg:text-[2.5rem] font-semibold text-white relative z-10 head-1 max-md:mb-4">
+          <h2 className="md:text-md text-[2rem] lg:text-[2.5rem] font-semibold text-white relative z-10 head-1 max-md:mb-4">
             {content[0]?.title}
-          </h4>
+          </h2>
           {/* <p className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] description-1 relative z-10 max-md:py-4 text-[#fff]" dangerouslySetInnerHTML={{ __html: content[0]?.content }}>
            
            </p> */}

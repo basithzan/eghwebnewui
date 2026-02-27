@@ -13,6 +13,13 @@ import Link from "next/link";
 import { useWindowResize } from "@/lib/hooks/useWindowResize";
 import { imgUrl } from "@/lib/constants";
 
+const SECTOR_CONTENT = [
+  "Our automotive division is a significant player in the UAE's thriving automotive market, operating as a trusted UAE luxury car distributor and providing a wide range of services. We have partnered with leading global automotive brands such as Jetour, SOUEAST, and Zenvo to offer luxury and high-performance vehicles in the UAE market.",
+  "Experience seamless online shopping with our cutting-edge e-commerce solutions in Dubai, delivering a premium experience that is convenient, innovative, and hassle-free.",
+  "Synonymous with luxury, quality, and innovation, our team of Dubai real estate developers delivers complete, end-to-end solutions in construction.",
+  "As a trusted UAE investment management company, we navigate worldwide markets with accuracy and foresight by being transparent, forthcoming, and responsible risk managers.",
+];
+
 const CarouselSection = ({ images }) => {
   const [currentImage, setCurrentImage] = useState(images && images?.length > 0 && images[0]);
   const descriptionRefs = useRef([]);
@@ -98,11 +105,11 @@ style={{ backgroundColor: 'black' }}  // Add this line
                   className={`relative border mb-4 rounded-[10px] sm:rounded-full w-full px-2 min-w-[80px]   sm:px-5  py-1  flex-auto  border-black  md:border-[#808080] group transition-all `}
                 >
                   <div className="   bottom-0 transition-all duration-300 ease-in-out   transform ">
-                    <div
+                    <h3
                       className={`select-none text-center group-hover:text-[#fb511e] whitespace-nowrap  duration-300   text-[1.2rem]   transition-all text-black `}
                     >
                       {image.title}
-                    </div>
+                    </h3>
                   </div>
                 </Link>
               </div>
@@ -121,12 +128,19 @@ style={{ backgroundColor: 'black' }}  // Add this line
                   />
 
                   <div className="lg:hidden absolute left-0 w-full px-[5%] top-1/2 -translate-y-1/2 text-white text-left">
-                    <div className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
-                      {image.title} 
-                    </div>
-                    <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem]"  dangerouslySetInnerHTML={{ __html: image?.content }}>
-                      
-                    </div>
+                    <h3 className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  mb-3">
+                      {image.title}
+                    </h3>
+                    <div className="text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] mb-4" dangerouslySetInnerHTML={{ __html: SECTOR_CONTENT[index] ?? image?.content ?? "" }} />
+                    <Link href={image.url} className="inline-block mt-2">
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-2 uppercase bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-white hover:border-[#fb511e] rounded-xl px-6 py-2.5 text-sm font-semibold"
+                      >
+                        Read More
+                        <ArrowLongRightIcon className="w-5 h-5" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </Link>
@@ -178,28 +192,22 @@ style={{ backgroundColor: 'black' }}  // Add this line
             ref={(el) => (descriptionRefs.current[index] = el)}
           >
             <div className="lg:absolute w-fit lg:w-[80%]  left-1/2 lg:-translate-x-1/2 lg:py-4  bottom-0 transition-all duration-300 ease-in-out lg:bg-[#0000007d]  transform lg:mb-6">
-              <div
+              <h3
                 className={`select-none text-center  group-hover:text-[#fb511e] duration-300 sm:text-start lg:px-5 text-[10px] sm:text-xs lg:text-lg   transition-all text-black lg:text-white max-lg:group-hover:text-white`}
               >
                 {image.title}
-              </div>
-              <div
-                className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}
-                dangerouslySetInnerHTML={{ __html: image?.content }}
-              >
-               
-                {/* <a
-                  target={index === 4 ? "none" : "blank"}
-                  href={image.url}
-                  className="block mt-4"
-                >
-                  <button className="hover:bg-[#fb511e] transition-all flex items-center flex-nowrap border gap-2 text-xs sm:text-sm 2xl:text-base border-1 border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-1 lg:py-1 button-1">
-                    <span className=" whitespace-nowrap">
-                      {index === 4 ? "EXPLORE" : "Visit Website"}
-                    </span>
-                    <ArrowLongRightIcon className="w-6 h-6" />
+              </h3>
+              <div className={`h-0 description max-lg:hidden text-start lg:text-sm 2xl:text-base text-xs lg:px-5 text-black lg:text-[#DFDCDC] overflow-hidden cursor-pointer`}>
+                <div dangerouslySetInnerHTML={{ __html: (SECTOR_CONTENT[index] ?? image?.content) || "" }} />
+                <Link href={image.url} className="block mt-4" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 uppercase bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-white hover:border-[#fb511e] rounded-xl px-6 2xl:px-10 py-2 lg:py-2.5 text-xs sm:text-sm 2xl:text-base font-semibold"
+                  >
+                    Read More
+                    <ArrowLongRightIcon className="w-5 h-5" />
                   </button>
-                </a> */}
+                </Link>
               </div>
             </div>
           </a>

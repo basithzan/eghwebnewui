@@ -3,7 +3,9 @@ import {
   Squares2X2Icon,
   LightBulbIcon,
   UserGroupIcon,
+  ArrowLongRightIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const iconClassName = "w-20 h-20 md:w-24 md:h-24 text-[#1a1a1a] [stroke-width:0.75]";
 
@@ -48,6 +50,17 @@ const PillarsOfExcellence = () => {
             </h3>
           </div>
         ))}
+      </div>
+      <div className="text-center mt-10 md:mt-12">
+        <Link href="/about-group">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 uppercase bg-white hover:bg-[#fb511e] text-black hover:text-white transition-all border border-black hover:border-[#fb511e] rounded-xl px-6 sm:px-10 py-2 md:py-3 font-semibold"
+          >
+            Read More
+            <ArrowLongRightIcon className="w-5 h-5" />
+          </button>
+        </Link>
       </div>
     </section>
   );

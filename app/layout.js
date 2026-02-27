@@ -9,7 +9,7 @@ const barlow = Barlow({
 });
 
 export const metadata = {
-  title: "Elite Group Holding UAE | Automotive Industry Leaders in the UAE",
+  title: "Elite Group Holding Company In UAE",
   description: "Explore Elite Group Holding, a diversified leader in automotive, real estate, investments, and e-commerce. Driving growth and innovation across the UAE.",
 };
 
