@@ -9,6 +9,7 @@ import FAQ from "../../home/FAQ";
 import CarouselSection2 from "../../home/CarouselSection2";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import Logo from "/public/assets/Logo.png";
+import Marquee from "react-fast-marquee";
 
 // Use existing assets as fallbacks; replace with /New_page/Jetour/*.jpg when you add them
 const IMG = {
@@ -100,24 +101,31 @@ const JetourPage = () => {
 
       {/* 3. Stats – #1, 10K+, 5+, EXCLUSIVE DISTRIBUTOR */}
       <section className="w-full bg-white py-12 md:py-16 px-[5%]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4">
           {[
             { value: "#1", label: "Fastest Growing Chinese Brand in the Region" },
             { value: "10K+", label: "Fastest Growing Chinese Brand in the Region" },
             { value: "5+", label: "Fastest Growing Chinese Brand in the Region" },
-            { value: "EXCLUSIVE DISTRIBUTOR", label: "Fastest Growing Chinese Brand in the Region" },
+            { value: "EXCLUSIVE DISTRIBUTOR", label: "Fastest Growing Chinese Brand in the Region", small: true },
           ].map((item, i) => (
-            <div key={i} className="text-center flex flex-col items-center">
-              <div className="min-h-[4rem] md:min-h-[5rem] flex items-center justify-center mb-2">
-                <div className="text-[#fb511e] text-[1.75rem] md:text-[2.25rem] font-bold leading-tight text-center">
+            <div
+              key={i}
+              className={`text-center flex flex-col items-center py-6 md:py-4 px-4 md:px-6
+                ${i % 2 === 0 ? "border-r border-gray-200" : ""}
+                ${i < 2 ? "border-b border-gray-200 md:border-b-0" : ""}
+                ${i < 3 ? "md:border-r md:border-gray-200" : "md:border-r-0"}
+              `}
+            >
+              <div className="min-h-[4rem] md:min-h-[7rem] flex items-center justify-center mb-2">
+                <div className={`text-[#fb511e] font-bold leading-tight text-center ${item.small ? "text-[1.25rem] md:text-[2.25rem]" : "text-[2.75rem] md:text-[4.5rem]"}`}>
                   {item.value}
                 </div>
               </div>
-              <p className="text-[#1a1a1a] text-sm md:text-base">{item.label}</p>
+              <p className="text-[#1a1a1a] text-xs md:text-base leading-snug">{item.label}</p>
             </div>
           ))}
         </div>
-        <div className="max-w-6xl mx-auto mt-10 border-t border-black" />
+        <div className="max-w-6xl mx-auto mt-10 border-t border-black hidden md:block" />
       </section>
 
       {/* 4. Trusted By Thousands – testimonial + 3 images */}
@@ -262,36 +270,39 @@ const JetourPage = () => {
         <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-8 md:mb-10">
           Explore More Brands
         </h2>
-        <div className="flex flex-wrap items-center gap-6 md:gap-8">
+        <Marquee
+          loop={0}
+          speed={40}
+          direction="left"
+          pauseOnHover
+          gradient={false}
+          className="w-full"
+        >
           {[
             { src: "/assets/brands/TEC.png", url: "https://theelitecars.com/", alt: "The Elite Cars" },
             { src: "/assets/brands/Zenvo.png", url: "https://zenvouae.com/", alt: "Zenvo" },
             { src: "/assets/brands/soueast-black.png", url: "https://soueastuae.com/", alt: "SOUEAST" },
             { src: "/assets/brands/zrt-contracting.png", url: "https://www.zrtcontracting.com/", alt: "ZRT Contracting" },
             { src: "/assets/brands/art-logo.png", url: "https://artelitecarrental.com/", alt: "ART Elite Car Rental" },
-          ].map((brand, index) => (
-            <React.Fragment key={brand.alt}>
-              {index > 0 && (
-                <span className="hidden md:block w-px h-10 bg-gray-300 flex-shrink-0" aria-hidden />
-              )}
-              <a
-                href={brand.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center cursor-pointer h-[48px] w-[80px] md:w-[90px] flex-shrink-0"
-              >
-                <Image
-                  unoptimized
-                  src={brand.src}
-                  alt={brand.alt}
-                  width={90}
-                  height={48}
-                  className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
-                />
-              </a>
-            </React.Fragment>
+          ].map((brand) => (
+            <a
+              key={brand.alt}
+              href={brand.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center cursor-pointer h-[60px] md:h-[70px] w-[120px] md:w-[160px] flex-shrink-0 mx-6 md:mx-10"
+            >
+              <Image
+                unoptimized
+                src={brand.src}
+                alt={brand.alt}
+                width={160}
+                height={70}
+                className="w-full h-full object-contain opacity-80 hover:opacity-100 transition-opacity duration-200"
+              />
+            </a>
           ))}
-        </div>
+        </Marquee>
       </section>
 
       <Footer />

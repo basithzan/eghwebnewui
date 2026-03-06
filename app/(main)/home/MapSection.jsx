@@ -3,7 +3,7 @@
 const MapSection = () => {
   return (
     <section className="w-full">
-      <div className="px-[5%] py-8 md:py-10">
+      <div className="px-[5%] pt-12 md:pt-16 pb-6 md:pb-8">
         <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase">
           Contact Us
         </h2>

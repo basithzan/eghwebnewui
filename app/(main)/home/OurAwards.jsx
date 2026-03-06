@@ -66,7 +66,7 @@ const OurAwards = () => {
 
   return (
     <section className="w-screen bg-white overflow-hidden">
-      <div className="w-full px-[2%] sm:px-[3%] md:px-[4%] py-8 md:py-10 max-w-[1920px] mx-auto">
+      <div className="w-full px-[5%] py-8 md:py-10 max-w-[1920px] mx-auto">
         <h2 className="text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-3">
           OUR AWARDS
         </h2>

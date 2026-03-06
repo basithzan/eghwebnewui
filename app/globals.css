@@ -8,11 +8,18 @@
   font-family: "Barlow", default;
 }
 
-/* Apply some basic styles */
+/* ─── Lenis smooth scroll overrides ─── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+html.lenis {
+  scroll-behavior: auto;
+}
+
 html,
 body {
   width: 100%;
-  height: 100%;
   font-family: "Barlow", default;
   background-color: #fff;
   color: #000;
@@ -176,4 +183,29 @@ body {
   .common-heading {
     line-height: normal; /* Reset to default or set a specific value */
   }
+}
+
+/* ─── Brand page animation initial states ─── */
+.brand-hero .hero-brand-name,
+.brand-hero .hero-divider,
+.brand-hero .hero-logo,
+.brand-intro .intro-image,
+.brand-intro .intro-text,
+.brand-intro .intro-line,
+.brand-intro .intro-glance,
+.brand-stats .stat-item,
+.brand-testimonials .testimonials-heading,
+.brand-testimonials .testimonials-card,
+.brand-testimonials .testimonials-img,
+.brand-role-banner .role-heading,
+.brand-role-banner .role-body,
+.brand-cta .cta-heading,
+.brand-cta .cta-button,
+.brand-faq .faq-heading,
+.brand-faq .faq-col,
+.brand-blogs .blogs-heading,
+.brand-blogs .blogs-viewall,
+.brand-explore .explore-heading,
+.brand-explore .explore-marquee {
+  opacity: 0;
 }

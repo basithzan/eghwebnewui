@@ -1,6 +1,8 @@
 import { Barlow } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import ScrollReveal from "@/components/ScrollReveal";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -33,6 +35,8 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+        <SmoothScroll />
+        <ScrollReveal />
         {children}
         <Script
           id="genesys-chat"

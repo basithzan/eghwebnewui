@@ -12,43 +12,43 @@ import Marquee from "react-fast-marquee";
 import { useBrandPageAnimations } from "@/lib/hooks/useBrandPageAnimations";
 
 const IMG = {
-  hero: "/assets/61eb2205573fced65146611241f3b4c4.jpeg",
-  intro: "/assets/home/Homepage-partners-elite-cars.jpg",
-  testimonialCar: "/assets/home/Homepage-partners-elite-cars.jpg",
-  roleBanner: "/assets/61eb2205573fced65146611241f3b4c4.jpeg",
+  hero: "/assets/jetour-bg.webp",
+  intro: "/assets/Homepage-partners-jetour.jpg",
+  testimonialCar: "/assets/Homepage-partners-jetour.jpg",
+  roleBanner: "/assets/jetour-bg.webp",
 };
 
-/* ─── TEC-specific FAQs ─── */
-const TEC_FAQS = [
+/* ─── Jetour-specific FAQs ─── */
+const JETOUR_FAQS = [
   {
-    question: "What luxury car brands does The Elite Cars offer?",
+    question: "Is Elite Group Holding the official Jetour distributor in the UAE?",
     answer:
-      "The Elite Cars offers an extensive selection of the world's most prestigious brands, including Mercedes-Benz, Ferrari, Lamborghini, Rolls-Royce, Bentley, Porsche, McLaren, Aston Martin, and many more. Our inventory features both brand-new and certified pre-owned luxury vehicles.",
+      "Yes. Elite Group Holding has been the exclusive official distributor of Jetour in the UAE since 2019. We oversee all sales, aftersales, and brand operations across Dubai and the Emirates.",
   },
   {
-    question: "Where is The Elite Cars showroom located?",
+    question: "Where are the Jetour showrooms and service centres located?",
     answer:
-      "Our state-of-the-art showroom is located on Sheikh Zayed Road, Dubai — one of the most prominent automotive destinations in the UAE. The showroom houses over 100 luxury vehicles under one roof, providing an unparalleled browsing experience.",
+      "Jetour has showrooms and service centres across the UAE, including locations in Dubai, Abu Dhabi, Ajman, and Al Ain — ensuring convenient access for customers nationwide.",
   },
   {
-    question: "Does The Elite Cars offer certified pre-owned vehicles?",
+    question: "What Jetour models are available in the UAE?",
     answer:
-      "Yes. Every pre-owned vehicle at The Elite Cars undergoes a rigorous multi-point inspection to ensure it meets our exacting quality standards. Each certified pre-owned car comes with a comprehensive vehicle history report and warranty coverage for complete peace of mind.",
+      "The current UAE lineup includes the Jetour G700, T1, T2, T2 i-DM (hybrid), Dashing, X50, X70 FL, and X70 Plus. Each model offers a unique blend of design, technology, and performance to suit different lifestyles.",
   },
   {
-    question: "What after-sales services does The Elite Cars provide?",
+    question: "What after-sales services does Jetour UAE provide?",
     answer:
-      "We offer comprehensive after-sales support including scheduled maintenance, detailing, paint protection, extended warranty options, and dedicated concierge service. Our team of factory-trained technicians ensures your luxury vehicle receives the highest standard of care.",
+      "Jetour UAE offers comprehensive after-sales support including scheduled maintenance, genuine spare parts, roadside assistance, and dedicated service centres staffed by factory-trained technicians to ensure your vehicle is always in top condition.",
   },
   {
-    question: "Does The Elite Cars offer financing options?",
+    question: "What warranty does Jetour offer in the UAE?",
     answer:
-      "Yes. We partner with leading banks and financial institutions across the UAE to offer competitive financing solutions, including flexible EMI plans, low down payments, and tailored packages designed to suit a range of budgets and preferences.",
+      "Jetour vehicles in the UAE come with an industry-leading warranty of up to 10 years or 1,000,000 km — one of the most generous warranty packages in the automotive market, giving owners complete peace of mind.",
   },
   {
-    question: "Does The Elite Cars accept trade-ins?",
+    question: "Does Jetour UAE offer financing options?",
     answer:
-      "Absolutely. We offer a seamless trade-in program where you can upgrade your current vehicle to the luxury car of your dreams. Our team provides fair market valuations and handles all the paperwork, making the process effortless.",
+      "Yes. Jetour UAE partners with leading banks and financial institutions to provide competitive financing solutions, including flexible EMI plans, low down payment options, and tailored packages to suit a range of budgets.",
   },
 ];
 
@@ -71,13 +71,16 @@ const ChevronIcon = ({ isOpen }) => (
   </div>
 );
 
-const TheEliteCarsPage = () => {
+const JetourPage = () => {
   useBrandPageAnimations({ hasTestimonials: true, hasFaq: true });
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const leftFaqs = JETOUR_FAQS.filter((_, i) => i % 2 === 0);
+  const rightFaqs = JETOUR_FAQS.filter((_, i) => i % 2 !== 0);
 
   useEffect(() => {
     let canonicalLink = document.querySelector("link[rel='canonical']");
@@ -88,11 +91,10 @@ const TheEliteCarsPage = () => {
     }
     canonicalLink.setAttribute(
       "href",
-      "https://elitegroupholding.com/automotive/the-elite-cars"
+      "https://elitegroupholding.com/automotive/jetour-distributor-uae"
     );
 
-    document.title =
-      "The Elite Cars | Luxury Car Distributor UAE | Elite Group Holding";
+    document.title = "Jetour Distributor UAE | Elite Group Holding";
 
     let metaDesc = document.querySelector("meta[name='description']");
     if (!metaDesc) {
@@ -102,24 +104,21 @@ const TheEliteCarsPage = () => {
     }
     metaDesc.setAttribute(
       "content",
-      "Explore The Elite Cars Dubai - the UAE's trusted luxury car distributor offering new & pre-owned exotic cars with exceptional service and support."
+      "Elite Group Holding is the official Jetour Distributor in the UAE. Discover how we represent Jetour's innovative SUV range across Dubai and the Emirates."
     );
   }, []);
-
-  const leftFaqs = TEC_FAQS.filter((_, i) => i % 2 === 0);
-  const rightFaqs = TEC_FAQS.filter((_, i) => i % 2 === 1);
 
   return (
     <>
       <Navbar />
 
-      {/* 1. Hero – Luxury cars, logos overlay */}
+      {/* 1. Hero – Jetour SUV, logos overlay */}
       <section className="brand-hero relative w-full h-[50vh] md:h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
             unoptimized
             src={IMG.hero}
-            alt="The Elite Cars luxury showroom Dubai"
+            alt="Jetour SUV UAE"
             fill
             className="object-cover object-center"
             priority
@@ -132,7 +131,7 @@ const TheEliteCarsPage = () => {
         </div>
         <div className="relative z-10 flex items-center justify-center gap-6 md:gap-8 px-[5%] py-12">
           <span className="hero-brand-name text-white text-2xl md:text-4xl font-bold tracking-wider">
-            THE ELITE CARS
+            JETOUR
           </span>
           <span className="hero-divider w-px h-10 md:h-14 bg-white" />
           <Image
@@ -152,7 +151,7 @@ const TheEliteCarsPage = () => {
               <Image
                 unoptimized
                 src={IMG.intro}
-                alt="The Elite Cars Dubai showroom"
+                alt="Jetour car Dubai"
                 fill
                 className="object-cover"
                 onError={(e) => {
@@ -172,7 +171,7 @@ const TheEliteCarsPage = () => {
           </div>
           <div className="intro-text w-full md:w-1/2 flex flex-col justify-center pl-[5%] pr-[5%] md:pl-8 md:pr-8">
             <h1 className="sr-only">
-              Official Luxury Car Distributor in the UAE - Explore The Elite Cars
+              Official Jetour Distributor in The UAE &ndash; Explore Jetour SUVs
             </h1>
             <h2 className="uppercase text-[#fb511e] mb-6">
               <span className="block text-lg md:text-xl font-semibold mb-1">
@@ -183,46 +182,33 @@ const TheEliteCarsPage = () => {
               </span>
             </h2>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4">
-              The Elite Cars, a flagship subsidiary of Elite Group Holding, is
-              the UAE&apos;s premier luxury car distributor with over a decade of
-              automotive excellence. Our state-of-the-art showroom on Sheikh
-              Zayed Road houses an unrivalled collection of new and pre-owned
-              exotic vehicles from the world&apos;s most coveted brands —
-              including Ferrari, Lamborghini, Rolls-Royce, Mercedes-Benz,
-              Bentley, Porsche, and many more.
+              Jetour, a forward-thinking automotive brand known for bold design
+              and intelligent technology, is proudly represented in the UAE by
+              Elite Group Holding. As the official Jetour car distributor since
+              2019, we are committed to expanding Jetour&apos;s presence across
+              Dubai and the UAE, setting a new standard in affordable luxury
+              SUVs.
             </p>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-              Backed by decades of automotive expertise, The Elite Cars delivers
-              a seamless luxury car buying experience — from personalised
-              consultations and flexible financing to comprehensive after-sales
-              support. Whether you&apos;re seeking a brand-new supercar or a
-              certified pre-owned masterpiece, our dedicated team ensures every
-              client receives exceptional service and care.
+              Through this exclusive partnership, Elite Group Holding plays a
+              vital role in shaping the UAE&apos;s mobility sector with a growing
+              range of Jetour SUVs that combine performance, technology, and
+              safety.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3. Stats – 100+, STATE-OF-THE-ART, 10+, TRUSTED */}
+      {/* 3. Stats – #1, 10K+, 5+, EXCLUSIVE DISTRIBUTOR */}
       <section className="brand-stats w-full bg-white py-12 md:py-16 px-[5%]">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4">
           {[
+            { value: "#1", label: "Fastest Growing Chinese Brand" },
+            { value: "10K+", label: "Customer Reviews" },
+            { value: "5+", label: "Showrooms & Service Centres" },
             {
-              value: "100+",
-              label: "Luxury Cars All Under One Roof",
-            },
-            {
-              value: "STATE-OF-THE-ART",
-              label: "Showroom on Sheikh Zayed Road",
-              small: true,
-            },
-            {
-              value: "10+",
-              label: "Years of Automotive Excellence",
-            },
-            {
-              value: "TRUSTED DISTRIBUTOR",
-              label: "Of Luxury & Exotic Cars in the UAE",
+              value: "EXCLUSIVE DISTRIBUTOR",
+              label: "Since 2019",
               small: true,
             },
           ].map((item, i) => (
@@ -250,13 +236,12 @@ const TheEliteCarsPage = () => {
         <div className="max-w-6xl mx-auto mt-10 border-t border-black hidden md:block" />
       </section>
 
-      {/* 4. Trusted by Automotive Enthusiasts – testimonial + 3 images */}
+      {/* 4. Trusted By Thousands – testimonial + 3 images */}
       <section className="brand-testimonials w-full bg-white py-12 md:py-20 px-[5%]">
         <div className="max-w-6xl mx-auto">
           <h2 className="testimonials-heading text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">
-            Trusted by Automotive Enthusiasts
+            Trusted By Thousands
           </h2>
-          {/* Google Reviews logo – mobile */}
           <div className="lg:hidden mb-6">
             <svg viewBox="0 0 120 44" className="w-32 md:w-40 h-auto">
               <text
@@ -292,24 +277,21 @@ const TheEliteCarsPage = () => {
             <div className="testimonials-card flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold">
-                  M
+                  S
                 </div>
                 <div>
-                  <div className="font-bold text-[#1a1a1a]">Mohammed K.</div>
+                  <div className="font-bold text-[#1a1a1a]">Suraj Nair</div>
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <span className="text-[#FBBC05]">★★★★★</span>
-                    <span>3 weeks ago</span>
+                    <span>2 months ago</span>
                   </div>
                 </div>
               </div>
               <p className="text-[#282828] text-base leading-relaxed mb-4">
-                An outstanding luxury car buying experience from start to finish.
-                The Elite Cars showroom on Sheikh Zayed Road is truly impressive
-                — over 100 exotic cars all under one roof. The team was
-                incredibly professional, transparent with pricing, and made the
-                entire process seamless. From test drive to delivery, everything
-                was handled with care. Highly recommend to anyone looking for
-                luxury cars in Dubai.
+                At Elite Group Holding, we are committed to enhancing the quality
+                of life within the communities we serve, continuously seeking
+                avenues for fostering growth and making a positive impact on the
+                world and our community.
               </p>
             </div>
             <div className="flex flex-col items-end gap-4 w-full lg:max-w-md">
@@ -356,7 +338,7 @@ const TheEliteCarsPage = () => {
                     <Image
                       unoptimized
                       src={IMG.testimonialCar}
-                      alt="The Elite Cars luxury vehicle"
+                      alt="Jetour SUV"
                       fill
                       className="object-cover"
                       onError={(e) => {
@@ -371,13 +353,13 @@ const TheEliteCarsPage = () => {
         </div>
       </section>
 
-      {/* 5. Role banner – Elite Group's Role in The Elite Cars' UAE Success */}
+      {/* 5. Role banner – Elite Group's Role in Jetour's UAE Success */}
       <section className="brand-role-banner relative w-full min-h-[50vh] md:min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             unoptimized
             src={IMG.roleBanner}
-            alt="The Elite Cars showroom Dubai"
+            alt="Jetour T2 UAE"
             fill
             className="object-cover object-right"
             onError={(e) => {
@@ -389,19 +371,17 @@ const TheEliteCarsPage = () => {
         <div className="relative z-10 px-[5%] py-16 max-w-2xl">
           <h2 className="role-heading text-2xl md:text-4xl font-bold mb-6">
             <span className="text-[#fb511e]">
-              ELITE GROUP&apos;S ROLE IN THE ELITE CARS&apos;{" "}
+              ELITE GROUP&apos;S ROLE IN JETOUR&apos;S{" "}
             </span>
             <span className="text-white">UAE SUCCESS</span>
           </h2>
           <p className="role-body text-white text-base md:text-lg leading-relaxed">
-            As a flagship subsidiary of Elite Group Holding, The Elite Cars has
-            grown into one of the UAE&apos;s most trusted luxury car
-            distributors. Through continuous showroom expansion, exclusive launch
-            events, seamless trade-in programs, flexible financing solutions, and
-            dedicated concierge support, we have redefined the luxury car buying
-            experience in Dubai and across the UAE. Our commitment to
-            transparency, quality, and customer satisfaction has earned the trust
-            of thousands of automotive enthusiasts and collectors.
+            Since 2019, Elite Group Holding has been the exclusive distributor of
+            Jetour in the UAE, leading the brand&apos;s expansion in affordable
+            luxury SUVs. Through strategic initiatives, including new model
+            launches, the Jetour Owners Club, and dedicated maintenance services,
+            we have driven Jetour UAE&apos;s rapid growth, making it one of the
+            fastest-growing automotive brands in the region.
           </p>
         </div>
       </section>
@@ -410,10 +390,10 @@ const TheEliteCarsPage = () => {
       <section className="brand-cta w-full bg-white py-16 md:py-24 px-[5%]">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="cta-heading text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] mb-4 md:mb-6">
-            To Know More About The Elite Cars?
+            To Know More About Jetour in the UAE?
           </h2>
           <Link
-            href="https://theelitecars.com"
+            href="https://jetouruae.com"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-button inline-flex items-center gap-2 border-2 border-gray-300 hover:border-[#fb511e] hover:bg-[#fb511e] hover:text-white text-black transition-all rounded-xl px-8 py-4 font-semibold uppercase"
@@ -424,7 +404,7 @@ const TheEliteCarsPage = () => {
         </div>
       </section>
 
-      {/* 7. FAQ – TEC-specific */}
+      {/* 7. FAQ – Jetour-specific */}
       <section className="brand-faq w-full bg-[#f0f0f0] px-[5%] py-12 md:py-16">
         <h2 className="faq-heading text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-8 md:mb-10">
           Frequently Asked Questions
@@ -514,11 +494,31 @@ const TheEliteCarsPage = () => {
           gradient={false}
         >
           {[
-            { src: "/assets/brands/Zenvo.png", url: "https://zenvouae.com/", alt: "Zenvo" },
-            { src: "/assets/brands/Jetour.png", url: "https://jetouruae.com/", alt: "Jetour" },
-            { src: "/assets/brands/soueast-black.png", url: "https://soueastuae.com/", alt: "SOUEAST" },
-            { src: "/assets/brands/zrt-contracting.png", url: "https://www.zrtcontracting.com/", alt: "ZRT Contracting" },
-            { src: "/assets/brands/art-logo.png", url: "https://artelitecarrental.com/", alt: "ART Elite Car Rental" },
+            {
+              src: "/assets/brands/TEC.png",
+              url: "https://theelitecars.com/",
+              alt: "The Elite Cars",
+            },
+            {
+              src: "/assets/brands/Zenvo.png",
+              url: "https://zenvouae.com/",
+              alt: "Zenvo",
+            },
+            {
+              src: "/assets/brands/soueast-black.png",
+              url: "https://soueastuae.com/",
+              alt: "SOUEAST",
+            },
+            {
+              src: "/assets/brands/zrt-contracting.png",
+              url: "https://www.zrtcontracting.com/",
+              alt: "ZRT Contracting",
+            },
+            {
+              src: "/assets/brands/art-logo.png",
+              url: "https://artelitecarrental.com/",
+              alt: "ART Elite Car Rental",
+            },
           ].map((brand) => (
             <a
               key={brand.alt}
@@ -546,4 +546,4 @@ const TheEliteCarsPage = () => {
   );
 };
 
-export default TheEliteCarsPage;
+export default JetourPage;

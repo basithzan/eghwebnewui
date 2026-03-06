@@ -28,7 +28,7 @@ const PILLARS = [
 
 const PillarsOfExcellence = () => {
   return (
-    <section className="w-full bg-white py-12 md:py-16 px-[2%] sm:px-[4%]">
+    <section className="w-full bg-white py-12 md:py-16 px-[5%]">
       <h2 className="text-center text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-10 md:mb-14">
         Elite Group Holding&apos;s Pillars of Excellence
       </h2>

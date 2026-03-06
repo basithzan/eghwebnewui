@@ -12,43 +12,48 @@ import Marquee from "react-fast-marquee";
 import { useBrandPageAnimations } from "@/lib/hooks/useBrandPageAnimations";
 
 const IMG = {
-  hero: "/assets/61eb2205573fced65146611241f3b4c4.jpeg",
-  intro: "/assets/home/Homepage-partners-elite-cars.jpg",
-  testimonialCar: "/assets/home/Homepage-partners-elite-cars.jpg",
-  roleBanner: "/assets/61eb2205573fced65146611241f3b4c4.jpeg",
+  hero: "/assets/soueast.jpg",
+  intro: "/assets/home/soueast.jpg",
+  testimonialCar: "/assets/home/soueast.jpg",
+  roleBanner: "/assets/soueast.jpg",
 };
 
-/* ─── TEC-specific FAQs ─── */
-const TEC_FAQS = [
+/* ─── SOUEAST-specific FAQs ─── */
+const SOUEAST_FAQS = [
   {
-    question: "What luxury car brands does The Elite Cars offer?",
+    question: "Is Elite Group Holding the official SOUEAST distributor in the UAE?",
     answer:
-      "The Elite Cars offers an extensive selection of the world's most prestigious brands, including Mercedes-Benz, Ferrari, Lamborghini, Rolls-Royce, Bentley, Porsche, McLaren, Aston Martin, and many more. Our inventory features both brand-new and certified pre-owned luxury vehicles.",
+      "Yes. Elite Group Holding is the exclusive and official distributor of SOUEAST vehicles in the United Arab Emirates, responsible for sales, after-sales service, and spare parts across the country.",
   },
   {
-    question: "Where is The Elite Cars showroom located?",
+    question: "What SOUEAST models are available in the UAE?",
     answer:
-      "Our state-of-the-art showroom is located on Sheikh Zayed Road, Dubai — one of the most prominent automotive destinations in the UAE. The showroom houses over 100 luxury vehicles under one roof, providing an unparalleled browsing experience.",
+      "Our current lineup includes the SOUEAST S06, S07, S08DM, and the flagship S09. Each model is designed to deliver a blend of performance, technology, and value across different segments.",
   },
   {
-    question: "Does The Elite Cars offer certified pre-owned vehicles?",
+    question: "Where are SOUEAST showrooms located in the UAE?",
     answer:
-      "Yes. Every pre-owned vehicle at The Elite Cars undergoes a rigorous multi-point inspection to ensure it meets our exacting quality standards. Each certified pre-owned car comes with a comprehensive vehicle history report and warranty coverage for complete peace of mind.",
+      "SOUEAST showrooms are conveniently located across key cities including Dubai, Abu Dhabi, Ajman, and Al Ain, making it easy for customers across the UAE to explore and test-drive our vehicles.",
   },
   {
-    question: "What after-sales services does The Elite Cars provide?",
+    question: "What warranty does SOUEAST offer in the UAE?",
     answer:
-      "We offer comprehensive after-sales support including scheduled maintenance, detailing, paint protection, extended warranty options, and dedicated concierge service. Our team of factory-trained technicians ensures your luxury vehicle receives the highest standard of care.",
+      "All SOUEAST vehicles sold through Elite Group Holding come with a comprehensive manufacturer warranty covering major components. Specific warranty terms vary by model — please visit your nearest showroom for full details.",
   },
   {
-    question: "Does The Elite Cars offer financing options?",
+    question: "Where can I service my SOUEAST vehicle in the UAE?",
     answer:
-      "Yes. We partner with leading banks and financial institutions across the UAE to offer competitive financing solutions, including flexible EMI plans, low down payments, and tailored packages designed to suit a range of budgets and preferences.",
+      "SOUEAST vehicles can be serviced at any of our authorized service centers across Dubai, Abu Dhabi, Ajman, and Al Ain. Our technicians are factory-trained and use genuine SOUEAST parts for all maintenance and repairs.",
   },
   {
-    question: "Does The Elite Cars accept trade-ins?",
+    question: "Does SOUEAST offer financing options in the UAE?",
     answer:
-      "Absolutely. We offer a seamless trade-in program where you can upgrade your current vehicle to the luxury car of your dreams. Our team provides fair market valuations and handles all the paperwork, making the process effortless.",
+      "Yes. Elite Group Holding partners with leading banks and financial institutions in the UAE to offer competitive financing options, including low down payments and flexible EMI plans tailored to your budget.",
+  },
+  {
+    question: "Does SOUEAST offer hybrid or electric vehicles in the UAE?",
+    answer:
+      "Yes. SOUEAST is committed to sustainable mobility. The S08DM is a plug-in hybrid electric vehicle (PHEV), and we continue to expand our range of electrified models to meet growing demand for eco-friendly transportation in the UAE.",
   },
 ];
 
@@ -71,7 +76,7 @@ const ChevronIcon = ({ isOpen }) => (
   </div>
 );
 
-const TheEliteCarsPage = () => {
+const SoueastPage = () => {
   useBrandPageAnimations({ hasTestimonials: true, hasFaq: true });
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -88,12 +93,13 @@ const TheEliteCarsPage = () => {
     }
     canonicalLink.setAttribute(
       "href",
-      "https://elitegroupholding.com/automotive/the-elite-cars"
+      "https://elitegroupholding.com/automotive/soueast-distributor-uae"
     );
 
-    document.title =
-      "The Elite Cars | Luxury Car Distributor UAE | Elite Group Holding";
+    // Set meta title
+    document.title = "Official SOUEAST Distributor UAE | Elite Group Holding";
 
+    // Set meta description
     let metaDesc = document.querySelector("meta[name='description']");
     if (!metaDesc) {
       metaDesc = document.createElement("meta");
@@ -102,24 +108,24 @@ const TheEliteCarsPage = () => {
     }
     metaDesc.setAttribute(
       "content",
-      "Explore The Elite Cars Dubai - the UAE's trusted luxury car distributor offering new & pre-owned exotic cars with exceptional service and support."
+      "Discover SOUEAST cars in the UAE with Elite Group Holding, the official SOUEAST distributor."
     );
   }, []);
 
-  const leftFaqs = TEC_FAQS.filter((_, i) => i % 2 === 0);
-  const rightFaqs = TEC_FAQS.filter((_, i) => i % 2 === 1);
+  const leftFaqs = SOUEAST_FAQS.filter((_, i) => i % 2 === 0);
+  const rightFaqs = SOUEAST_FAQS.filter((_, i) => i % 2 === 1);
 
   return (
     <>
       <Navbar />
 
-      {/* 1. Hero – Luxury cars, logos overlay */}
+      {/* 1. Hero – SOUEAST vehicle, logos overlay */}
       <section className="brand-hero relative w-full h-[50vh] md:h-[70vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
           <Image
             unoptimized
             src={IMG.hero}
-            alt="The Elite Cars luxury showroom Dubai"
+            alt="SOUEAST car in the UAE"
             fill
             className="object-cover object-center"
             priority
@@ -132,7 +138,7 @@ const TheEliteCarsPage = () => {
         </div>
         <div className="relative z-10 flex items-center justify-center gap-6 md:gap-8 px-[5%] py-12">
           <span className="hero-brand-name text-white text-2xl md:text-4xl font-bold tracking-wider">
-            THE ELITE CARS
+            SOUEAST
           </span>
           <span className="hero-divider w-px h-10 md:h-14 bg-white" />
           <Image
@@ -152,7 +158,7 @@ const TheEliteCarsPage = () => {
               <Image
                 unoptimized
                 src={IMG.intro}
-                alt="The Elite Cars Dubai showroom"
+                alt="SOUEAST car Dubai"
                 fill
                 className="object-cover"
                 onError={(e) => {
@@ -172,7 +178,7 @@ const TheEliteCarsPage = () => {
           </div>
           <div className="intro-text w-full md:w-1/2 flex flex-col justify-center pl-[5%] pr-[5%] md:pl-8 md:pr-8">
             <h1 className="sr-only">
-              Official Luxury Car Distributor in the UAE - Explore The Elite Cars
+              Official SOUEAST Distributor in the UAE - Explore SOUEAST Cars
             </h1>
             <h2 className="uppercase text-[#fb511e] mb-6">
               <span className="block text-lg md:text-xl font-semibold mb-1">
@@ -183,55 +189,49 @@ const TheEliteCarsPage = () => {
               </span>
             </h2>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4">
-              The Elite Cars, a flagship subsidiary of Elite Group Holding, is
-              the UAE&apos;s premier luxury car distributor with over a decade of
-              automotive excellence. Our state-of-the-art showroom on Sheikh
-              Zayed Road houses an unrivalled collection of new and pre-owned
-              exotic vehicles from the world&apos;s most coveted brands —
-              including Ferrari, Lamborghini, Rolls-Royce, Mercedes-Benz,
-              Bentley, Porsche, and many more.
+              SOUEAST, a prominent Chinese automotive brand renowned for its
+              innovative design and advanced technology, is officially
+              represented in the UAE by Elite Group Holding. As the exclusive
+              SOUEAST car distributor, we are dedicated to bringing SOUEAST&apos;s
+              growing lineup of vehicles to Dubai and across the UAE, offering an
+              exceptional blend of quality, performance, and affordability.
             </p>
             <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-              Backed by decades of automotive expertise, The Elite Cars delivers
-              a seamless luxury car buying experience — from personalised
-              consultations and flexible financing to comprehensive after-sales
-              support. Whether you&apos;re seeking a brand-new supercar or a
-              certified pre-owned masterpiece, our dedicated team ensures every
-              client receives exceptional service and care.
+              Through this strategic partnership, Elite Group Holding is driving
+              the expansion of SOUEAST in the UAE, introducing a range of
+              vehicles — including cutting-edge PHEVs — that cater to the
+              evolving needs of UAE drivers seeking modern, reliable, and
+              eco-conscious mobility solutions.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3. Stats – 100+, STATE-OF-THE-ART, 10+, TRUSTED */}
+      {/* 3. Stats – 500+, 5+, AFFORDABLE PHEVs */}
       <section className="brand-stats w-full bg-white py-12 md:py-16 px-[5%]">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3">
           {[
             {
-              value: "100+",
-              label: "Luxury Cars All Under One Roof",
+              value: "500+",
+              label: "Positive Customer Reviews",
             },
             {
-              value: "STATE-OF-THE-ART",
-              label: "Showroom on Sheikh Zayed Road",
-              small: true,
+              value: "5+",
+              label: "Showrooms Across the UAE",
             },
             {
-              value: "10+",
-              label: "Years of Automotive Excellence",
-            },
-            {
-              value: "TRUSTED DISTRIBUTOR",
-              label: "Of Luxury & Exotic Cars in the UAE",
+              value: "AFFORDABLE PHEVs",
+              label: "Range of Plug-in Hybrid Electric Vehicles",
               small: true,
             },
           ].map((item, i) => (
             <div
               key={i}
               className={`stat-item text-center flex flex-col items-center py-6 md:py-4 px-4 md:px-6
-                ${i % 2 === 0 ? "border-r border-gray-200" : ""}
+                ${i === 0 ? "border-r border-gray-200" : ""}
                 ${i < 2 ? "border-b border-gray-200 md:border-b-0" : ""}
-                ${i < 3 ? "md:border-r md:border-gray-200" : "md:border-r-0"}
+                ${i === 0 ? "col-span-1" : i === 1 ? "col-span-1" : "col-span-2 md:col-span-1"}
+                ${i < 2 ? "md:border-r md:border-gray-200" : "md:border-r-0"}
               `}
             >
               <div className="min-h-[4rem] md:min-h-[7rem] flex items-center justify-center mb-2">
@@ -250,11 +250,11 @@ const TheEliteCarsPage = () => {
         <div className="max-w-6xl mx-auto mt-10 border-t border-black hidden md:block" />
       </section>
 
-      {/* 4. Trusted by Automotive Enthusiasts – testimonial + 3 images */}
+      {/* 4. Trusted By Thousands – testimonial + 3 images */}
       <section className="brand-testimonials w-full bg-white py-12 md:py-20 px-[5%]">
         <div className="max-w-6xl mx-auto">
           <h2 className="testimonials-heading text-2xl md:text-3xl font-bold text-[#1a1a1a] mb-8">
-            Trusted by Automotive Enthusiasts
+            Trusted By Thousands
           </h2>
           {/* Google Reviews logo – mobile */}
           <div className="lg:hidden mb-6">
@@ -292,24 +292,23 @@ const TheEliteCarsPage = () => {
             <div className="testimonials-card flex-1">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white font-bold">
-                  M
+                  A
                 </div>
                 <div>
-                  <div className="font-bold text-[#1a1a1a]">Mohammed K.</div>
+                  <div className="font-bold text-[#1a1a1a]">Ahmed Al Rashid</div>
                   <div className="flex items-center gap-2 text-sm text-gray-500">
                     <span className="text-[#FBBC05]">★★★★★</span>
-                    <span>3 weeks ago</span>
+                    <span>1 month ago</span>
                   </div>
                 </div>
               </div>
               <p className="text-[#282828] text-base leading-relaxed mb-4">
-                An outstanding luxury car buying experience from start to finish.
-                The Elite Cars showroom on Sheikh Zayed Road is truly impressive
-                — over 100 exotic cars all under one roof. The team was
-                incredibly professional, transparent with pricing, and made the
-                entire process seamless. From test drive to delivery, everything
-                was handled with care. Highly recommend to anyone looking for
-                luxury cars in Dubai.
+                Exceptional experience with SOUEAST at Elite Group Holding. The
+                team was professional and knowledgeable, guiding me through every
+                step of the purchase. The vehicle quality exceeded my
+                expectations, and the after-sales support has been outstanding.
+                Highly recommend SOUEAST to anyone looking for a reliable and
+                feature-packed car in the UAE.
               </p>
             </div>
             <div className="flex flex-col items-end gap-4 w-full lg:max-w-md">
@@ -356,7 +355,7 @@ const TheEliteCarsPage = () => {
                     <Image
                       unoptimized
                       src={IMG.testimonialCar}
-                      alt="The Elite Cars luxury vehicle"
+                      alt="SOUEAST car UAE"
                       fill
                       className="object-cover"
                       onError={(e) => {
@@ -371,13 +370,13 @@ const TheEliteCarsPage = () => {
         </div>
       </section>
 
-      {/* 5. Role banner – Elite Group's Role in The Elite Cars' UAE Success */}
+      {/* 5. Role banner – Elite Group's Role in SOUEAST's UAE Success */}
       <section className="brand-role-banner relative w-full min-h-[50vh] md:min-h-[60vh] flex items-center">
         <div className="absolute inset-0 z-0">
           <Image
             unoptimized
             src={IMG.roleBanner}
-            alt="The Elite Cars showroom Dubai"
+            alt="SOUEAST showroom UAE"
             fill
             className="object-cover object-right"
             onError={(e) => {
@@ -389,19 +388,19 @@ const TheEliteCarsPage = () => {
         <div className="relative z-10 px-[5%] py-16 max-w-2xl">
           <h2 className="role-heading text-2xl md:text-4xl font-bold mb-6">
             <span className="text-[#fb511e]">
-              ELITE GROUP&apos;S ROLE IN THE ELITE CARS&apos;{" "}
+              ELITE GROUP&apos;S ROLE IN SOUEAST&apos;S{" "}
             </span>
             <span className="text-white">UAE SUCCESS</span>
           </h2>
           <p className="role-body text-white text-base md:text-lg leading-relaxed">
-            As a flagship subsidiary of Elite Group Holding, The Elite Cars has
-            grown into one of the UAE&apos;s most trusted luxury car
-            distributors. Through continuous showroom expansion, exclusive launch
-            events, seamless trade-in programs, flexible financing solutions, and
-            dedicated concierge support, we have redefined the luxury car buying
-            experience in Dubai and across the UAE. Our commitment to
-            transparency, quality, and customer satisfaction has earned the trust
-            of thousands of automotive enthusiasts and collectors.
+            Elite Group Holding is the exclusive distributor of SOUEAST in the
+            UAE, spearheading the brand&apos;s growth across the region. With
+            showrooms in Dubai, Abu Dhabi, Ajman, and Al Ain, along with
+            dedicated service centers and comprehensive after-sales support, we
+            ensure every SOUEAST customer enjoys a premium ownership experience.
+            From the versatile S06 to the advanced S08DM plug-in hybrid, we are
+            committed to delivering innovative, affordable, and sustainable
+            mobility solutions across the UAE.
           </p>
         </div>
       </section>
@@ -410,10 +409,10 @@ const TheEliteCarsPage = () => {
       <section className="brand-cta w-full bg-white py-16 md:py-24 px-[5%]">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="cta-heading text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] mb-4 md:mb-6">
-            To Know More About The Elite Cars?
+            To Know More About SOUEAST in the UAE?
           </h2>
           <Link
-            href="https://theelitecars.com"
+            href="https://soueastuae.com"
             target="_blank"
             rel="noopener noreferrer"
             className="cta-button inline-flex items-center gap-2 border-2 border-gray-300 hover:border-[#fb511e] hover:bg-[#fb511e] hover:text-white text-black transition-all rounded-xl px-8 py-4 font-semibold uppercase"
@@ -424,7 +423,7 @@ const TheEliteCarsPage = () => {
         </div>
       </section>
 
-      {/* 7. FAQ – TEC-specific */}
+      {/* 7. FAQ – SOUEAST-specific */}
       <section className="brand-faq w-full bg-[#f0f0f0] px-[5%] py-12 md:py-16">
         <h2 className="faq-heading text-[2rem] lg:text-[2.5rem] font-semibold text-[#fb511e] uppercase mb-8 md:mb-10">
           Frequently Asked Questions
@@ -514,9 +513,9 @@ const TheEliteCarsPage = () => {
           gradient={false}
         >
           {[
+            { src: "/assets/brands/TEC.png", url: "https://theelitecars.com/", alt: "The Elite Cars" },
             { src: "/assets/brands/Zenvo.png", url: "https://zenvouae.com/", alt: "Zenvo" },
             { src: "/assets/brands/Jetour.png", url: "https://jetouruae.com/", alt: "Jetour" },
-            { src: "/assets/brands/soueast-black.png", url: "https://soueastuae.com/", alt: "SOUEAST" },
             { src: "/assets/brands/zrt-contracting.png", url: "https://www.zrtcontracting.com/", alt: "ZRT Contracting" },
             { src: "/assets/brands/art-logo.png", url: "https://artelitecarrental.com/", alt: "ART Elite Car Rental" },
           ].map((brand) => (
@@ -546,4 +545,4 @@ const TheEliteCarsPage = () => {
   );
 };
 
-export default TheEliteCarsPage;
+export default SoueastPage;

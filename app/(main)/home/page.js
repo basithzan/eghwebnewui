@@ -271,70 +271,7 @@ const EliteHome = () => {
         { y: 0, opacity: 1 }
       );
 
-    const section3Head = document.querySelector(".section-3-head");
-    if (section3Head) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: ".section-3-head",
-            start: "top center",
-          },
-        })
-        .fromTo(
-          ".section-3-head",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.5, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-3-head+.carouselSection",
-          { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        );
-    }
-
-    const section5 = document.querySelector(".section-5");
-    if (section5) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: ".section-5",
-            start: "top center",
-          },
-          delay: 0.25,
-        })
-        .fromTo(
-          ".section-5 .head-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-5 .carouselSection",
-          { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        );
-    }
-
-    const section6 = document.querySelector(".section-6");
-    if (section6) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: ".section-6",
-            start: "top center",
-          },
-          delay: 0.25,
-        })
-        .fromTo(
-          ".section-6 .head-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-6 .text",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        );
-    }
+    // Scroll animations for non-section wrappers are now handled by ScrollReveal
   }, []);
 
   useEffect(() => {
@@ -638,7 +575,7 @@ const EliteHome = () => {
 
       <OurAwards />
 
-      <h2 className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
+      <h2 className="px-[5%] text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold uppercase section-3-head pt-12 md:pt-16 pb-4">
         {homePageData?.homePageSectorsHeading?.main_heading}
       </h2>
       {homePageData?.homePageSectors && homePageData?.homePageSectors?.length > 0 &&
@@ -649,10 +586,9 @@ const EliteHome = () => {
       <PillarsOfExcellence />
 
 
-      <div className="section-5  max-md:mt-8">
+      <div className="section-5">
         <h2
-          className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4"
-          style={{ color: "#fb511e", lineHeight: "2.5rem" }}
+          className="px-[5%] text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold uppercase head-1 pt-12 md:pt-16 pb-4"
         >
           {homePageData?.homePagePartnersHeading?.main_heading}
         </h2>
@@ -669,9 +605,9 @@ const EliteHome = () => {
 
       <FAQ />
 
-      <div className="px-[5%] mx-auto md:mt-24 section-6">
-        <div className=" flex justify-between items-center md:pe-3">
-          <h2 className="md:text-md text-[2rem]  lg:text-[2.5rem] uppercase font-semibold  text-[#fb511e] py-8  md:px-3">
+      <div className="px-[5%] mx-auto pt-12 md:pt-16 section-6">
+        <div className="flex justify-between items-center">
+          <h2 className="text-[2rem] lg:text-[2.5rem] uppercase font-semibold text-[#fb511e] pb-6 md:pb-8 head-1">
             Media Center
           </h2>
           <Link href="/media-centre">

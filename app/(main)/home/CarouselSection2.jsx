@@ -121,7 +121,7 @@ const CarouselSection2 = ({ images, hideFeatured = false }) => {
         <>
 
           {!isMobile && !hideFeatured && (
-            <div className="mb-10 md:block hidden md:px-3">
+            <div className="mb-10 md:block hidden">
               <div className="overflow-hidden mb-5" style={{ height: 'calc(100vh - 250px)' }}>
                 <Image
                   unoptimized
