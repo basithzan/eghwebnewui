@@ -271,37 +271,6 @@ const EliteHome = () => {
         { y: 0, opacity: 1 }
       );
 
-    const section2 = document.querySelector(".section-2");
-    if (section2) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: ".section-2",
-            start: "top bottom",
-          },
-        })
-        .fromTo(
-          ".section-2 .text-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-2 .text-2",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-2 .button-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-2 .img-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        );
-    }
-
     const section3Head = document.querySelector(".section-3-head");
     if (section3Head) {
       gsap
@@ -320,33 +289,6 @@ const EliteHome = () => {
           ".section-3-head+.carouselSection",
           { y: 100, opacity: 0 },
           { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-        );
-    }
-
-    const section4 = document.querySelector(".section-4");
-    if (section4) {
-      gsap
-        .timeline({
-          scrollTrigger: {
-            trigger: ".section-4",
-            start: "top center",
-          },
-          delay: 0.25,
-        })
-        .fromTo(
-          ".section-4 .head-1",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-4 .text",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
-        )
-        .fromTo(
-          ".section-4 .count",
-          { x: -50, opacity: 0 },
-          { x: 0, opacity: 1, duration: 0.6, ease: "power3.out" }
         );
     }
 
@@ -696,40 +638,6 @@ const EliteHome = () => {
 
       <OurAwards />
 
-      <div className="section-2 max-md:py-4 mt-8">
-        <div className="max-md:my-10 md:flex md:flex-row-reverse items-center">
-          <div className=" md:shrink-1 md:w-1/2 px-[5%] md:py-10">
-            <h2 className="md:text-md text-[2rem]  lg:text-[2.5rem] font-semibold  text-[#fb511e]  mb-4 md:mb-8 text-1 uppercase">
-              {homePageData?.homePageAboutUs?.title}
-            </h2>
-            <div className="mb-3 text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 pt-4 [&>p]:mb-4 [&>p:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: DEFAULT_ABOUT_US_CONTENT }} />
-
-
-            <Link href="/about-group">
-              <button
-                href="/about-group"
-                className="block max-sm:text-xs uppercase md:mt-9 max-md:mt-5 max-md:mb-16 bg-white hover:bg-[#fb511e] text-black hover:text-white  transition-all border border-1 border-black hover:border-[#fb511e] rounded-xl px-5 sm:px-10 py-1 md:py-3 button-1"
-              >
-                {homePageData?.homePageAboutUs?.link_text}
-                <ArrowLongRightIcon className=" ms-2 sm:ms-4 inline w-4 h-4 sm:w-6 sm:h-6" />
-              </button>
-            </Link>
-          </div>
-          <div className="relative md:w-1/2 md:grow md:shrink-0 overflow-hidden img-1 max-md:px-[5%]">
-            <div className="overflow-hidden clip-path-md">
-              <Image
-                unoptimized
-                width={100}
-                height={100}
-                src={imgUrl + homePageData?.homePageAboutUs?.image}
-                alt="AboutImage"
-                className={`w-full h-full max-md:h-full max-md:aspect-square max-[1680px]:h-[650px] max-[2000px]:h-[550px] object-cover  transition-all duration-500 ease-out hover:scale-105`}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
       <h2 className="px-[5%] md:text-md text-[2rem]  lg:text-[2.5rem]   text-[#fb511e] font-semibold md:mb-0 mb-0 section-3-head md:mt-20 py-4">
         {homePageData?.homePageSectorsHeading?.main_heading}
       </h2>
@@ -740,80 +648,6 @@ const EliteHome = () => {
 
       <PillarsOfExcellence />
 
-      <div className="px-[5%] md:py-0  section-4 bg-[#F7F7F7] md:pb-12  py-16">
-        <div className="md:grid md:grid-cols-4 flex flex-col md:items-center gap-5 md:gap-[5%] md:py-[5%] mb-4 ">
-          <h2 className="md:text-md text-[2rem] lg:text-[2.5rem] text-[#fb511e] font-semibold head-1 whitespace-nowrap">
-            {homePageData?.homePageHighLightHeading?.main_heading}
-          </h2>
-          {/* <div className="flex items-start flex-col md:flex-row md:col-span-3 gap-3 md:gap-3 ">
-            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
-              Trust and integrity are our core currencies, it is a foundation on
-              how we build trust with our stakeholders and our partners.
-            </p>
-            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
-              We hold ourselves to the highest ethical standards, ensuring
-              transparency, honesty and accountability in everything we do.
-            </p>
-            <p className="text-[#282828] text-base md:text-base lg:text-[1.1rem] lg:leading-[1.75rem] text-2 md:w-1/2 line-clamp-5 hover:line-clamp-none">
-              We believe in creating lasting value for our stakeholders. Our
-              diversified portfolio, strategic vision, and operational
-              excellence drive our success and ensure we remain a trusted
-              partner in every sector we operate.
-            </p>
-          </div> */}
-        </div>
-        {homePageData?.homePageHighLights && homePageData?.homePageHighLights?.length > 0 &&
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-[20px] mb-10 count">
-            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-              {/* <Image
-                width={100}
-                height={100}
-                src="/assets/p1.png"
-                alt="Icon 1"
-                className="w-[60px] h-[60px] mb-[3px]"
-              /> */}
-              <div>
-                {homePageData?.homePageHighLights[0]?.title}
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-              {/* <Image
-                width={100}
-                height={100}
-                src="/assets/p2.png"
-                alt="Icon 2"
-                className="w-[60px] h-[60px] mb-[3px]"
-              /> */}
-              <div>
-                <span className="sm:block w-[200px]">  {homePageData?.homePageHighLights[1]?.title}</span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-              {/* <Image
-                width={100}
-                height={100}
-                src="/assets/p3.png"
-                alt="Icon 3"
-                className="w-[60px] h-[60px] mb-[3px]"
-              /> */}
-              <div>{homePageData?.homePageHighLights[2]?.title}</div>
-            </div>
-            <div className="flex flex-col items-center justify-center text-xl font-semibold sm:text-2xl text-center gap-3 sm:gap-2 py-6 px-2 border-2 border-[#808080] rounded-lg shadow-[0px_0px_10px_5px_rgba(128,128,128,0.5)] h-[200px]">
-              {/* <Image
-                width={100}
-                height={100}
-                src="/assets/p4.png"
-                alt="Icon 4"
-                className="w-[60px] h-[60px] mb-[3px]"
-              /> */}
-              <div className="uppercase">
-                {homePageData?.homePageHighLights[3]?.title}
-              </div>
-            </div>
-          </div>
-        }
-      </div>
 
       <div className="section-5  max-md:mt-8">
         <h2
