@@ -135,7 +135,7 @@ const Partner = ({ images }) => {
       </div>
 
       {/* Navigation Links Section */}
-      <div className={`justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-${images.length} md:h-full`}>
+      <div className="justify-evenly max-md:hidden relative z-50 gap-3 px-5 w-full md:px-0 mb-5 md:mb-5 md:gap-0 max-md:min-w-[730px] max-md:overflow-auto flex-wrap grid grid-cols-4 md:grid-cols-5 md:h-full">
         {images.map((image, index) => (
           <a
             target="blank"
@@ -156,11 +156,9 @@ const Partner = ({ images }) => {
                   href={image.url}
                   className="block mt-2"
                 >
-                  <button className=" hover:bg-[#fb511e] transition-all flex items-center justify-center mx-auto border border-1 border-white hover:border-[#fb511e] rounded-xl px-10 py-1 lg:py-1 button-1">
-                    <span className="whitespace-nowrap">
-                      {"Visit Website"}
-                    </span>
-                    <ArrowLongRightIcon className="ms-4 inline w-6 h-6" />
+                  <button className="hover:bg-[#fb511e] transition-all flex items-center justify-center mx-auto border border-1 border-white hover:border-[#fb511e] rounded-lg px-4 py-1 text-xs xl:text-sm button-1 gap-1.5">
+                    <span className="whitespace-nowrap">Visit Website</span>
+                    <ArrowLongRightIcon className="inline w-4 h-4 xl:w-5 xl:h-5 shrink-0" />
                   </button>
                 </a>
               </div>

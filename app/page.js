@@ -1,4 +1,4 @@
-import EliteHome from "./home/page";
+import EliteHome from "./(main)/home/page";
 
 export default function Home() {
   return <EliteHome />;

@@ -14,6 +14,7 @@ const MOBILE_VIDEO_URL = "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/ep
 const DEFAULT_ABOUT_US_CONTENT = `<p>At Elite Group Holding, we are committed to enhancing the quality of life within the communities we serve, continuously seeking avenues for fostering growth and making a positive impact on the world and our community.</p><p>We stand as one of the most dynamic businesses in the Middle East, proudly rooted in Dubai, United Arab Emirates, and recognized as a diversified conglomerate. With a diverse portfolio that encompasses Automotive, Investment, Real Estate, and E-commerce, our dedicated team is united by a powerful vision: driving excellence and building futures.</p><p>As a company that embraces innovative technologies, we aim to foster cooperation, create unique experiences, and ensure readiness across all our sectors.</p>`;
 
 import Footer from "../Footer";
+import MapSection from "./MapSection";
 import Navbar from "../Navbar";
 import Brands from "./Brands";
 // import video1 from "https://tec-prod-bucket.s3.me-south-1.amazonaws.com/epublic/B2vvHPYGrFKF0gYb8ItD5DBb0x2z2kNoFxRTP2xD.mp4";
@@ -82,12 +83,12 @@ performance.`,
     description: `SOUEAST's entry into the UAE with Elite Group Holding as its exclusive authorised distributor, is set to introduce a new standard of premium mobility solutions with its "EASE YOUR LIFE" proposition. Since its establishment, SOUEAST has nearly 20 years of successful experience in global business.`,
     url: "https://soueastuae.com/",
   },
-  // {
-  //   src: soueast1,
-  //   name: "ART ELITE CAR RENTAL",
-  //   description: `ART Elite Car Rental is a subsidiary of Elite Group Holding, automotive division. They specialize in the leasing and rental of high-end luxury vehicles offering an exclusive selection of top-tier automobiles, catering to clients who seek sophistication, performance, and unparalleled comfort. ​`,
-  //   url: "/automotive#art_elite_car_rental",
-  // },
+  {
+    src: soueast1,
+    name: "ART ELITE CAR RENTAL",
+    description: `ART Elite Car Rental, a subsidiary of Elite Group Holding, offers flexible car lease packages in Dubai and Abu Dhabi—including zero down payment, comprehensive insurance, maintenance and 24/7 roadside support. Lease Jetour, Mercedes-Benz and SOUEAST models with hassle-free long-term plans.`,
+    url: "https://artelitecarrental.com/",
+  },
 ];
 
 const CarouselImage2 = [
@@ -855,6 +856,7 @@ const EliteHome = () => {
         <Brands content={homePageData?.homePageBrands} />
       }
 
+      <MapSection />
       <Footer />
  {/* Structured Data for Organization */}
       <Script
